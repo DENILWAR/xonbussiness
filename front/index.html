@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Chatbot Propio</title>
+    <style>
+        /* Estilos básicos para la página */
+        body { font-family: sans-serif; display: grid; place-content: center; height: 100vh; margin: 0; background-color: #f0f2f5; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Página de Prueba para mi Chatbot</h1>
+
+    <script src="https://cdn.jsdelivr.net/npm/chat-widget@0.4.7/dist/chat-widget.min.js"></script>
+    <script>
+        new ChatWidget({
+            // OBLIGATORIO: La URL de tu backend (que crearemos en el Paso 2)
+            backendUrl: 'http://localhost:3000/chat',
+
+            // --- Opcional: Personalización ---
+            title: 'Asistente Virtual',
+            subtitle: 'Pregúntame lo que quieras',
+            placeholder: 'Escribe tu mensaje...',
+            primaryColor: '#007bff', // El color principal de tu marca
+            avatar: 'https://cdn-icons-png.flaticon.com/512/8649/8649595.png', // URL de un logo
+            sendButtonText: 'Enviar',
+        });
+    </script>
+</body>
+</html>

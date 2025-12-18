@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XON - Soluciones de Automatización para Empresas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Federant&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; }
+
+    /* Secciones */
+    header {
+      background: linear-gradient(to right, #000a1a, #032ac4);
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative; /* Añadido para posicionar la flecha */
+      font-family: "Smooch Sans", sans-serif;
+      font-size: 20px;
+    }
+
+    header h1 {
+      font-family: 'Cinzel', serif; /* Fuente Cinzel aplicada */
+      font-size: 4rem;
+      margin-bottom: 20px;
+      /* Efecto de título brillante y llamativo */
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ccff, 0 0 20px #00ccff;
+    }
+
+    header p { font-size: 1.7rem; margin-bottom: 30px; max-width: 900px; }
+    header a {
+      background: #fff; color: #0066ff; padding: 15px 30px; border-radius: 50px; font-weight: bold; text-decoration: none;
+      transition: 0.3s;
+    }
+    header a:hover { background: #e6f0ff; }
+
+    section { padding: 80px 20px; }
+    section h2 { font-size: 2.5rem; text-align: center; margin-bottom: 40px; font-family: 'Cinzel', serif;}
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature {
+      flex: 1 1 250px;
+      background: #f5f5f5;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .feature:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .feature h3 { margin-bottom: 20px; color: #0066ff; font-family: 'Cinzel', serif; font-size: 1.5rem;}
+    .feature p { font-size: 1rem; }
+
+    .cta {
+      text-align: center;
+      background: #0066ff;
+      color: white;
+      padding: 60px 20px;
+    }
+
+    .cta a {
+      background: #fff; color: #0066ff; padding: 15px 30px; border-radius: 50px; font-weight: bold; text-decoration: none;
+      transition: 0.3s;
+    }
+    .cta a:hover { background: #e6f0ff; }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Animación de scroll */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
+
+    /* Flecha de scroll animada */
+    .scroll-arrow {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+    .scroll-arrow span {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-bottom: 3px solid white;
+      border-right: 3px solid white;
+      transform: rotate(45deg);
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-20px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <script src="https://cdn.jsdelivr.net/npm/chat-widget@0.4.7/dist/chat-widget.min.js"></script>
+  <script>
+      new ChatWidget({
+          // OBLIGATORIO: La URL de tu backend (que crearemos en el Paso 2)
+          backendUrl: 'http://localhost:3000/chat',
+
+          // --- Opcional: Personalización ---
+          title: 'Denialson',
+          subtitle: 'Pregúntame lo que quieras',
+          placeholder: 'Escribe tu mensaje...',
+          primaryColor: '#007bff', // El color principal de tu marca
+          avatar: 'https://cdn-icons-png.flaticon.com/512/8649/8649595.png', // URL de un logo
+          sendButtonText: 'Enviar',
+      });
+  </script>
+
+  <header>
+    <h1>XoN</h1>
+    <p>Imagina poder responder al instante a cada correo de un cliente, cada duda de un empleado o cada mensaje en el chat, sin importar la hora. Nuestra solución es un chatbot inteligente que interpreta conversaciones y ofrece respuestas rápidas y precisas 24/7.</p>
+    <p>Funciona como tu equipo de atención al cliente externo y tu soporte interno para empleados, todo en uno. Gestiona un volumen masivo de consultas sin fatigarse, liberando a tu equipo humano para las tareas que de verdad requieren su talento y evitando los costes de un gran departamento de atención.</p>
+    <a href="#contact">Solicita una demo</a>
+    <div class="scroll-arrow">
+      <span></span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Nuestras Soluciones</h2>
+    <div class="features">
+      <div class="feature fade-up">
+        <h3>Automatización de tareas</h3>
+        <p>Reduce tareas repetitivas y enfoca a tu equipo en lo que realmente importa.</p>
+      </div>
+      <div class="feature fade-up">
+        <h3>Integración de sistemas</h3>
+        <p>Conecta tus herramientas de negocio y consigue un flujo de información eficiente.</p>
+      </div>
+      <div class="feature fade-up">
+        <h3>Reportes inteligentes</h3>
+        <p>Obtén información en tiempo real para tomar decisiones estratégicas acertadas.</p>
+      </div>
+      <div class="feature fade-up">
+        <h3>Escalabilidad</h3>
+        <p>Nuestras soluciones crecen contigo, desde Pymes hasta grandes corporaciones.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <h2>¿Listo para optimizar tu empresa?</h2>
+    <p>Contáctanos hoy y descubre cómo podemos transformar tu negocio.</p>
+    <a href="mailto:contacto@automatex.com">Solicitar demo</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 AutomateX. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Scroll animation
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    fadeElements.forEach(el => observer.observe(el));
+  </script>
+
+  
+
+</body>
+
+
+</script>
+</html>
