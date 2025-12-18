@@ -1,208 +1,540 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XON - Soluciones de Automatización para Empresas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Federant&family=Smooch+Sans:wght@100..900&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333; }
-
-    /* Secciones */
-    header {
-      background: linear-gradient(to right, #000a1a, #032ac4);
-      color: white;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      position: relative; /* Añadido para posicionar la flecha */
-      font-family: "Smooch Sans", sans-serif;
-      font-size: 20px;
-    }
-
-    header h1 {
-      font-family: 'Cinzel', serif; /* Fuente Cinzel aplicada */
-      font-size: 4rem;
-      margin-bottom: 20px;
-      /* Efecto de título brillante y llamativo */
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ccff, 0 0 20px #00ccff;
-    }
-
-    header p { font-size: 1.7rem; margin-bottom: 30px; max-width: 900px; }
-    header a {
-      background: #fff; color: #0066ff; padding: 15px 30px; border-radius: 50px; font-weight: bold; text-decoration: none;
-      transition: 0.3s;
-    }
-    header a:hover { background: #e6f0ff; }
-
-    section { padding: 80px 20px; }
-    section h2 { font-size: 2.5rem; text-align: center; margin-bottom: 40px; font-family: 'Cinzel', serif;}
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .feature {
-      flex: 1 1 250px;
-      background: #f5f5f5;
-      border-radius: 15px;
-      padding: 30px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .feature:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-    .feature h3 { margin-bottom: 20px; color: #0066ff; font-family: 'Cinzel', serif; font-size: 1.5rem;}
-    .feature p { font-size: 1rem; }
-
-    .cta {
-      text-align: center;
-      background: #0066ff;
-      color: white;
-      padding: 60px 20px;
-    }
-
-    .cta a {
-      background: #fff; color: #0066ff; padding: 15px 30px; border-radius: 50px; font-weight: bold; text-decoration: none;
-      transition: 0.3s;
-    }
-    .cta a:hover { background: #e6f0ff; }
-
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* Animación de scroll */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease-out;
-    }
-    .fade-up.show { opacity: 1; transform: translateY(0); }
-
-    /* Flecha de scroll animada */
-    .scroll-arrow {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: bounce 2s infinite;
-    }
-    .scroll-arrow span {
-      display: block;
-      width: 20px;
-      height: 20px;
-      border-bottom: 3px solid white;
-      border-right: 3px solid white;
-      transform: rotate(45deg);
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
-      }
-      40% {
-        transform: translateX(-50%) translateY(-20px);
-      }
-      60% {
-        transform: translateX(-50%) translateY(-10px);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio profesional - Desarrollo web y diseño digital">
+    <meta name="theme-color" content="#0a0a0f">
+    
+    <title>Tu Nombre | Portafolio Profesional</title>
+    
+    <!-- Preload fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Cursor personalizado -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chat-widget@0.4.7/dist/chat-widget.min.js"></script>
-  <script>
-      new ChatWidget({
-          // OBLIGATORIO: La URL de tu backend (que crearemos en el Paso 2)
-          backendUrl: 'http://localhost:3000/chat',
-
-          // --- Opcional: Personalización ---
-          title: 'Denialson',
-          subtitle: 'Pregúntame lo que quieras',
-          placeholder: 'Escribe tu mensaje...',
-          primaryColor: '#007bff', // El color principal de tu marca
-          avatar: 'https://cdn-icons-png.flaticon.com/512/8649/8649595.png', // URL de un logo
-          sendButtonText: 'Enviar',
-      });
-  </script>
-
-  <header>
-    <h1>XoN</h1>
-    <p>Imagina poder responder al instante a cada correo de un cliente, cada duda de un empleado o cada mensaje en el chat, sin importar la hora. Nuestra solución es un chatbot inteligente que interpreta conversaciones y ofrece respuestas rápidas y precisas 24/7.</p>
-    <p>Funciona como tu equipo de atención al cliente externo y tu soporte interno para empleados, todo en uno. Gestiona un volumen masivo de consultas sin fatigarse, liberando a tu equipo humano para las tareas que de verdad requieren su talento y evitando los costes de un gran departamento de atención.</p>
-    <a href="#contact">Solicita una demo</a>
-    <div class="scroll-arrow">
-      <span></span>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-text">
+                <span>C</span><span>A</span><span>R</span><span>G</span><span>A</span><span>N</span><span>D</span><span>O</span>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <section>
-    <h2>Nuestras Soluciones</h2>
-    <div class="features">
-      <div class="feature fade-up">
-        <h3>Automatización de tareas</h3>
-        <p>Reduce tareas repetitivas y enfoca a tu equipo en lo que realmente importa.</p>
-      </div>
-      <div class="feature fade-up">
-        <h3>Integración de sistemas</h3>
-        <p>Conecta tus herramientas de negocio y consigue un flujo de información eficiente.</p>
-      </div>
-      <div class="feature fade-up">
-        <h3>Reportes inteligentes</h3>
-        <p>Obtén información en tiempo real para tomar decisiones estratégicas acertadas.</p>
-      </div>
-      <div class="feature fade-up">
-        <h3>Escalabilidad</h3>
-        <p>Nuestras soluciones crecen contigo, desde Pymes hasta grandes corporaciones.</p>
-      </div>
+    <!-- Header / Navegación -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <span class="logo-text">TN</span>
+                <span class="logo-dot"></span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#inicio" class="nav-link active" data-section="inicio">Inicio</a></li>
+                <li><a href="#proyectos" class="nav-link" data-section="proyectos">Proyectos</a></li>
+                <li><a href="#servicios" class="nav-link" data-section="servicios">Servicios</a></li>
+                <li><a href="#sobre-mi" class="nav-link" data-section="sobre-mi">Sobre Mí</a></li>
+                <li><a href="#contacto" class="nav-link" data-section="contacto">Contacto</a></li>
+            </ul>
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Menú móvil -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="#inicio" class="mobile-nav-link">Inicio</a></li>
+            <li><a href="#proyectos" class="mobile-nav-link">Proyectos</a></li>
+            <li><a href="#servicios" class="mobile-nav-link">Servicios</a></li>
+            <li><a href="#sobre-mi" class="mobile-nav-link">Sobre Mí</a></li>
+            <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
+        </ul>
     </div>
-  </section>
 
-  <section class="cta" id="contact">
-    <h2>¿Listo para optimizar tu empresa?</h2>
-    <p>Contáctanos hoy y descubre cómo podemos transformar tu negocio.</p>
-    <a href="mailto:contacto@automatex.com">Solicitar demo</a>
-  </section>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="inicio">
+            <div class="hero-bg">
+                <div class="gradient-orb orb-1"></div>
+                <div class="gradient-orb orb-2"></div>
+                <div class="gradient-orb orb-3"></div>
+                <div class="grid-overlay"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-badge reveal">
+                    <span class="badge-dot"></span>
+                    Disponible para proyectos
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line reveal">
+                        <span class="title-word">Diseño</span>
+                        <span class="title-accent">&</span>
+                    </span>
+                    <span class="title-line reveal">
+                        <span class="title-word gradient-text">Desarrollo</span>
+                    </span>
+                    <span class="title-line reveal">
+                        <span class="title-word">Digital</span>
+                    </span>
+                </h1>
+                
+                <p class="hero-description reveal">
+                    Creo experiencias digitales únicas que combinan diseño excepcional 
+                    con código de alta calidad. Transformo ideas en realidades interactivas.
+                </p>
+                
+                <div class="hero-cta reveal">
+                    <a href="#proyectos" class="btn btn-primary">
+                        <span>Ver Proyectos</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                    <a href="#contacto" class="btn btn-secondary">
+                        <span>Contactar</span>
+                    </a>
+                </div>
+                
+                <div class="hero-stats reveal">
+                    <div class="stat">
+                        <span class="stat-number" data-count="50">0</span>
+                        <span class="stat-label">Proyectos</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="5">0</span>
+                        <span class="stat-label">Años Exp.</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="30">0</span>
+                        <span class="stat-label">Clientes</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-line">
+                    <div class="scroll-dot"></div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 AutomateX. Todos los derechos reservados.</p>
-  </footer>
+        <!-- Proyectos Section -->
+        <section class="section projects" id="proyectos">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Portafolio</span>
+                    <h2 class="section-title reveal">
+                        Proyectos <span class="gradient-text">Destacados</span>
+                    </h2>
+                    <p class="section-description reveal">
+                        Una selección de mis trabajos más recientes y significativos
+                    </p>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Proyecto 1 -->
+                    <article class="project-card featured reveal">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>Proyecto 1</span>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="proyecto1/index.html" class="project-link" target="_blank">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">Web App</span>
+                                <span class="tag">UI/UX</span>
+                                <span class="tag">React</span>
+                            </div>
+                            <h3 class="project-title">Nombre del Proyecto 1</h3>
+                            <p class="project-description">
+                                Descripción breve del proyecto. Explica qué problema resuelve y las tecnologías utilizadas.
+                            </p>
+                            <a href="proyecto1/index.html" class="project-cta" target="_blank">
+                                Ver proyecto
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <!-- Proyecto 2 -->
+                    <article class="project-card reveal">
+                        <div class="project-image">
+                            <div class="project-placeholder">
+                                <span>Proyecto 2</span>
+                            </div>
+                            <div class="project-overlay">
+                                <a href="proyecto2/index.html" class="project-link" target="_blank">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">E-commerce</span>
+                                <span class="tag">Full Stack</span>
+                            </div>
+                            <h3 class="project-title">Nombre del Proyecto 2</h3>
+                            <p class="project-description">
+                                Descripción breve del segundo proyecto con sus características principales.
+                            </p>
+                            <a href="proyecto2/index.html" class="project-cta" target="_blank">
+                                Ver proyecto
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                    
+                    <!-- Más proyectos placeholder -->
+                    <article class="project-card coming-soon reveal">
+                        <div class="project-image">
+                            <div class="project-placeholder glass">
+                                <span>Próximamente</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">Nuevo</span>
+                            </div>
+                            <h3 class="project-title">Proyecto en desarrollo</h3>
+                            <p class="project-description">
+                                Nuevos proyectos en camino. ¡Mantente atento!
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-  <script>
-    // Scroll animation
-    const fadeElements = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.2 });
+        <!-- Servicios Section -->
+        <section class="section services" id="servicios">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Servicios</span>
+                    <h2 class="section-title reveal">
+                        Lo que <span class="gradient-text">Ofrezco</span>
+                    </h2>
+                </div>
+                
+                <div class="services-grid">
+                    <article class="service-card reveal">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M3 9h18"/>
+                                <path d="M9 21V9"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Diseño Web</h3>
+                        <p class="service-description">
+                            Diseño interfaces modernas, intuitivas y visualmente atractivas que capturan la esencia de tu marca.
+                        </p>
+                        <ul class="service-features">
+                            <li>UI/UX Design</li>
+                            <li>Prototipado</li>
+                            <li>Design Systems</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="service-card reveal">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Desarrollo Frontend</h3>
+                        <p class="service-description">
+                            Desarrollo sitios web rápidos, responsivos y optimizados con las últimas tecnologías.
+                        </p>
+                        <ul class="service-features">
+                            <li>HTML/CSS/JS</li>
+                            <li>React / Vue</li>
+                            <li>Animaciones</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="service-card reveal">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Desarrollo Full Stack</h3>
+                        <p class="service-description">
+                            Soluciones completas desde el frontend hasta el backend con bases de datos y APIs.
+                        </p>
+                        <ul class="service-features">
+                            <li>Node.js / Python</li>
+                            <li>Bases de datos</li>
+                            <li>APIs REST</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="service-card reveal">
+                        <div class="service-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M2 12h20"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">SEO & Optimización</h3>
+                        <p class="service-description">
+                            Optimizo tu presencia online para mejorar visibilidad y rendimiento.
+                        </p>
+                        <ul class="service-features">
+                            <li>SEO Técnico</li>
+                            <li>Performance</li>
+                            <li>Analytics</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    fadeElements.forEach(el => observer.observe(el));
-  </script>
+        <!-- Sobre Mí Section -->
+        <section class="section about" id="sobre-mi">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image reveal">
+                        <div class="image-frame">
+                            <div class="image-placeholder">
+                                <span>Tu Foto</span>
+                            </div>
+                            <div class="image-decoration"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-content">
+                        <span class="section-tag reveal">Sobre Mí</span>
+                        <h2 class="section-title reveal">
+                            Creando <span class="gradient-text">experiencias</span> digitales memorables
+                        </h2>
+                        <div class="about-text reveal">
+                            <p>
+                                Soy un desarrollador y diseñador apasionado por crear soluciones digitales 
+                                que no solo se vean increíbles, sino que también funcionen perfectamente.
+                            </p>
+                            <p>
+                                Con más de 5 años de experiencia, he trabajado con startups, agencias y 
+                                empresas consolidadas, ayudándoles a transformar sus ideas en productos 
+                                digitales exitosos.
+                            </p>
+                            <p>
+                                Mi enfoque combina diseño centrado en el usuario con código limpio y 
+                                eficiente, asegurando que cada proyecto sea una experiencia excepcional.
+                            </p>
+                        </div>
+                        
+                        <div class="skills-section reveal">
+                            <h3 class="skills-title">Tecnologías</h3>
+                            <div class="skills-grid">
+                                <span class="skill">HTML5</span>
+                                <span class="skill">CSS3</span>
+                                <span class="skill">JavaScript</span>
+                                <span class="skill">React</span>
+                                <span class="skill">Node.js</span>
+                                <span class="skill">Python</span>
+                                <span class="skill">Figma</span>
+                                <span class="skill">Git</span>
+                            </div>
+                        </div>
+                        
+                        <a href="#contacto" class="btn btn-primary reveal">
+                            <span>Trabajemos juntos</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  
+        <!-- Contacto Section -->
+        <section class="section contact" id="contacto">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <span class="section-tag reveal">Contacto</span>
+                        <h2 class="section-title reveal">
+                            ¿Tienes un proyecto en <span class="gradient-text">mente</span>?
+                        </h2>
+                        <p class="contact-description reveal">
+                            Estoy disponible para proyectos freelance, colaboraciones o simplemente 
+                            para charlar sobre tecnología y diseño. ¡No dudes en contactarme!
+                        </p>
+                        
+                        <div class="contact-details reveal">
+                            <a href="mailto:tu@email.com" class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-text">
+                                    <span class="contact-label">Email</span>
+                                    <span class="contact-value">tu@email.com</span>
+                                </div>
+                            </a>
+                            
+                            <a href="tel:+34600000000" class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-text">
+                                    <span class="contact-label">Teléfono</span>
+                                    <span class="contact-value">+34 600 000 000</span>
+                                </div>
+                            </a>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-text">
+                                    <span class="contact-label">Ubicación</span>
+                                    <span class="contact-value">Tu Ciudad, País</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links reveal">
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="GitHub">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Dribbble">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-wrapper reveal">
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Asunto</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                    <option value="proyecto">Nuevo proyecto</option>
+                                    <option value="colaboracion">Colaboración</option>
+                                    <option value="consulta">Consulta general</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Mensaje</label>
+                                <textarea id="message" name="message" rows="5" required placeholder="Cuéntame sobre tu proyecto..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <span>Enviar mensaje</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"/>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-text">TN</span>
+                        <span class="logo-dot"></span>
+                    </a>
+                    <p class="footer-tagline">Diseñando el futuro digital</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#proyectos">Proyectos</a>
+                    <a href="#servicios">Servicios</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>© <span id="year"></span> Tu Nombre. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 </body>
-
-
-</script>
 </html>
