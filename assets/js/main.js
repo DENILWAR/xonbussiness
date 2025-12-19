@@ -16,6 +16,13 @@ const statNumbers = document.querySelectorAll('.stat-number');
 const contactForm = document.getElementById('contact-form');
 const yearSpan = document.getElementById('year');
 
+// ==================== EmailJS Configuration ====================
+const EMAILJS_CONFIG = {
+    publicKey: 'T-mI5n5qexZKiU0ch',      
+    serviceId: 'service_8eccz9k',     
+    templateId: 'template_0d1wocf'      
+};
+
 // ==================== Initialization ====================
 document.addEventListener('DOMContentLoaded', () => {
     initLoader();
@@ -27,7 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormHandling();
     setCurrentYear();
     initMagneticButtons();
+    initEmailJS();
 });
+
+// ==================== EmailJS Initialization ====================
+function initEmailJS() {
+    // Verificar si EmailJS está cargado
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_CONFIG.publicKey);
+        console.log('✅ EmailJS inicializado correctamente');
+    } else {
+        console.warn('⚠️ EmailJS no está cargado.');
+    }
+}
 
 // ==================== Loader ====================
 function initLoader() {
@@ -245,7 +264,7 @@ function initSmoothScroll() {
     });
 }
 
-// ==================== Form Handling ====================
+// ==================== Form Handling con EmailJS ====================
 function initFormHandling() {
     if (!contactForm) return;
     
@@ -255,6 +274,7 @@ function initFormHandling() {
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         
+        // Estado: Enviando
         submitBtn.innerHTML = `
             <span>Enviando...</span>
             <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -266,25 +286,175 @@ function initFormHandling() {
         `;
         submitBtn.disabled = true;
         
-        // Simula envío (reemplazar con API real)
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        // Obtener datos del formulario
+        const formData = new FormData(contactForm);
+        const templateParams = {
+            from_name: formData.get('name') || formData.get('nombre'),
+            from_email: formData.get('email') || formData.get('correo'),
+            subject: formData.get('subject') || formData.get('asunto') || 'Mensaje desde el portafolio',
+            message: formData.get('message') || formData.get('mensaje'),
+            // Datos adicionales útiles
+            reply_to: formData.get('email') || formData.get('correo'),
+            date: new Date().toLocaleString('es-ES', { 
+                dateStyle: 'full', 
+                timeStyle: 'short' 
+            })
+        };
         
-        submitBtn.innerHTML = `
-            <span>¡Mensaje enviado!</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="20 6 9 17 4 12"/>
-            </svg>
-        `;
-        submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+        try {
+            // Verificar que EmailJS esté disponible
+            if (typeof emailjs === 'undefined') {
+                throw new Error('EmailJS no está cargado');
+            }
+            
+            // Enviar email usando EmailJS
+            const response = await emailjs.send(
+                EMAILJS_CONFIG.serviceId,
+                EMAILJS_CONFIG.templateId,
+                templateParams
+            );
+            
+            console.log('✅ Email enviado:', response);
+            
+            // Estado: Éxito
+            submitBtn.innerHTML = `
+                <span>¡Mensaje enviado!</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"/>
+                </svg>
+            `;
+            submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+            
+            // Limpiar formulario
+            contactForm.reset();
+            
+            // Mostrar notificación de éxito (opcional)
+            showNotification('¡Mensaje enviado correctamente! Te responderé pronto.', 'success');
+            
+        } catch (error) {
+            console.error('❌ Error al enviar:', error);
+            
+            // Estado: Error
+            submitBtn.innerHTML = `
+                <span>Error al enviar</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="15" y1="9" x2="9" y2="15"/>
+                    <line x1="9" y1="9" x2="15" y2="15"/>
+                </svg>
+            `;
+            submitBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            
+            // Mostrar notificación de error
+            showNotification('Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.', 'error');
+        }
         
-        contactForm.reset();
-        
+        // Restaurar botón después de 3 segundos
         setTimeout(() => {
             submitBtn.innerHTML = originalText;
             submitBtn.style.background = '';
             submitBtn.disabled = false;
         }, 3000);
     });
+}
+
+// ==================== Sistema de Notificaciones ====================
+function showNotification(message, type = 'info') {
+    // Remover notificación existente si hay
+    const existingNotification = document.querySelector('.form-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Crear notificación
+    const notification = document.createElement('div');
+    notification.className = `form-notification form-notification--${type}`;
+    notification.innerHTML = `
+        <div class="form-notification__content">
+            <span class="form-notification__icon">
+                ${type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ'}
+            </span>
+            <span class="form-notification__message">${message}</span>
+        </div>
+        <button class="form-notification__close" onclick="this.parentElement.remove()">×</button>
+    `;
+    
+    // Estilos inline para la notificación
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 16px 20px;
+        border-radius: 12px;
+        background: ${type === 'success' ? 'linear-gradient(135deg, #22c55e, #16a34a)' : 
+                      type === 'error' ? 'linear-gradient(135deg, #ef4444, #dc2626)' : 
+                      'linear-gradient(135deg, #6366f1, #8b5cf6)'};
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease-out;
+        font-family: inherit;
+    `;
+    
+    // Agregar estilos de animación si no existen
+    if (!document.querySelector('#notification-styles')) {
+        const styleSheet = document.createElement('style');
+        styleSheet.id = 'notification-styles';
+        styleSheet.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+            .form-notification__content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .form-notification__close {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 20px;
+                cursor: pointer;
+                opacity: 0.8;
+                transition: opacity 0.2s;
+                padding: 0 0 0 10px;
+            }
+            .form-notification__close:hover {
+                opacity: 1;
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    }
+    
+    document.body.appendChild(notification);
+    
+    // Auto-remover después de 5 segundos
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.style.animation = 'slideOutRight 0.3s ease-out forwards';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 5000);
 }
 
 // ==================== Utilities ====================
