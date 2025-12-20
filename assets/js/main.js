@@ -39,11 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ==================== EmailJS Initialization ====================
 function initEmailJS() {
+    // Verificar si EmailJS está cargado
     if (typeof emailjs !== 'undefined') {
         emailjs.init(EMAILJS_CONFIG.publicKey);
         console.log('✅ EmailJS inicializado correctamente');
     } else {
-        console.error('❌ EmailJS no está cargado.');
+        console.warn('⚠️ EmailJS no está cargado.');
     }
 }
 
@@ -287,34 +288,25 @@ function initFormHandling() {
         
         // Obtener datos del formulario
         const formData = new FormData(contactForm);
-        
-        // Mapear los valores del select a textos legibles
-        const subjectMap = {
-            'proyecto': 'Auditoría de Calidad',
-            'colaboracion': 'Colaboración',
-            'consulta': 'Mantenimiento',
-            'otro': 'Otro'
-        };
-        
-        const rawSubject = formData.get('subject');
-        const subjectText = subjectMap[rawSubject] || rawSubject || 'Mensaje desde el portafolio';
-        
-        // ⚠️ IMPORTANTE: Solo enviamos las 4 variables que existen en la plantilla de EmailJS
         const templateParams = {
             from_name: formData.get('name'),
             from_email: formData.get('email'),
             subject: subjectText,
-            message: formData.get('message')
+            message: formData.get('message'),
+            date: new Date().toLocaleDateString('es-ES', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            })
         };
         
-        // Debug
-        console.log('📧 Enviando con parámetros:', templateParams);
-        
         try {
+            // Verificar que EmailJS esté disponible
             if (typeof emailjs === 'undefined') {
                 throw new Error('EmailJS no está cargado');
             }
             
+            // Enviar email usando EmailJS
             const response = await emailjs.send(
                 EMAILJS_CONFIG.serviceId,
                 EMAILJS_CONFIG.templateId,
@@ -332,12 +324,14 @@ function initFormHandling() {
             `;
             submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
             
+            // Limpiar formulario
             contactForm.reset();
+            
+            // Mostrar notificación de éxito (opcional)
             showNotification('¡Mensaje enviado correctamente! Te responderé pronto.', 'success');
             
         } catch (error) {
             console.error('❌ Error al enviar:', error);
-            console.error('❌ Detalles:', error.text || error.message || error);
             
             // Estado: Error
             submitBtn.innerHTML = `
@@ -350,9 +344,11 @@ function initFormHandling() {
             `;
             submitBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
             
-            showNotification('Error: ' + (error.text || error.message || 'No se pudo enviar'), 'error');
+            // Mostrar notificación de error
+            showNotification('Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.', 'error');
         }
         
+        // Restaurar botón después de 3 segundos
         setTimeout(() => {
             submitBtn.innerHTML = originalText;
             submitBtn.style.background = '';
@@ -363,11 +359,13 @@ function initFormHandling() {
 
 // ==================== Sistema de Notificaciones ====================
 function showNotification(message, type = 'info') {
+    // Remover notificación existente si hay
     const existingNotification = document.querySelector('.form-notification');
     if (existingNotification) {
         existingNotification.remove();
     }
     
+    // Crear notificación
     const notification = document.createElement('div');
     notification.className = `form-notification form-notification--${type}`;
     notification.innerHTML = `
@@ -380,6 +378,7 @@ function showNotification(message, type = 'info') {
         <button class="form-notification__close" onclick="this.parentElement.remove()">×</button>
     `;
     
+    // Estilos inline para la notificación
     notification.style.cssText = `
         position: fixed;
         bottom: 20px;
@@ -397,20 +396,32 @@ function showNotification(message, type = 'info') {
         z-index: 10000;
         animation: slideInRight 0.3s ease-out;
         font-family: inherit;
-        max-width: 400px;
     `;
     
+    // Agregar estilos de animación si no existen
     if (!document.querySelector('#notification-styles')) {
         const styleSheet = document.createElement('style');
         styleSheet.id = 'notification-styles';
         styleSheet.textContent = `
             @keyframes slideInRight {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
             }
             @keyframes slideOutRight {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
             }
             .form-notification__content {
                 display: flex;
@@ -427,13 +438,16 @@ function showNotification(message, type = 'info') {
                 transition: opacity 0.2s;
                 padding: 0 0 0 10px;
             }
-            .form-notification__close:hover { opacity: 1; }
+            .form-notification__close:hover {
+                opacity: 1;
+            }
         `;
         document.head.appendChild(styleSheet);
     }
     
     document.body.appendChild(notification);
     
+    // Auto-remover después de 5 segundos
     setTimeout(() => {
         if (notification.parentElement) {
             notification.style.animation = 'slideOutRight 0.3s ease-out forwards';
