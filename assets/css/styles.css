@@ -4,30 +4,30 @@
 
 /* -------------------- CSS Variables -------------------- */
 :root {
-    /* Colors */
+    /* Colors - Dark Mode (Default) */
     --color-bg: #0a0a0f;
     --color-bg-secondary: #12121a;
     --color-bg-tertiary: #1a1a25;
     --color-surface: #16161f;
     --color-border: rgba(255, 255, 255, 0.08);
     --color-border-hover: rgba(255, 255, 255, 0.15);
-    
+
     --color-text: #ffffff;
     --color-text-secondary: #a0a0b0;
     --color-text-muted: #6b6b80;
-    
-    --color-primary: #6366f1;
-    --color-primary-light: #818cf8;
-    --color-secondary: #ec4899;
+
+    --color-primary: #e14700;
+    --color-primary-light: #ff6a1a;
+    --color-secondary: #6f0505;
     --color-accent: #22d3ee;
-    
-    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #22d3ee 100%);
-    --gradient-subtle: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
-    
+
+    --gradient-primary: linear-gradient(135deg, #e14700 0%, #6f0505 50%, #22d3ee 100%);
+    --gradient-subtle: linear-gradient(135deg, rgba(225, 71, 0, 0.1) 0%, rgba(111, 5, 5, 0.1) 100%);
+
     /* Typography */
     --font-display: 'Syne', sans-serif;
     --font-body: 'Outfit', sans-serif;
-    
+
     /* Spacing */
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
@@ -38,26 +38,107 @@
     --space-3xl: 4rem;
     --space-4xl: 6rem;
     --space-5xl: 8rem;
-    
+
     /* Border Radius */
     --radius-sm: 0.375rem;
     --radius-md: 0.75rem;
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
     --radius-full: 9999px;
-    
+
     /* Transitions */
     --transition-fast: 0.15s ease;
     --transition-base: 0.3s ease;
     --transition-slow: 0.5s ease;
     --transition-smooth: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    
+
     /* Z-index layers */
     --z-base: 1;
     --z-dropdown: 100;
     --z-header: 500;
     --z-modal: 1000;
     --z-cursor: 9999;
+}
+
+/* -------------------- Light Mode Variables -------------------- */
+@media (prefers-color-scheme: light) {
+    :root {
+        /* Colors - Light Mode */
+        --color-bg: #ffffff;
+        --color-bg-secondary: #f8f9fa;
+        --color-bg-tertiary: #f1f3f5;
+        --color-surface: #ffffff;
+        --color-border: rgba(0, 0, 0, 0.1);
+        --color-border-hover: rgba(0, 0, 0, 0.2);
+
+        --color-text: #1a1a1a;
+        --color-text-secondary: #4a4a5a;
+        --color-text-muted: #7a7a8a;
+
+        /* Mantener los mismos colores principales para consistencia de marca */
+        --color-primary: #e14700;
+        --color-primary-light: #ff6a1a;
+        --color-secondary: #6f0505;
+        --color-accent: #22d3ee;
+
+        --gradient-primary: linear-gradient(135deg, #e14700 0%, #6f0505 50%, #22d3ee 100%);
+        --gradient-subtle: linear-gradient(135deg, rgba(225, 71, 0, 0.08) 0%, rgba(111, 5, 5, 0.08) 100%);
+    }
+
+    /* Ajustes específicos para modo claro */
+    .header.scrolled {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .cursor {
+        background: var(--color-text);
+        mix-blend-mode: difference;
+    }
+
+    .cursor-follower {
+        border: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    ::selection {
+        background: var(--color-primary);
+        color: #ffffff;
+    }
+
+    /* Ajustar sombras para modo claro */
+    .project-card:hover {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-card:hover {
+        box-shadow: 0 20px 50px rgba(225, 71, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+        box-shadow: 0 10px 30px rgba(225, 71, 0, 0.4);
+    }
+
+    /* Ajustar orbes de fondo para que sean más sutiles en modo claro */
+    .gradient-orb {
+        opacity: 0.3;
+    }
+
+    /* Mejorar contraste de inputs en modo claro */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background: var(--color-bg-tertiary);
+        border: 1px solid var(--color-border);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        background: #ffffff;
+        box-shadow: 0 0 0 3px rgba(225, 71, 0, 0.15);
+    }
 }
 
 /* -------------------- Reset & Base -------------------- */
@@ -80,6 +161,7 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.no-scroll {
@@ -149,7 +231,7 @@ ul, ol {
     .cursor-follower.hover {
         width: 60px;
         height: 60px;
-        background: rgba(99, 102, 241, 0.1);
+        background: rgba(225, 71, 0, 0.1);
         border-color: var(--color-primary);
     }
     
@@ -621,7 +703,7 @@ ul, ol {
 .btn-primary:hover {
     color: var(--color-text);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 10px 30px rgba(225, 71, 0, 0.3);
 }
 
 .btn-primary span,
@@ -837,7 +919,7 @@ ul, ol {
 }
 
 .project-placeholder.glass {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+    background: linear-gradient(135deg, rgba(225, 71, 0, 0.1), rgba(111, 5, 5, 0.1));
     backdrop-filter: blur(10px);
 }
 
@@ -980,7 +1062,7 @@ ul, ol {
 .service-card:hover {
     transform: translateY(-5px);
     border-color: var(--color-primary);
-    box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 20px 50px rgba(225, 71, 0, 0.15);
 }
 
 .service-icon {
@@ -1055,6 +1137,7 @@ ul, ol {
 
 .about-image {
     position: relative;
+
 }
 
 .image-frame {
@@ -1289,7 +1372,7 @@ ul, ol {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 0 0 3px rgba(225, 71, 0, 0.1);
 }
 
 .form-group select {

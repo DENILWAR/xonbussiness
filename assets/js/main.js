@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagneticButtons();
     initEmailJS();
     initRotatingImages();
+    initThemeDetection();
 });
 
 // ==================== EmailJS Initialization ====================
@@ -520,10 +521,41 @@ function initRotatingImages() {
     });
 }
 
+// ==================== Theme Detection ====================
+function initThemeDetection() {
+    // Detectar si el navegador soporta prefers-color-scheme
+    if (window.matchMedia) {
+        // Crear un listener para cambios en el tema del sistema
+        const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const lightModeQuery = window.matchMedia('(prefers-color-scheme: light)');
+
+        // Función para actualizar el tema
+        function updateTheme() {
+            if (darkModeQuery.matches) {
+                console.log('🌙 Modo oscuro detectado');
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else if (lightModeQuery.matches) {
+                console.log('☀️ Modo claro detectado');
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        }
+
+        // Ejecutar al cargar
+        updateTheme();
+
+        // Escuchar cambios en las preferencias del sistema
+        darkModeQuery.addEventListener('change', updateTheme);
+        lightModeQuery.addEventListener('change', updateTheme);
+
+        // Añadir transición suave para cambios de tema
+        document.documentElement.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+    }
+}
+
 // ==================== Console Easter Egg ====================
 console.log(
     '%c👋 ¡Hola, desarrollador!',
-    'font-size: 24px; font-weight: bold; color: #6366f1;'
+    'font-size: 24px; font-weight: bold; color: #e14700;'
 );
 console.log(
     '%c¿Te interesa el código? ¡Hablemos!',
