@@ -841,6 +841,32 @@ ul, ol {
     backdrop-filter: blur(10px);
 }
 
+/* Rotating Images Animation */
+.rotating-images {
+    position: relative;
+    overflow: hidden;
+}
+
+.rotating-images .rotating-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    border-radius: var(--radius-lg);
+}
+
+.rotating-images .rotating-image.active {
+    opacity: 1;
+}
+
+.rotating-images .rotating-image:first-child {
+    position: relative;
+}
+
 .project-overlay {
     position: absolute;
     inset: 0;

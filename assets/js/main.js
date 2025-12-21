@@ -20,7 +20,7 @@ const yearSpan = document.getElementById('year');
 const EMAILJS_CONFIG = {
     publicKey: 'T-mI5n5qexZKiU0ch',      
     serviceId: 'service_8eccz9k',     
-    templateId: 'template_0d1wocf'      
+    templateId: 'template_os633pa'      
 };
 
 // ==================== Initialization ====================
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setCurrentYear();
     initMagneticButtons();
     initEmailJS();
+    initRotatingImages();
 });
 
 // ==================== EmailJS Initialization ====================
@@ -289,14 +290,15 @@ function initFormHandling() {
         // Obtener datos del formulario
         const formData = new FormData(contactForm);
         const templateParams = {
-            from_name: formData.get('name'),
-            from_email: formData.get('email'),
-            subject: subjectText,
-            message: formData.get('message'),
-            date: new Date().toLocaleDateString('es-ES', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
+            from_name: formData.get('name') || formData.get('nombre'),
+            from_email: formData.get('email') || formData.get('correo'),
+            subject: formData.get('subject') || formData.get('asunto') || 'Mensaje desde el portafolio',
+            message: formData.get('message') || formData.get('mensaje'),
+            // Datos adicionales útiles
+            reply_to: formData.get('email') || formData.get('correo'),
+            date: new Date().toLocaleString('es-ES', { 
+                dateStyle: 'full', 
+                timeStyle: 'short' 
             })
         };
         
@@ -490,6 +492,33 @@ document.addEventListener('keydown', (e) => {
         document.body.classList.remove('no-scroll');
     }
 });
+
+// ==================== Rotating Images ====================
+function initRotatingImages() {
+    const rotatingContainers = document.querySelectorAll('.rotating-images');
+
+    rotatingContainers.forEach(container => {
+        const images = container.querySelectorAll('.rotating-image');
+        if (images.length === 0) return;
+
+        let currentIndex = 0;
+
+        // Función para cambiar a la siguiente imagen
+        function rotateImage() {
+            // Remover clase active de la imagen actual
+            images[currentIndex].classList.remove('active');
+
+            // Calcular el siguiente índice
+            currentIndex = (currentIndex + 1) % images.length;
+
+            // Agregar clase active a la siguiente imagen
+            images[currentIndex].classList.add('active');
+        }
+
+        // Rotar cada 3 segundos (3000ms)
+        setInterval(rotateImage, 3000);
+    });
+}
 
 // ==================== Console Easter Egg ====================
 console.log(
