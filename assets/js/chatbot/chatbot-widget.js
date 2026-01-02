@@ -416,7 +416,7 @@ class ChatbotWidget {
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializar el chatbot
     window.chatbot = new ChatbotWidget({
-        apiUrl: 'xonbussiness-production.up.railway.app', // CAMBIA ESTA URL POR LA DE RAILWAY
+        apiUrl: 'https://xonbussiness-production.up.railway.app/api/chat',
         botName: 'Santos',
         botAvatar: '🤖'
     });
