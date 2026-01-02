@@ -1,0 +1,174 @@
+{
+  "personal": {
+    "nombre": "Denilson Capa",
+    "alias": "Denilson Arnau",
+    "rol": "Desarrollador Full Stack y Diseñador Web",
+    "ubicacion": "Barcelona, España",
+    "años_experiencia": 5,
+    "email": "denilsoncapa2004@gmail.com",
+    "telefono": "+34 692257776",
+    "linkedin": "https://www.linkedin.com/in/denilson-arnau-capa-42339a270/",
+    "github": "https://github.com/DENILWAR",
+    "instagram": "https://www.instagram.com/denilarnau/",
+    "disponibilidad": "Disponible para proyectos"
+  },
+
+  "presentacion": {
+    "corta": "Desarrollador y diseñador apasionado por crear soluciones digitales que no solo se vean increíbles, sino que también funcionen perfectamente.",
+    "historia": "Desde niño, la tecnología ha estado presente en mi vida. Observaba a mi padre trabajar frente al ordenador y ahí nació una curiosidad que se transformó en vocación. Con el tiempo, ese interés se convirtió en una carrera autodidacta enfocada en el desarrollo web, el diseño interactivo y la creación de experiencias digitales que se sienten fluidas y vivas.",
+    "enfoque": "Mi enfoque combina creatividad, tecnología y atención al detalle, con especial interés en animaciones de scroll, interfaces dinámicas y experiencias web modernas. Me motiva crear productos digitales que transmitan identidad, confianza y profesionalismo."
+  },
+
+  "estadisticas": {
+    "proyectos_completados": 50,
+    "clientes_satisfechos": 30
+  },
+
+  "tecnologias": {
+    "frontend": ["HTML5", "CSS3", "JavaScript", "React"],
+    "backend": ["Node.js", "Python"],
+    "diseño": ["Figma"],
+    "herramientas": ["Git", "GitHub"],
+    "especialidades": [
+      "Animaciones de scroll",
+      "Interfaces dinámicas",
+      "Experiencias web modernas",
+      "Diseño responsive",
+      "SEO técnico"
+    ]
+  },
+
+  "proyectos": [
+    {
+      "nombre": "Natural Groove",
+      "tipo": "E-commerce / Landing Page",
+      "descripcion": "Proyecto personal con un amigo. Landing page reactiva en todos los dispositivos y navegadores. Los principales problemas resueltos fueron de diseño y funcionalidades realmente útiles.",
+      "tecnologias": ["React", "Web App", "E-commerce"],
+      "url": "https://naturalgroove.netlify.app",
+      "rol": "Diseñador y desarrollador",
+      "estado": "En desarrollo",
+      "destacado": true
+    },
+    {
+      "nombre": "Construcciones Padema",
+      "tipo": "Web empresarial",
+      "descripcion": "Presentación de empresa familiar con más de 30 años de trayectoria en España y Ecuador (1972-2023). Se buscaba dar una estética profesional sin perder la esencia de mostrar los trabajos reales realizados.",
+      "tecnologias": ["Web/App", "Responsive"],
+      "url": "https://construccionespadema.netlify.app/",
+      "rol": "Desarrollador web",
+      "estado": "Completado",
+      "destacado": true
+    },
+    {
+      "nombre": "Sistema de Autenticación 2FA",
+      "tipo": "Seguridad / UI",
+      "descripcion": "Desarrollo de interfaz de autenticación en 2FA para dar un update de seguridad y mejorar la experiencia a los usuarios de algunas webs y proyectos futuros.",
+      "tecnologias": ["JavaScript", "Security"],
+      "estado": "En desarrollo"
+    },
+    {
+      "nombre": "Sistema de Facturación Local",
+      "tipo": "Sistema empresarial",
+      "descripcion": "Sistema local de facturación orientado a pequeñas y medianas empresas. Automatiza la creación de facturas, cálculo de impuestos y generación de documentos PDF. Gestiona distintos tipos de clientes, aplica automáticamente reglas fiscales (IVA, IRPF) reduciendo errores y optimizando tareas administrativas.",
+      "tecnologias": ["Python"],
+      "estado": "Completado para uso interno"
+    },
+    {
+      "nombre": "Automatización Empresarial",
+      "tipo": "Chatbots / IA",
+      "descripcion": "Automatización de procesos para empresas modernas: atención al cliente, ventas telefónicas y gestión contable mediante sistemas inteligentes. Diseñados para ahorrar tiempo, reducir errores y escalar negocios.",
+      "estado": "Próximamente"
+    }
+  ],
+
+  "servicios": [
+    {
+      "nombre": "Mantenimiento + Seguridad",
+      "descripcion": "Diseño interfaces modernas, intuitivas y visualmente atractivas que capturan y protegen la esencia de tu marca.",
+      "caracteristicas": [
+        "Actualizaciones",
+        "Backups Automático",
+        "Monitorización",
+        "Soporte Mensual"
+      ]
+    },
+    {
+      "nombre": "Auditorías Web",
+      "descripcion": "Análisis de tu sitio web en busca de errores de seguridad y funcionalidad.",
+      "caracteristicas": [
+        "Velocidad",
+        "Seguridad",
+        "Posicionamiento SEO",
+        "Errores Críticos",
+        "Hosting"
+      ]
+    },
+    {
+      "nombre": "Desarrollo Full Stack",
+      "descripcion": "Soluciones completas desde el frontend hasta el backend con bases de datos y APIs.",
+      "caracteristicas": [
+        "Node.js / Python",
+        "Bases de datos",
+        "APIs REST"
+      ]
+    },
+    {
+      "nombre": "SEO & Optimización",
+      "descripcion": "Optimizo tu presencia online para mejorar visibilidad y rendimiento.",
+      "caracteristicas": [
+        "SEO Técnico",
+        "Performance",
+        "Analytics"
+      ]
+    }
+  ],
+
+  "experiencia_empresarial": [
+    {
+      "empresa": "Construcciones Padema",
+      "rol": "Desarrollador web",
+      "descripcion": "Empresa con más de 30 años de trayectoria en España y Ecuador. Participé en el desarrollo y mejora de su presencia digital, trabajando con una marca consolidada con necesidades claras y objetivos reales de negocio.",
+      "aprendizaje": "Trabajar con marcas consolidadas, necesidades empresariales reales"
+    },
+    {
+      "empresa": "Natural Groove",
+      "rol": "Diseñador y Desarrollador",
+      "descripcion": "Marca en desarrollo enfocada en lanzar productos propios de alta calidad. Trabajo mano a mano con su fundador en la construcción de identidad visual, experiencia digital y base tecnológica de la marca.",
+      "aprendizaje": "Construcción de marca desde cero, identidad visual, experiencia de usuario"
+    }
+  ],
+
+  "sobre_mi": {
+    "pasion": "Crear experiencias digitales que se vean bien y se sientan fluidas",
+    "formacion": "Autodidacta con enfoque en desarrollo web y diseño interactivo",
+    "vision": "Construir experiencias digitales sólidas, seguras y con impacto real, ya sea para marcas consolidadas, startups o proyectos que quieran diferenciarse",
+    "en_constante_aprendizaje": true,
+    "intereses_tecnicos": [
+      "Animaciones fluidas",
+      "Interfaces dinámicas",
+      "Experiencias inmersivas",
+      "Código limpio y estructurado",
+      "Seguridad web",
+      "Performance optimization"
+    ]
+  },
+
+  "faqs": [
+    {
+      "pregunta": "¿Trabajas con clientes internacionales?",
+      "respuesta": "Sí, trabajo de forma remota y puedo colaborar con clientes de cualquier parte del mundo."
+    },
+    {
+      "pregunta": "¿Cuánto tiempo llevas programando?",
+      "respuesta": "Llevo aproximadamente 5 años desarrollando webs y aplicaciones de forma profesional."
+    },
+    {
+      "pregunta": "¿Qué tipo de proyectos prefieres?",
+      "respuesta": "Me apasionan los proyectos que combinen diseño cuidado con funcionalidad real. Especialmente disfruto creando experiencias web modernas con animaciones fluidas e interfaces interactivas."
+    },
+    {
+      "pregunta": "¿Haces diseño y desarrollo?",
+      "respuesta": "Sí, ofrezco ambos servicios. Puedo diseñar la interfaz en Figma y luego desarrollarla con código limpio y optimizado."
+    }
+  ]
+}
