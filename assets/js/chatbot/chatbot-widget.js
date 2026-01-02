@@ -5,7 +5,7 @@
 class ChatbotWidget {
     constructor(config = {}) {
         this.config = {
-            apiUrl: config.apiUrl || 'https://xonbussiness-production.up.railway.app',
+            apiUrl: config.apiUrl || 'xonbussiness-production.up.railway.app',
             botName: config.botName || 'Santos',
             botAvatar: config.botAvatar || '🤖',
             userAvatar: config.userAvatar || '👤',
@@ -416,7 +416,7 @@ class ChatbotWidget {
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializar el chatbot
     window.chatbot = new ChatbotWidget({
-        apiUrl: 'https://xonbussiness-production.up.railway.app', // CAMBIA ESTA URL POR LA DE RAILWAY
+        apiUrl: 'xonbussiness-production.up.railway.app', // CAMBIA ESTA URL POR LA DE RAILWAY
         botName: 'Santos',
         botAvatar: '🤖'
     });
