@@ -65,22 +65,22 @@ class ChatbotWidget {
                 <div class="chatbot-body" id="chatbot-body">
                     <div class="welcome-message">
                         <h3>Hola, soy ${this.config.botName}</h3>
-                        <p>Asistente virtual de Denilson Capa. ¿En qué puedo ayudarte hoy?</p>
+                        <p>Asistente virtual especializado en automatización de procesos. ¿En qué puedo ayudarte hoy?</p>
                     </div>
 
                     <!-- Sugerencias iniciales -->
                     <div class="quick-suggestions">
-                        <button class="quick-suggestion" data-message="¿Qué proyectos has realizado?">
-                            Ver proyectos
+                        <button class="quick-suggestion" data-message="¿Qué es la automatización de procesos?">
+                            Automatización
                         </button>
-                        <button class="quick-suggestion" data-message="¿Qué servicios ofreces?">
+                        <button class="quick-suggestion" data-message="¿Qué servicios de automatización ofreces?">
                             Servicios
+                        </button>
+                        <button class="quick-suggestion" data-message="Cuéntame sobre chatbots y atención automatizada">
+                            Chatbots
                         </button>
                         <button class="quick-suggestion" data-message="¿Cómo puedo contactarte?">
                             Contacto
-                        </button>
-                        <button class="quick-suggestion" data-message="Cuéntame sobre tu experiencia">
-                            Experiencia
                         </button>
                     </div>
                 </div>

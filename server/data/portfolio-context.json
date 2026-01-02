@@ -113,12 +113,30 @@
       ]
     },
     {
-      "nombre": "SEO & Optimización",
-      "descripcion": "Optimizo tu presencia online para mejorar visibilidad y rendimiento.",
+      "nombre": "Atención Automatizada",
+      "descripcion": "Creo chatbots personalizados y sistemas de automatización que se adaptan a tu negocio y necesidades. Optimiza atención al cliente, ventas y gestión mediante sistemas inteligentes diseñados para ahorrar tiempo, reducir errores y escalar tu negocio.",
       "caracteristicas": [
-        "SEO Técnico",
-        "Performance",
-        "Analytics"
+        "Atención al cliente 24/7",
+        "Agenda de citas automática",
+        "Automatización de ventas",
+        "Integración con APIs",
+        "Respuestas personalizadas",
+        "Análisis de conversaciones"
+      ],
+      "beneficios": [
+        "Más eficiencia operativa",
+        "Menos fricción con clientes",
+        "Mejores resultados de conversión",
+        "Reducción de errores humanos",
+        "Escalabilidad del negocio"
+      ],
+      "casos_uso": [
+        "Atención al cliente automatizada",
+        "Calificación de leads",
+        "Reservas y agendamiento",
+        "Soporte técnico básico",
+        "Ventas telefónicas automatizadas",
+        "Gestión de consultas frecuentes"
       ]
     }
   ],
@@ -169,6 +187,22 @@
     {
       "pregunta": "¿Haces diseño y desarrollo?",
       "respuesta": "Sí, ofrezco ambos servicios. Puedo diseñar la interfaz en Figma y luego desarrollarla con código limpio y optimizado."
+    },
+    {
+      "pregunta": "¿Qué es la automatización de procesos?",
+      "respuesta": "La automatización de procesos consiste en utilizar tecnología para ejecutar tareas repetitivas de manera automática. Esto incluye chatbots para atención al cliente, sistemas de agendamiento, automatización de ventas y más. El objetivo es ahorrar tiempo, reducir errores y escalar el negocio."
+    },
+    {
+      "pregunta": "¿Cómo funciona un chatbot?",
+      "respuesta": "Un chatbot es un programa que simula conversaciones humanas. Puede responder preguntas frecuentes, agendar citas, calificar leads, y más. El chatbot que estás usando ahora es un ejemplo real de lo que puedo crear para tu negocio."
+    },
+    {
+      "pregunta": "¿Los chatbots pueden integrarse con otros sistemas?",
+      "respuesta": "Sí, los chatbots pueden integrarse con CRMs, sistemas de facturación, calendarios, bases de datos y prácticamente cualquier API. Esto permite automatizar flujos completos de trabajo."
+    },
+    {
+      "pregunta": "¿Cuánto cuesta implementar un chatbot?",
+      "respuesta": "El costo depende de la complejidad y funcionalidades requeridas. Desde chatbots básicos de preguntas frecuentes hasta sistemas complejos con IA y múltiples integraciones. Contáctame para discutir tu proyecto y obtener un presupuesto personalizado."
     }
   ]
 }

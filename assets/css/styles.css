@@ -94,12 +94,13 @@
     }
 
     .cursor {
-        background: var(--color-text);
-        mix-blend-mode: difference;
+        background: #1a1a1a;
+        mix-blend-mode: normal;
     }
 
     .cursor-follower {
-        border: 1px solid rgba(0, 0, 0, 0.3);
+        border: 2px solid var(--color-primary);
+        background: rgba(225, 71, 0, 0.1);
     }
 
     ::selection {

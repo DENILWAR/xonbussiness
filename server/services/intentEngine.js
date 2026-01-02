@@ -12,8 +12,12 @@ class IntentEngine {
                 response: this.generateProjectsResponse.bind(this)
             },
             servicios: {
-                keywords: ['servicio', 'servicios', 'ofrece', 'ofreces', 'haces', 'hace', 'mantenimiento', 'auditoria', 'auditoría', 'desarrollo', 'seo', 'optimización'],
+                keywords: ['servicio', 'servicios', 'ofrece', 'ofreces', 'haces', 'hace', 'mantenimiento', 'auditoria', 'auditoría', 'desarrollo', 'seo', 'optimización', 'automatización', 'automatizacion', 'chatbot', 'chatbots', 'atencion', 'atención'],
                 response: this.generateServicesResponse.bind(this)
+            },
+            automatizacion: {
+                keywords: ['automatización', 'automatizacion', 'chatbot', 'chatbots', 'bot', 'bots', 'asistente virtual', 'atencion automatizada', 'atención automatizada', 'ia', 'inteligencia artificial', 'automatizar'],
+                response: this.generateAutomationResponse.bind(this)
             },
             contacto: {
                 keywords: ['contacto', 'contactar', 'email', 'correo', 'teléfono', 'telefono', 'llamar', 'escribir', 'hablar'],
@@ -198,6 +202,40 @@ class IntentEngine {
         return response;
     }
 
+    generateAutomationResponse() {
+        const servicios = portfolioContext.servicios;
+        const automationService = servicios.find(s => s.nombre === 'Atención Automatizada');
+
+        if (!automationService) {
+            return this.generateServicesResponse();
+        }
+
+        let response = `🤖 **${automationService.nombre}**\n\n`;
+        response += `${automationService.descripcion}\n\n`;
+
+        response += `**Características principales:**\n`;
+        automationService.caracteristicas.forEach(car => {
+            response += `✓ ${car}\n`;
+        });
+
+        response += `\n**Beneficios para tu negocio:**\n`;
+        automationService.beneficios.forEach(ben => {
+            response += `• ${ben}\n`;
+        });
+
+        response += `\n**Casos de uso:**\n`;
+        automationService.casos_uso.forEach((caso, index) => {
+            if (index < 4) { // Mostrar solo los primeros 4
+                response += `${index + 1}. ${caso}\n`;
+            }
+        });
+
+        response += `\n💡 **¡Prueba el chatbot de esta web!** Es un ejemplo funcional de lo que puedo crear para tu negocio.\n\n`;
+        response += `¿Te gustaría implementar algo similar en tu empresa?`;
+
+        return response;
+    }
+
     /**
      * Obtener contexto relevante para OpenAI
      */
@@ -207,6 +245,13 @@ class IntentEngine {
                 return JSON.stringify(portfolioContext.proyectos);
             case 'servicios':
                 return JSON.stringify(portfolioContext.servicios);
+            case 'automatizacion':
+                const automationService = portfolioContext.servicios.find(s => s.nombre === 'Atención Automatizada');
+                return JSON.stringify({
+                    servicio: automationService,
+                    ejemplo_chatbot: "El chatbot que estás usando ahora es un ejemplo de lo que se puede crear",
+                    proyectos_relacionados: portfolioContext.proyectos.filter(p => p.nombre === 'Automatización Empresarial')
+                });
             case 'contacto':
                 return JSON.stringify(portfolioContext.personal);
             case 'tecnologias':

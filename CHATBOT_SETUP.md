@@ -1,6 +1,4 @@
-# 🤖 Guía de Instalación - Chatbot Santos
-
-Esta guía te ayudará a instalar y configurar el chatbot Santos en tu portafolio.
+## Chatbot Santos
 
 ## 📋 Requisitos Previos
 
