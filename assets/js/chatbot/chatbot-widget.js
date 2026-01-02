@@ -5,7 +5,7 @@
 class ChatbotWidget {
     constructor(config = {}) {
         this.config = {
-            apiUrl: config.apiUrl || 'xonbussiness-production.up.railway.app',
+            apiUrl: config.apiUrl || 'https://xonbussiness-production.up.railway.app',
             botName: config.botName || 'Santos',
             botAvatar: config.botAvatar || '🤖',
             userAvatar: config.userAvatar || '👤',
