@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initEmailJS();
     initRotatingImages();
     initThemeDetection();
+    initProyectoLocalModal();
 });
 
 // ==================== EmailJS Initialization ====================
@@ -549,6 +550,123 @@ function initThemeDetection() {
 
         // Añadir transición suave para cambios de tema
         document.documentElement.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+    }
+}
+
+// ==================== Proyecto Local Modal & Carousel ====================
+function initProyectoLocalModal() {
+    const modal = document.getElementById('proyecto-local-modal');
+    const openBtn = document.querySelector('.project-modal-btn');
+    const closeBtn = modal.querySelector('.modal-close');
+    const prevBtn = modal.querySelector('.carousel-prev');
+    const nextBtn = modal.querySelector('.carousel-next');
+    const slides = modal.querySelectorAll('.carousel-slide');
+    const indicators = modal.querySelectorAll('.indicator');
+    const slidesContainer = modal.querySelector('.carousel-slides');
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    // Abrir modal
+    function openModal() {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        updateSlide(0);
+    }
+
+    // Cerrar modal
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Actualizar slide
+    function updateSlide(index) {
+        // Asegurar que el índice esté en el rango válido
+        currentSlide = (index + totalSlides) % totalSlides;
+
+        // Actualizar posición del carrusel
+        const offset = -currentSlide * 100;
+        slidesContainer.style.transform = `translateX(${offset}%)`;
+
+        // Actualizar clases activas en slides
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === currentSlide);
+        });
+
+        // Actualizar indicadores
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    // Siguiente slide
+    function nextSlide() {
+        updateSlide(currentSlide + 1);
+    }
+
+    // Slide anterior
+    function prevSlide() {
+        updateSlide(currentSlide - 1);
+    }
+
+    // Event listeners
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Cerrar modal al hacer click fuera del contenido
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            updateSlide(index);
+        });
+    });
+
+    // Navegación con teclado
+    document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
+            closeModal();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
+
+    // Soporte para gestos táctiles (swipe)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slidesContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slidesContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
     }
 }
 

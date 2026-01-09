@@ -291,7 +291,7 @@
                             </p>
                         </div>
                     </article>
-                    <article class="project-card coming-soon reveal">
+                    <article class="project-card coming-soon reveal" id="proyecto-local-card">
                         <div class="project-image">
                             <div class="project-placeholder glass rotating-images">
                                 <img src="/assets/images/Proyecto2.jpg" alt="2FA Autenticator - Vista 1" class="rotating-image active">
@@ -311,6 +311,12 @@
                             <p class="project-description">
                                 El sistema permite gestionar distintos tipos de clientes, aplica automáticamente las reglas fiscales correspondientes, incluyendo IVA, IRPF y menciones legales, reduciendo errores humanos y optimizando el tiempo dedicado a tareas administrativas usando Python.
                             </p>
+                            <button class="project-cta project-modal-btn">
+                                Ver detalles
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
                         </div>
                     </article>
                 </div>
@@ -498,7 +504,7 @@
                         </p>
                         
                         <div class="contact-details reveal">
-                            <a href="mailto:denilsoncapa2004@gmail.com" class="contact-item">
+                            <a href="mailto:bussiness@denilsonarnau.com" class="contact-item">
                                 <div class="contact-icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -507,7 +513,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <span class="contact-label">Email</span>
-                                    <span class="contact-value">denilsoncapa2004@gmail.com</span>
+                                    <span class="contact-value">bussiness@denilsonarnau.com</span>
                                 </div>
                             </a>
                             
@@ -629,6 +635,114 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal Proyecto Local -->
+    <div class="modal-overlay" id="proyecto-local-modal">
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Cerrar modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="modal-content">
+                <div class="carousel-container">
+                    <button class="carousel-btn carousel-prev" aria-label="Slide anterior">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-slides">
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide active">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto2.jpg" alt="Sistema de Facturación">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Sistema de Facturación Local</h2>
+                                <p class="slide-description">
+                                    Un sistema completo de facturación diseñado específicamente para pequeñas y medianas empresas,
+                                    que automatiza completamente el proceso de creación de facturas y gestión fiscal.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto22.jpg" alt="Gestión de Clientes">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Gestión Inteligente de Clientes</h2>
+                                <p class="slide-description">
+                                    El sistema identifica y categoriza automáticamente a los clientes, aplicando las reglas
+                                    fiscales correctas según su tipo (autónomo, empresa, particular) para cada factura generada.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 -->
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto222.jpg" alt="Cálculo Automático">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Cálculo Fiscal Automático</h2>
+                                <p class="slide-description">
+                                    Aplica automáticamente IVA, IRPF y todas las menciones legales requeridas,
+                                    eliminando errores humanos y garantizando el cumplimiento normativo en cada documento.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 -->
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto2.jpg" alt="Generación PDF">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Generación de PDF Estructurada</h2>
+                                <p class="slide-description">
+                                    Genera documentos PDF profesionales de forma autónoma con formato consistente,
+                                    listos para enviar a clientes o presentar ante organismos oficiales.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Slide 5 -->
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto22.jpg" alt="Tecnología Python">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Desarrollado en Python</h2>
+                                <p class="slide-description">
+                                    Construido con Python, garantizando un código limpio, mantenible y eficiente.
+                                    Optimiza el tiempo dedicado a tareas administrativas, permitiendo enfocarse en el negocio.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-btn carousel-next" aria-label="Siguiente slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="carousel-indicators">
+                    <button class="indicator active" data-slide="0"></button>
+                    <button class="indicator" data-slide="1"></button>
+                    <button class="indicator" data-slide="2"></button>
+                    <button class="indicator" data-slide="3"></button>
+                    <button class="indicator" data-slide="4"></button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
