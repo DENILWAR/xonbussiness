@@ -1650,7 +1650,7 @@ ul, ol {
     max-width: 850px;
     width: 100%;
     margin: 0 auto;
-    background: rgba(10, 10, 15, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     border-radius: var(--radius-lg);
     padding: var(--space-lg) var(--space-xl);
     backdrop-filter: blur(10px);
