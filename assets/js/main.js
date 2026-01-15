@@ -273,7 +273,14 @@ function initFormHandling() {
     
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
+        // VALIDACIÓN CHECKBOX DE PRIVACIDAD
+        const privacyCheckbox = document.getElementById('privacy-accept');
+        if (!privacyCheckbox || !privacyCheckbox.checked) {
+            showNotification('Debes aceptar la Política de Privacidad para continuar', 'error');
+            return;
+        }
+
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         
@@ -532,11 +539,21 @@ function initThemeDetection() {
 
         // Función para actualizar el tema
         function updateTheme() {
+            // Activar animación neon en el logo
+            const logoImages = document.querySelectorAll('.logo-image');
+            logoImages.forEach(img => {
+                img.classList.add('theme-transition');
+                // Remover la clase después de la animación
+                setTimeout(() => {
+                    img.classList.remove('theme-transition');
+                }, 800);
+            });
+
             if (darkModeQuery.matches) {
-                console.log('🌙 Modo oscuro detectado');
+                console.log('🌙 Modo oscuro detectado - Activando efecto neon blanco');
                 document.documentElement.setAttribute('data-theme', 'dark');
             } else if (lightModeQuery.matches) {
-                console.log('☀️ Modo claro detectado');
+                console.log('☀️ Modo claro detectado - Activando efecto neon negro');
                 document.documentElement.setAttribute('data-theme', 'light');
             }
         }
@@ -679,3 +696,133 @@ console.log(
     '%c¿Te interesa el código? ¡Hablemos!',
     'font-size: 14px; color: #a0a0b0;'
 );
+// ==================== Gestión de Cookies - Widget Flotante ====================
+let cookieChatOpen = false;
+
+function toggleCookieChat() {
+    const cookieIcon = document.getElementById('cookie-icon');
+    const cookieMessage = document.getElementById('cookie-chat-message');
+
+    if (!cookieChatOpen) {
+        // Abrir chat
+        cookieMessage.style.display = 'block';
+        cookieMessage.classList.remove('closing');
+        cookieChatOpen = true;
+    } else {
+        // Cerrar chat
+        closeCookieChat();
+    }
+}
+
+function closeCookieChat() {
+    const cookieMessage = document.getElementById('cookie-chat-message');
+    cookieMessage.classList.add('closing');
+
+    setTimeout(() => {
+        cookieMessage.style.display = 'none';
+        cookieMessage.classList.remove('closing');
+        cookieChatOpen = false;
+    }, 400);
+}
+
+function acceptAllCookies() {
+    localStorage.setItem('cookies_consent', 'all');
+    console.log('✅ Cookies aceptadas: Todas');
+    loadThirdPartyCookies(); // Cargar cookies de terceros (Google Fonts)
+    eatCookieAndHide();
+}
+
+function rejectOptionalCookies() {
+    localStorage.setItem('cookies_consent', 'essential');
+    console.log('✅ Cookies aceptadas: Solo esenciales');
+    console.log('ℹ️ No se cargarán cookies de terceros (Google Fonts)');
+    eatCookieAndHide();
+}
+
+function loadThirdPartyCookies() {
+    // Cargar Google Fonts solo si se aceptan todas las cookies
+    const googleFontsLink = document.createElement('link');
+    googleFontsLink.rel = 'stylesheet';
+    googleFontsLink.href = 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&display=swap';
+
+    // Preconnect para optimización
+    const preconnect1 = document.createElement('link');
+    preconnect1.rel = 'preconnect';
+    preconnect1.href = 'https://fonts.googleapis.com';
+
+    const preconnect2 = document.createElement('link');
+    preconnect2.rel = 'preconnect';
+    preconnect2.href = 'https://fonts.gstatic.com';
+    preconnect2.crossOrigin = 'anonymous';
+
+    document.head.appendChild(preconnect1);
+    document.head.appendChild(preconnect2);
+    document.head.appendChild(googleFontsLink);
+
+    // Eliminar fuentes del sistema
+    const systemFonts = document.getElementById('system-fonts');
+    if (systemFonts) {
+        systemFonts.remove();
+    }
+
+    console.log('✅ Google Fonts cargadas tras consentimiento');
+}
+
+function eatCookieAndHide() {
+    const cookieWidget = document.getElementById('cookie-widget');
+    const cookieIcon = document.getElementById('cookie-icon');
+    const cookieMessage = document.getElementById('cookie-chat-message');
+
+    // Cerrar mensaje si está abierto
+    if (cookieChatOpen) {
+        cookieMessage.classList.add('closing');
+        setTimeout(() => {
+            cookieMessage.style.display = 'none';
+        }, 400);
+    }
+
+    // Animar galleta siendo comida
+    cookieIcon.classList.add('clicked');
+
+    // Ocultar todo el widget después de la animación
+    setTimeout(() => {
+        cookieWidget.style.display = 'none';
+    }, 600);
+}
+
+// Gestión de consentimiento al cargar la página
+window.addEventListener('load', () => {
+    const consent = localStorage.getItem('cookies_consent');
+
+    if (consent === 'all') {
+        // Usuario ya aceptó todas las cookies previamente
+        loadThirdPartyCookies();
+        console.log('ℹ️ Consentimiento previo detectado: cookies de terceros cargadas');
+    } else if (consent === 'essential') {
+        // Usuario rechazó cookies opcionales
+        console.log('ℹ️ Usuario rechazó cookies de terceros previamente');
+    } else {
+        // No hay consentimiento, mostrar widget
+        const cookieWidget = document.getElementById('cookie-widget');
+        const cookieIcon = document.getElementById('cookie-icon');
+        const cookieMessage = document.getElementById('cookie-chat-message');
+
+        // Mostrar widget después de 2 segundos
+        setTimeout(() => {
+            if (cookieWidget) {
+                cookieWidget.style.display = 'flex';
+
+                // Auto-abrir el mensaje después de 1 segundo
+                setTimeout(() => {
+                    cookieMessage.style.display = 'block';
+                    cookieChatOpen = true;
+                }, 1000);
+            }
+        }, 2000);
+
+        // Hacer la galleta clickeable para toggle
+        if (cookieIcon) {
+            cookieIcon.addEventListener('click', toggleCookieChat);
+        }
+    }
+});

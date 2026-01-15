@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aviso Legal - Sistemas Organizados at Network">
+    <meta name="robots" content="noindex, follow">
+    <title>Aviso Legal | SON</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0f;
+            --color-bg-secondary: #12121a;
+            --color-surface: #16161f;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --color-text: #ffffff;
+            --color-text-secondary: #a0a0b0;
+            --color-text-muted: #6b6b80;
+            --color-primary: #e14700;
+            --color-primary-light: #ff6a1a;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --color-bg: #ffffff;
+                --color-bg-secondary: #f8f9fa;
+                --color-surface: #ffffff;
+                --color-border: rgba(0, 0, 0, 0.1);
+                --color-text: #1a1a1a;
+                --color-text-secondary: #4a4a5a;
+                --color-text-muted: #7a7a8a;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 3rem;
+        }
+
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .content {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            padding: 3rem 2.5rem;
+        }
+
+        .page-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #e14700 0%, #ff6a1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .update-date {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        ul {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-primary-light);
+        }
+
+        .info-box {
+            background: var(--color-bg-secondary);
+            border-left: 3px solid var(--color-primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--color-border);
+            margin: 2rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--color-text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo-link">
+                <img src="/assets/images/finalreal.svg" alt="SON Logo" class="logo-image" />
+                <span class="logo-text">Sistemas Organizados at Network</span>
+            </a>
+        </header>
+
+        <main class="content">
+            <h1 class="page-title">Aviso Legal</h1>
+            <span class="update-date">Última actualización: 13 de enero de 2026</span>
+
+            <p>En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa a los usuarios del sitio web <strong>denilsonarnau.netlify.app</strong> de los datos identificativos del titular:</p>
+
+            <h2>1. Datos Identificativos del Responsable</h2>
+            <div class="info-box">
+                <p><strong>Denominación:</strong> Sistemas Organizados at Network (SON)</p>
+                <p><strong>Titular:</strong> Denilson Capa</p>
+                <p><strong>NIF/DNI:</strong> 47929828J</p>
+                <p><strong>Domicilio social:</strong> Mare de Deu de Fatima 31, Rubí</p>
+                <p><strong>Localidad:</strong> Barcelona</p>
+                <p><strong>País:</strong> España</p>
+                <p><strong>Correo electrónico:</strong> <a href="mailto:bussiness@denilsonarnau.com">bussiness@denilsonarnau.com</a></p>
+                <p><strong>Teléfono:</strong> <a href="tel:+34692257776">+34 692 257 776</a></p>
+                <p><strong>Sitio web:</strong> <a href="https://denilsonarnau.netlify.app">https://denilsonarnau.netlify.app</a></p>
+            </div>
+
+            <h2>2. Objeto</h2>
+            <p>El presente Aviso Legal regula el uso y utilización del sitio web <strong>denilsonarnau.netlify.app</strong> (en adelante, "el Sitio Web"), del que es titular Denilson Capa.</p>
+            <p>La navegación por el Sitio Web atribuye la condición de <strong>usuario</strong> del mismo e implica la aceptación plena y sin reservas de todas y cada una de las disposiciones incluidas en este Aviso Legal, que pueden sufrir modificaciones.</p>
+            <p>El usuario se obliga a hacer un uso correcto del Sitio Web de conformidad con las leyes, la buena fe, el orden público, los usos del tráfico y el presente Aviso Legal. El usuario responderá frente a Denilson Capa o frente a terceros, de cualesquiera daños y perjuicios que pudieran causarse como consecuencia del incumplimiento de dicha obligación.</p>
+
+            <h2>3. Condiciones de Acceso y Utilización</h2>
+
+            <h3>3.1. Acceso y uso gratuito</h3>
+            <p>El acceso al Sitio Web es gratuito para los usuarios, salvo en lo relativo al coste de la conexión a través de la red de telecomunicaciones suministrada por el proveedor de acceso contratado por los usuarios.</p>
+
+            <h3>3.2. Uso adecuado</h3>
+            <p>El usuario se compromete a utilizar el Sitio Web, sus contenidos y servicios de conformidad con la ley, el presente Aviso Legal, y las buenas costumbres generalmente aceptadas y el orden público.</p>
+            <p>Queda prohibido:</p>
+            <ul>
+                <li>Utilizar el Sitio Web de forma o para fines ilícitos, ilegales, contrarios a lo establecido en el presente Aviso Legal</li>
+                <li>Provocar daños en el Sitio Web o en los sistemas del titular o de terceros</li>
+                <li>Introducir, difundir o poner a disposición de terceros cualquier tipo de material ilícito, inmoral o contrario al orden público</li>
+                <li>Suplantar la identidad de otros usuarios</li>
+                <li>Realizar actos de competencia desleal o publicidad ilícita</li>
+            </ul>
+
+            <h3>3.3. Responsabilidad por uso indebido</h3>
+            <p>El titular se reserva el derecho a denegar o retirar el acceso al Sitio Web, en cualquier momento y sin necesidad de preaviso, a aquellos usuarios que incumplan el presente Aviso Legal.</p>
+
+            <h2>4. Contenidos</h2>
+
+            <h3>4.1. Licitud y veracidad</h3>
+            <p>Los contenidos del Sitio Web se proporcionan con fines informativos y promocionales sobre los servicios profesionales ofrecidos por Denilson Capa en materia de desarrollo web, diseño digital y automatización de procesos.</p>
+            <p>El titular se reserva el derecho a modificar, actualizar o eliminar los contenidos del Sitio Web sin previo aviso.</p>
+
+            <h3>4.2. Propiedad intelectual e industrial</h3>
+            <p>Todos los contenidos del Sitio Web (textos, fotografías, gráficos, imágenes, íconos, tecnología, software, diseño gráfico, código fuente, así como su diseño gráfico y códigos fuente) son propiedad exclusiva de Denilson Capa o de terceros que han autorizado su uso, y están protegidos por las leyes españolas e internacionales sobre propiedad intelectual e industrial.</p>
+            <p>Quedan expresamente prohibidas la reproducción, distribución y comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los contenidos de esta página web, con fines comerciales, en cualquier soporte y por cualquier medio técnico, sin la autorización expresa y por escrito de Denilson Capa.</p>
+
+            <h3>4.3. Marcas y logos</h3>
+            <p><strong>"Sistemas Organizados at Network"</strong>, <strong>"SON"</strong>, así como los logos y demás signos distintivos son marcas registradas o en proceso de registro, cuyo uso queda reservado exclusivamente a Denilson Capa.</p>
+
+            <h2>5. Exclusión de Garantías y Responsabilidad</h2>
+
+            <h3>5.1. Disponibilidad del servicio</h3>
+            <p>El titular no garantiza la disponibilidad y continuidad del funcionamiento del Sitio Web, quedando exonerado de cualquier responsabilidad por daños y perjuicios de toda naturaleza derivados de:</p>
+            <ul>
+                <li>Interrupciones del servicio</li>
+                <li>Errores o fallos de acceso</li>
+                <li>Virus informáticos</li>
+                <li>Contenidos ilícitos introducidos por terceros</li>
+                <li>Uso indebido por parte de usuarios</li>
+            </ul>
+
+            <h3>5.2. Enlaces a terceros</h3>
+            <p>El Sitio Web puede contener enlaces a sitios web de terceros. Denilson Capa no asume responsabilidad alguna sobre el contenido, política de privacidad o prácticas de sitios web de terceros. Se recomienda al usuario leer las políticas de privacidad de dichos sitios.</p>
+
+            <h2>6. Tratamiento de Datos Personales</h2>
+            <p>Los datos personales facilitados por los usuarios a través del Sitio Web (formulario de contacto, chatbot) serán tratados conforme a lo establecido en la <a href="/politica-privacidad.html">Política de Privacidad</a>.</p>
+            <p>El titular garantiza el cumplimiento de la normativa vigente en materia de protección de datos personales:</p>
+            <ul>
+                <li>Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016 (RGPD)</li>
+                <li>Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD)</li>
+            </ul>
+            <p>Para ejercer sus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad, el usuario puede dirigirse a: <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+
+            <h2>7. Uso de Cookies</h2>
+            <p>El Sitio Web utiliza cookies propias y de terceros para mejorar la experiencia de navegación y ofrecer servicios personalizados.</p>
+            <p>La información detallada sobre el uso de cookies se encuentra disponible en la <a href="/politica-cookies.html">Política de Cookies</a> accesible desde el pie de página del Sitio Web.</p>
+
+            <h2>8. Comunicaciones Electrónicas</h2>
+
+            <h3>8.1. Formulario de contacto</h3>
+            <p>El Sitio Web pone a disposición de los usuarios un formulario de contacto para realizar consultas profesionales. El envío de consultas a través de este formulario implica la aceptación de la Política de Privacidad.</p>
+
+            <h3>8.2. Servicio de chatbot</h3>
+            <p>El Sitio Web incorpora un asistente virtual (chatbot) con tecnología de inteligencia artificial para atender consultas frecuentes. Las conversaciones son procesadas mediante servicios de terceros (OpenAI API) alojados en servidores externos. Más información en la <a href="/politica-privacidad.html">Política de Privacidad</a>.</p>
+
+            <h2>9. Legislación Aplicable y Jurisdicción</h2>
+
+            <h3>9.1. Legislación aplicable</h3>
+            <p>El presente Aviso Legal se rige en todos y cada uno de sus extremos por la legislación española.</p>
+
+            <h3>9.2. Jurisdicción competente</h3>
+            <p>Para la resolución de cualquier controversia o conflicto que pueda surgir en relación con el acceso o uso del Sitio Web, las partes se someten expresamente a los Juzgados y Tribunales de <strong>Barcelona</strong>, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+
+            <h2>10. Contacto</h2>
+            <p>Para cualquier consulta, sugerencia o reclamación relacionada con el Sitio Web, el usuario puede ponerse en contacto a través de:</p>
+            <div class="info-box">
+                <p><strong>Email general:</strong> <a href="mailto:bussiness@denilsonarnau.com">bussiness@denilsonarnau.com</a></p>
+                <p><strong>Email protección de datos:</strong> <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+                <p><strong>Teléfono:</strong> <a href="tel:+34692257776">+34 692 257 776</a></p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Sistemas Organizados at Network - Denilson Capa</p>
+            <p>
+                <a href="/">Inicio</a> ·
+                <a href="/aviso-legal.html">Aviso Legal</a> ·
+                <a href="/politica-privacidad.html">Privacidad</a> ·
+                <a href="/politica-cookies.html">Cookies</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

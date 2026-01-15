@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Política de Privacidad - Sistemas Organizados at Network">
+    <meta name="robots" content="noindex, follow">
+    <title>Política de Privacidad | SON</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0f;
+            --color-bg-secondary: #12121a;
+            --color-surface: #16161f;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --color-text: #ffffff;
+            --color-text-secondary: #a0a0b0;
+            --color-text-muted: #6b6b80;
+            --color-primary: #e14700;
+            --color-primary-light: #ff6a1a;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --color-bg: #ffffff;
+                --color-bg-secondary: #f8f9fa;
+                --color-surface: #ffffff;
+                --color-border: rgba(0, 0, 0, 0.1);
+                --color-text: #1a1a1a;
+                --color-text-secondary: #4a4a5a;
+                --color-text-muted: #7a7a8a;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 3rem;
+        }
+
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .content {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            padding: 3rem 2.5rem;
+        }
+
+        .page-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #e14700 0%, #ff6a1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .update-date {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        ul {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-primary-light);
+        }
+
+        .info-box {
+            background: var(--color-bg-secondary);
+            border-left: 3px solid var(--color-primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 3px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border: 1px solid var(--color-border);
+        }
+
+        th {
+            background: var(--color-bg-secondary);
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        td {
+            color: var(--color-text-secondary);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--color-text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo-link">
+                <img src="/assets/images/finalreal.svg" alt="SON Logo" class="logo-image" />
+                <span class="logo-text">Sistemas Organizados at Network</span>
+            </a>
+        </header>
+
+        <main class="content">
+            <h1 class="page-title">Política de Privacidad</h1>
+            <span class="update-date">Última actualización: 13 de enero de 2026</span>
+
+            <p>De conformidad con el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016 (RGPD) y la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), le informamos sobre el tratamiento de sus datos personales.</p>
+
+            <h2>1. Responsable del Tratamiento</h2>
+            <div class="info-box">
+                <p><strong>Identidad:</strong> Denilson Capa</p>
+                <p><strong>Nombre comercial:</strong> Sistemas Organizados at Network (SON)</p>
+                <p><strong>NIF/DNI:</strong> 47929828J</p>
+                <p><strong>Domicilio:</strong> Mare de Deu de Fatima 31, Rubí, Barcelona, España</p>
+                <p><strong>Correo electrónico:</strong> <a href="mailto:bussiness@denilsonarnau.com">bussiness@denilsonarnau.com</a></p>
+                <p><strong>Teléfono:</strong> <a href="tel:+34692257776">+34 692 257 776</a></p>
+                <p><strong>Sitio web:</strong> <a href="https://denilsonarnau.netlify.app">https://denilsonarnau.netlify.app</a></p>
+            </div>
+
+            <h2>2. Delegado de Protección de Datos (DPO)</h2>
+            <p>Dado el tamaño y naturaleza de la actividad, no es obligatorio el nombramiento de un Delegado de Protección de Datos. No obstante, cualquier consulta relativa a protección de datos puede dirigirse a: <a href="mailto:bussiness@denilsonarnau.com">bussiness@denilsonarnau.com</a></p>
+
+            <h2>3. Finalidades del Tratamiento</h2>
+
+            <h3>3.1. Formulario de Contacto</h3>
+            <p><strong>Datos recogidos:</strong> Nombre, dirección de correo electrónico, asunto de la consulta, mensaje.</p>
+            <p><strong>Finalidad:</strong></p>
+            <ul>
+                <li>Atender y gestionar las consultas profesionales recibidas</li>
+                <li>Ofrecer información sobre servicios de desarrollo web y automatización</li>
+                <li>Establecer comunicación profesional y comercial</li>
+            </ul>
+            <p><strong>Base legal:</strong> Consentimiento del interesado (RGPD Art. 6.1.a) al marcar la casilla de aceptación de la política de privacidad antes del envío del formulario.</p>
+            <p><strong>Conservación:</strong> Los datos se conservarán durante el tiempo necesario para atender la consulta y, posteriormente:</p>
+            <ul>
+                <li>Si existe relación comercial: durante la duración del servicio + 6 años (prescripción fiscal)</li>
+                <li>Si no existe relación: 12 meses desde la última comunicación, tras los cuales serán eliminados</li>
+            </ul>
+            <p><strong>Destinatarios:</strong> <strong>EmailJS</strong> (proveedor de servicio de email): Los datos son transmitidos a EmailJS para el envío del mensaje. EmailJS es un servicio de terceros que puede implicar transferencias internacionales de datos a Estados Unidos.</p>
+
+            <h3>3.2. Chatbot con Inteligencia Artificial</h3>
+            <p><strong>Datos recogidos:</strong></p>
+            <ul>
+                <li>Conversaciones (textos enviados por el usuario)</li>
+                <li>Identificador de sesión (sessionId)</li>
+                <li>Dirección IP</li>
+                <li>Datos técnicos del navegador</li>
+            </ul>
+            <p><strong>Finalidad:</strong></p>
+            <ul>
+                <li>Proporcionar atención automatizada mediante asistente virtual</li>
+                <li>Responder preguntas frecuentes sobre servicios</li>
+                <li>Mejorar la experiencia del usuario en el sitio web</li>
+            </ul>
+            <p><strong>Base legal:</strong></p>
+            <ul>
+                <li>Consentimiento del interesado (RGPD Art. 6.1.a) mediante el uso activo del chatbot</li>
+                <li>Interés legítimo (RGPD Art. 6.1.f) para mejorar la atención al cliente</li>
+            </ul>
+            <div class="warning-box">
+                <p><strong>⚠️ Información adicional sobre IA:</strong></p>
+                <p>Las conversaciones del chatbot son procesadas mediante tecnología de inteligencia artificial proporcionada por OpenAI API. El sistema <strong>NO toma decisiones automatizadas</strong> que produzcan efectos jurídicos o afecten significativamente al usuario (RGPD Art. 22). Es un sistema informativo, no decisorio.</p>
+                <p><strong>AVISO IMPORTANTE:</strong> Las conversaciones con el chatbot NO deben contener datos sensibles, de salud, financieros o especialmente protegidos.</p>
+            </div>
+            <p><strong>Conservación:</strong></p>
+            <ul>
+                <li>sessionId: Se almacena en localStorage del navegador del usuario y persiste hasta que el usuario limpie su caché</li>
+                <li>Conversaciones: Se conservan en el servidor durante 30 días y posteriormente se eliminan automáticamente</li>
+                <li>Logs de servidor: 90 días</li>
+            </ul>
+            <p><strong>Destinatarios:</strong></p>
+            <ul>
+                <li><strong>Railway.app</strong> (proveedor de hosting del servidor del chatbot)</li>
+                <li><strong>OpenAI</strong> (proveedor de tecnología IA - GPT-4): Las consultas son enviadas a OpenAI API para su procesamiento. OpenAI tiene sede en Estados Unidos.</li>
+            </ul>
+
+            <h3>3.3. Cookies y Datos de Navegación</h3>
+            <p><strong>Datos recogidos:</strong> Dirección IP, tipo de navegador, idioma, páginas visitadas, tiempo de navegación.</p>
+            <p><strong>Finalidad:</strong></p>
+            <ul>
+                <li>Garantizar el correcto funcionamiento del sitio web</li>
+                <li>Analizar el uso del sitio web (estadísticas anónimas)</li>
+                <li>Recordar preferencias del usuario</li>
+            </ul>
+            <p>Para más información, consulte nuestra <a href="/politica-cookies.html">Política de Cookies</a>.</p>
+
+            <h2>4. Legitimación y Consentimiento</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tratamiento</th>
+                        <th>Base legal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Formulario de contacto</td>
+                        <td>Consentimiento expreso (casilla de aceptación)</td>
+                    </tr>
+                    <tr>
+                        <td>Chatbot IA</td>
+                        <td>Consentimiento + Interés legítimo</td>
+                    </tr>
+                    <tr>
+                        <td>Cookies técnicas</td>
+                        <td>Exención LSSI Art. 22.2</td>
+                    </tr>
+                    <tr>
+                        <td>Cookies analíticas/terceros</td>
+                        <td>Consentimiento (banner cookies)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>El usuario puede retirar su consentimiento en cualquier momento</strong> sin que ello afecte a la licitud del tratamiento basado en el consentimiento previo a su retirada. Para retirar el consentimiento, contacte con: <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+
+            <h2>5. Destinatarios y Transferencias Internacionales</h2>
+
+            <h3>5.1. Encargados del tratamiento</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Encargado</th>
+                        <th>Servicio</th>
+                        <th>Ubicación</th>
+                        <th>Salvaguardas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>EmailJS</td>
+                        <td>Servicio de envío de emails</td>
+                        <td>Estados Unidos</td>
+                        <td>Cláusulas Contractuales Tipo (CCT)</td>
+                    </tr>
+                    <tr>
+                        <td>Railway.app</td>
+                        <td>Hosting servidor chatbot</td>
+                        <td>Estados Unidos / EU</td>
+                        <td>Cláusulas Contractuales Tipo</td>
+                    </tr>
+                    <tr>
+                        <td>OpenAI</td>
+                        <td>Procesamiento IA (GPT-4)</td>
+                        <td>Estados Unidos</td>
+                        <td>Cláusulas Contractuales Tipo</td>
+                    </tr>
+                    <tr>
+                        <td>Google LLC</td>
+                        <td>Google Fonts (tipografías)</td>
+                        <td>Estados Unidos</td>
+                        <td>Cláusulas Contractuales Tipo</td>
+                    </tr>
+                    <tr>
+                        <td>Netlify</td>
+                        <td>Hosting sitio web</td>
+                        <td>Estados Unidos / EU</td>
+                        <td>Cláusulas Contractuales Tipo</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>5.2. Transferencias internacionales</h3>
+            <p>Algunos de los servicios utilizados implican transferencias de datos fuera del Espacio Económico Europeo (EEE), específicamente a <strong>Estados Unidos</strong>.</p>
+            <p><strong>Garantías aplicadas:</strong></p>
+            <ul>
+                <li>Cláusulas Contractuales Tipo aprobadas por la Comisión Europea (Decisión 2021/914)</li>
+                <li>Políticas de privacidad de los proveedores conformes con estándares internacionales</li>
+            </ul>
+            <p><strong>Usted tiene derecho a obtener información sobre las garantías adecuadas</strong> aplicadas a estas transferencias contactando con: <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+
+            <h3>5.3. No venta de datos</h3>
+            <p>Denilson Capa <strong>NO vende, alquila ni cede</strong> datos personales a terceros con fines publicitarios o comerciales.</p>
+
+            <h2>6. Derechos del Usuario (ARSOPL + POL)</h2>
+            <p>En virtud del RGPD y la LOPDGDD, tiene derecho a:</p>
+            <ul>
+                <li><strong>ACCESO</strong> (Art. 15 RGPD): Obtener confirmación sobre si estamos tratando sus datos y acceder a los mismos.</li>
+                <li><strong>RECTIFICACIÓN</strong> (Art. 16 RGPD): Solicitar la rectificación de datos inexactos o incompletos.</li>
+                <li><strong>SUPRESIÓN (Derecho al olvido)</strong> (Art. 17 RGPD): Solicitar la eliminación de sus datos cuando ya no sean necesarios, retire su consentimiento, los datos hayan sido tratados ilícitamente o exista obligación legal.</li>
+                <li><strong>OPOSICIÓN</strong> (Art. 21 RGPD): Oponerse al tratamiento de sus datos basado en interés legítimo o para fines de marketing directo.</li>
+                <li><strong>LIMITACIÓN</strong> (Art. 18 RGPD): Solicitar la limitación del tratamiento en determinadas circunstancias.</li>
+                <li><strong>PORTABILIDAD</strong> (Art. 20 RGPD): Recibir los datos personales en un formato estructurado, de uso común y lectura mecánica.</li>
+                <li><strong>RETIRADA DEL CONSENTIMIENTO</strong>: Puede retirar su consentimiento en cualquier momento.</li>
+            </ul>
+
+            <h2>7. Ejercicio de Derechos</h2>
+
+            <h3>7.1. Cómo ejercer sus derechos</h3>
+            <p>Para ejercer cualquiera de sus derechos, puede dirigirse a:</p>
+            <div class="info-box">
+                <p><strong>Email:</strong> <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+                <p><strong>Correo postal:</strong> Mare de Deu de Fatima 31, Rubí, Barcelona, España</p>
+            </div>
+            <p><strong>Requisitos de la solicitud:</strong></p>
+            <ul>
+                <li>Identificación clara del derecho que desea ejercer</li>
+                <li>Fotocopia de DNI/NIE o documento identificativo equivalente</li>
+                <li>Dirección de correo electrónico para notificaciones</li>
+                <li>Descripción clara de la solicitud</li>
+            </ul>
+
+            <h3>7.2. Plazo de respuesta</h3>
+            <p>Responderemos a su solicitud en un plazo máximo de <strong>1 mes</strong> desde la recepción. En casos complejos, el plazo puede prorrogarse 2 meses más, informándole en el primer mes de dicha prórroga.</p>
+
+            <h3>7.3. Gratuidad</h3>
+            <p>El ejercicio de estos derechos es <strong>gratuito</strong>. Solo se podrá cobrar un canon razonable si las solicitudes son manifiestamente infundadas o excesivas (RGPD Art. 12.5).</p>
+
+            <h2>8. Reclamación ante Autoridad de Control</h2>
+            <p>Si considera que el tratamiento de sus datos personales vulnera la normativa, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD):</p>
+            <div class="info-box">
+                <p><strong>Agencia Española de Protección de Datos (AEPD)</strong></p>
+                <p>C/ Jorge Juan, 6</p>
+                <p>28001 Madrid</p>
+                <p>Teléfono: 901 100 099 / 912 663 517</p>
+                <p>Web: <a href="https://www.aepd.es" target="_blank">https://www.aepd.es</a></p>
+                <p>Sede electrónica: <a href="https://sedeagpd.gob.es" target="_blank">https://sedeagpd.gob.es</a></p>
+            </div>
+
+            <h2>9. Medidas de Seguridad</h2>
+            <p>Denilson Capa ha implementado las medidas técnicas y organizativas apropiadas para garantizar un nivel de seguridad adecuado al riesgo (RGPD Art. 32):</p>
+            <p><strong>Medidas técnicas:</strong></p>
+            <ul>
+                <li>Cifrado HTTPS (certificado SSL/TLS) en toda la navegación</li>
+                <li>Almacenamiento seguro de datos en servidores con acceso restringido</li>
+                <li>Backups periódicos de datos críticos</li>
+                <li>Validación de formularios para prevenir inyección de código</li>
+                <li>Rate limiting en el chatbot para prevenir abusos</li>
+            </ul>
+            <p><strong>Medidas organizativas:</strong></p>
+            <ul>
+                <li>Política de acceso restringido a datos personales</li>
+                <li>Contratos de confidencialidad con encargados del tratamiento</li>
+                <li>Revisión periódica de medidas de seguridad</li>
+                <li>Procedimiento de notificación de brechas de seguridad (72 horas a AEPD)</li>
+            </ul>
+
+            <h2>10. Conservación de Datos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Datos</th>
+                        <th>Plazo de conservación</th>
+                        <th>Criterio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Formulario contacto (sin relación comercial)</td>
+                        <td>12 meses</td>
+                        <td>Gestión consulta + plazo reclamaciones</td>
+                    </tr>
+                    <tr>
+                        <td>Formulario contacto (con relación comercial)</td>
+                        <td>Duración servicio + 6 años</td>
+                        <td>Obligaciones fiscales/contables</td>
+                    </tr>
+                    <tr>
+                        <td>Conversaciones chatbot</td>
+                        <td>30 días</td>
+                        <td>Mejora del servicio</td>
+                    </tr>
+                    <tr>
+                        <td>sessionId chatbot</td>
+                        <td>Hasta limpieza caché usuario</td>
+                        <td>Funcionalidad</td>
+                    </tr>
+                    <tr>
+                        <td>Logs del servidor</td>
+                        <td>90 días</td>
+                        <td>Seguridad y prevención fraudes</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Transcurridos estos plazos, los datos serán eliminados o anonimizados de forma segura.</p>
+
+            <h2>11. Menores de Edad</h2>
+            <p>El sitio web no está dirigido a menores de 14 años. Si se tiene conocimiento de que se han recogido datos de un menor sin consentimiento de los padres/tutores, se procederá a su eliminación inmediata.</p>
+            <p>Si detecta que un menor ha facilitado datos personales, contacte con: <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+
+            <h2>12. Contacto - Privacidad</h2>
+            <p>Para cualquier consulta sobre esta Política de Privacidad o sobre el tratamiento de sus datos personales:</p>
+            <div class="info-box">
+                <p><strong>Email de privacidad:</strong> <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+                <p><strong>Email general:</strong> <a href="mailto:bussiness@denilsonarnau.com">bussiness@denilsonarnau.com</a></p>
+                <p><strong>Teléfono:</strong> <a href="tel:+34692257776">+34 692 257 776</a></p>
+                <p><strong>Correo postal:</strong> Mare de Deu de Fatima 31, Rubí, Barcelona, España</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Sistemas Organizados at Network - Denilson Capa</p>
+            <p>
+                <a href="/">Inicio</a> ·
+                <a href="/aviso-legal.html">Aviso Legal</a> ·
+                <a href="/politica-privacidad.html">Privacidad</a> ·
+                <a href="/politica-cookies.html">Cookies</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
