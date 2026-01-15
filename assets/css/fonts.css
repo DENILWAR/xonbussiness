@@ -1,0 +1,144 @@
+/* ================================================
+   FUENTES LOCALES - Sin cookies de terceros
+   ================================================ */
+
+/* -------------------- OUTFIT (Sans-serif - Cuerpo) -------------------- */
+
+/* Outfit Light (300) */
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/assets/fonts/outfit-v15-latin_latin-ext/outfit-v15-latin_latin-ext-300.woff2') format('woff2');
+}
+
+/* Outfit Regular (400) */
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/assets/fonts/outfit-v15-latin_latin-ext/outfit-v15-latin_latin-ext-regular.woff2') format('woff2');
+}
+
+/* Outfit Medium (500) */
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/assets/fonts/outfit-v15-latin_latin-ext/outfit-v15-latin_latin-ext-500.woff2') format('woff2');
+}
+
+/* Outfit Semi-bold (600) */
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/assets/fonts/outfit-v15-latin_latin-ext/outfit-v15-latin_latin-ext-600.woff2') format('woff2');
+}
+
+/* Outfit Bold (700) */
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/assets/fonts/outfit-v15-latin_latin-ext/outfit-v15-latin_latin-ext-700.woff2') format('woff2');
+}
+
+/* -------------------- SYNE (Sans-serif Display - Títulos) -------------------- */
+
+/* Syne Regular (400) */
+@font-face {
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/assets/fonts/syne-v24-greek_latin_latin-ext/syne-v24-greek_latin_latin-ext-regular.woff2') format('woff2');
+}
+
+/* Syne Medium (500) */
+@font-face {
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/assets/fonts/syne-v24-greek_latin_latin-ext/syne-v24-greek_latin_latin-ext-500.woff2') format('woff2');
+}
+
+/* Syne Semi-bold (600) */
+@font-face {
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/assets/fonts/syne-v24-greek_latin_latin-ext/syne-v24-greek_latin_latin-ext-600.woff2') format('woff2');
+}
+
+/* Syne Bold (700) */
+@font-face {
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/assets/fonts/syne-v24-greek_latin_latin-ext/syne-v24-greek_latin_latin-ext-700.woff2') format('woff2');
+}
+
+/* Syne Extra-bold (800) */
+@font-face {
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('/assets/fonts/syne-v24-greek_latin_latin-ext/syne-v24-greek_latin_latin-ext-800.woff2') format('woff2');
+}
+
+/* -------------------- CINZEL (Serif - Marca/Logo) -------------------- */
+
+/* Cinzel Regular (400) */
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/assets/fonts/cinzel-v26-latin_latin-ext/cinzel-v26-latin_latin-ext-regular.woff2') format('woff2');
+}
+
+/* Cinzel Medium (500) */
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/assets/fonts/cinzel-v26-latin_latin-ext/cinzel-v26-latin_latin-ext-500.woff2') format('woff2');
+}
+
+/* Cinzel Semi-bold (600) */
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/assets/fonts/cinzel-v26-latin_latin-ext/cinzel-v26-latin_latin-ext-600.woff2') format('woff2');
+}
+
+/* Cinzel Bold (700) */
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/assets/fonts/cinzel-v26-latin_latin-ext/cinzel-v26-latin_latin-ext-700.woff2') format('woff2');
+}
+
+/* Cinzel Extra-bold (800) */
+@font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('/assets/fonts/cinzel-v26-latin_latin-ext/cinzel-v26-latin_latin-ext-800.woff2') format('woff2');
+}

@@ -728,44 +728,13 @@ function closeCookieChat() {
 function acceptAllCookies() {
     localStorage.setItem('cookies_consent', 'all');
     console.log('✅ Cookies aceptadas: Todas');
-    loadThirdPartyCookies(); // Cargar cookies de terceros (Google Fonts)
     eatCookieAndHide();
 }
 
 function rejectOptionalCookies() {
     localStorage.setItem('cookies_consent', 'essential');
     console.log('✅ Cookies aceptadas: Solo esenciales');
-    console.log('ℹ️ No se cargarán cookies de terceros (Google Fonts)');
     eatCookieAndHide();
-}
-
-function loadThirdPartyCookies() {
-    // Cargar Google Fonts solo si se aceptan todas las cookies
-    const googleFontsLink = document.createElement('link');
-    googleFontsLink.rel = 'stylesheet';
-    googleFontsLink.href = 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Cinzel:wght@400;500;600;700;800&display=swap';
-
-    // Preconnect para optimización
-    const preconnect1 = document.createElement('link');
-    preconnect1.rel = 'preconnect';
-    preconnect1.href = 'https://fonts.googleapis.com';
-
-    const preconnect2 = document.createElement('link');
-    preconnect2.rel = 'preconnect';
-    preconnect2.href = 'https://fonts.gstatic.com';
-    preconnect2.crossOrigin = 'anonymous';
-
-    document.head.appendChild(preconnect1);
-    document.head.appendChild(preconnect2);
-    document.head.appendChild(googleFontsLink);
-
-    // Eliminar fuentes del sistema
-    const systemFonts = document.getElementById('system-fonts');
-    if (systemFonts) {
-        systemFonts.remove();
-    }
-
-    console.log('✅ Google Fonts cargadas tras consentimiento');
 }
 
 function eatCookieAndHide() {
@@ -794,13 +763,9 @@ function eatCookieAndHide() {
 window.addEventListener('load', () => {
     const consent = localStorage.getItem('cookies_consent');
 
-    if (consent === 'all') {
-        // Usuario ya aceptó todas las cookies previamente
-        loadThirdPartyCookies();
-        console.log('ℹ️ Consentimiento previo detectado: cookies de terceros cargadas');
-    } else if (consent === 'essential') {
-        // Usuario rechazó cookies opcionales
-        console.log('ℹ️ Usuario rechazó cookies de terceros previamente');
+    if (consent === 'all' || consent === 'essential') {
+        // Usuario ya dio su consentimiento previamente
+        console.log('ℹ️ Consentimiento previo detectado');
     } else {
         // No hay consentimiento, mostrar widget
         const cookieWidget = document.getElementById('cookie-widget');
