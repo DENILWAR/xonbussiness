@@ -660,28 +660,66 @@ function initProyectoLocalModal() {
         }
     });
 
-    // Soporte para gestos táctiles (swipe)
+    // Soporte para gestos táctiles (swipe) - Detección en toda el área del carousel
     let touchStartX = 0;
+    let touchStartY = 0;
     let touchEndX = 0;
+    let touchEndY = 0;
+    let isSwiping = false;
 
-    slidesContainer.addEventListener('touchstart', (e) => {
+    const carouselContainer = modal.querySelector('.carousel-container');
+
+    // Detectar inicio del toque en todo el contenedor del carousel
+    carouselContainer.addEventListener('touchstart', (e) => {
+        // No interferir con botones y controles
+        if (e.target.closest('.modal-close') ||
+            e.target.closest('.carousel-btn') ||
+            e.target.closest('.carousel-indicators')) {
+            return;
+        }
+
         touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
+        touchStartY = e.changedTouches[0].screenY;
+        isSwiping = true;
+    }, { passive: false });
 
-    slidesContainer.addEventListener('touchend', (e) => {
+    // Detectar movimiento del toque
+    carouselContainer.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+
+        const touchCurrentX = e.changedTouches[0].screenX;
+        const touchCurrentY = e.changedTouches[0].screenY;
+
+        const diffX = Math.abs(touchCurrentX - touchStartX);
+        const diffY = Math.abs(touchCurrentY - touchStartY);
+
+        // Si el deslizamiento horizontal es mayor que el vertical, prevenir scroll
+        if (diffX > diffY && diffX > 10) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+
+    // Detectar fin del toque
+    carouselContainer.addEventListener('touchend', (e) => {
+        if (!isSwiping) return;
+
         touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
         handleSwipe();
+        isSwiping = false;
     }, { passive: true });
 
     function handleSwipe() {
         const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
+        const diffX = touchStartX - touchEndX;
+        const diffY = Math.abs(touchStartY - touchEndY);
 
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                nextSlide();
+        // Solo hacer swipe si el movimiento horizontal es mayor que el vertical
+        if (Math.abs(diffX) > swipeThreshold && Math.abs(diffX) > diffY) {
+            if (diffX > 0) {
+                nextSlide(); // Deslizar a la izquierda -> siguiente
             } else {
-                prevSlide();
+                prevSlide(); // Deslizar a la derecha -> anterior
             }
         }
     }

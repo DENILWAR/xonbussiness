@@ -1650,6 +1650,11 @@ ul, ol {
     visibility: visible;
 }
 
+/* Prevenir scroll cuando el modal está activo (especialmente en móvil) */
+.modal-overlay.active {
+    touch-action: pan-y pinch-zoom;
+}
+
 /* Modal Container */
 .modal-container {
     position: relative;
@@ -1711,6 +1716,9 @@ ul, ol {
     height: 100%;
     max-height: calc(90vh - 120px);
     overflow: hidden;
+    touch-action: pan-x; /* Solo permitir scroll horizontal para swipe */
+    user-select: none; /* Prevenir selección de texto durante swipe */
+    -webkit-user-select: none;
 }
 
 /* Carousel Slides */
