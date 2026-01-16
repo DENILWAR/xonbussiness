@@ -287,7 +287,7 @@ function initFormHandling() {
         // Estado: Enviando
         submitBtn.innerHTML = `
             <span>Enviando...</span>
-            <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
                 <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round">
                     <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
@@ -295,6 +295,7 @@ function initFormHandling() {
             </svg>
         `;
         submitBtn.disabled = true;
+        submitBtn.setAttribute('aria-live', 'polite');
         
         // Obtener datos del formulario
         const formData = new FormData(contactForm);
@@ -379,6 +380,8 @@ function showNotification(message, type = 'info') {
     // Crear notificación
     const notification = document.createElement('div');
     notification.className = `form-notification form-notification--${type}`;
+    notification.setAttribute('role', 'alert');
+    notification.setAttribute('aria-live', 'assertive');
     notification.innerHTML = `
         <div class="form-notification__content">
             <span class="form-notification__icon">
@@ -580,6 +583,7 @@ function initProyectoLocalModal() {
     const slides = modal.querySelectorAll('.carousel-slide');
     const indicators = modal.querySelectorAll('.indicator');
     const slidesContainer = modal.querySelector('.carousel-slides');
+    const statusAnnouncer = document.getElementById('carousel-status');
 
     let currentSlide = 0;
     const totalSlides = slides.length;
@@ -589,6 +593,11 @@ function initProyectoLocalModal() {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
         updateSlide(0);
+
+        // Enfocar el botón de cerrar para accesibilidad
+        setTimeout(() => {
+            closeBtn.focus();
+        }, 100);
     }
 
     // Cerrar modal
@@ -608,13 +617,30 @@ function initProyectoLocalModal() {
 
         // Actualizar clases activas en slides
         slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === currentSlide);
+            const isActive = i === currentSlide;
+            slide.classList.toggle('active', isActive);
+            // Agregar aria-current para indicar la diapositiva actual
+            if (isActive) {
+                slide.setAttribute('aria-current', 'true');
+            } else {
+                slide.removeAttribute('aria-current');
+            }
         });
 
         // Actualizar indicadores
         indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === currentSlide);
+            const isActive = i === currentSlide;
+            indicator.classList.toggle('active', isActive);
+            indicator.setAttribute('aria-selected', isActive);
+            // Actualizar aria-label para lectores de pantalla
+            indicator.setAttribute('aria-label', `Diapositiva ${i + 1}${isActive ? ' (actual)' : ''}`);
         });
+
+        // Anunciar cambio de diapositiva para lectores de pantalla
+        if (statusAnnouncer) {
+            const slideTitle = slides[currentSlide].querySelector('.slide-title')?.textContent || '';
+            statusAnnouncer.textContent = `Diapositiva ${currentSlide + 1} de ${totalSlides}: ${slideTitle}`;
+        }
     }
 
     // Siguiente slide
@@ -645,6 +671,14 @@ function initProyectoLocalModal() {
         indicator.addEventListener('click', () => {
             updateSlide(index);
         });
+
+        // Navegación por teclado en indicadores (Enter/Space)
+        indicator.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                updateSlide(index);
+            }
+        });
     });
 
     // Navegación con teclado
@@ -657,6 +691,15 @@ function initProyectoLocalModal() {
             prevSlide();
         } else if (e.key === 'ArrowRight') {
             nextSlide();
+        } else if (e.key === 'Home') {
+            updateSlide(0);
+        } else if (e.key === 'End') {
+            updateSlide(totalSlides - 1);
+        } else if (e.key >= '1' && e.key <= '5') {
+            const slideIndex = parseInt(e.key) - 1;
+            if (slideIndex < totalSlides) {
+                updateSlide(slideIndex);
+            }
         }
     });
 

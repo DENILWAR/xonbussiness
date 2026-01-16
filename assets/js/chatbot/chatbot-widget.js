@@ -48,12 +48,12 @@ class ChatbotWidget {
             </button>
 
             <!-- Ventana del chat -->
-            <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-window" id="chatbot-window" role="dialog" aria-labelledby="chatbot-name" aria-modal="true">
                 <!-- Header -->
                 <div class="chatbot-header">
                     <div class="chatbot-avatar">${this.config.botAvatar}</div>
                     <div class="chatbot-info">
-                        <h3 class="chatbot-name">${this.config.botName}</h3>
+                        <h3 class="chatbot-name" id="chatbot-name">${this.config.botName}</h3>
                         <div class="chatbot-status">
                             <span class="status-indicator"></span>
                             <span>En línea</span>
@@ -62,24 +62,39 @@ class ChatbotWidget {
                 </div>
 
                 <!-- Cuerpo del chat -->
-                <div class="chatbot-body" id="chatbot-body">
+                <div class="chatbot-body" id="chatbot-body" role="log" aria-live="polite" aria-atomic="false">
                     <div class="welcome-message">
-                        <h3>Hola, soy ${this.config.botName}</h3>
-                        <p>Asistente virtual especializado en automatización de procesos. ¿En qué puedo ayudarte hoy?</p>
+                        <h3>👋 Hola, soy ${this.config.botName}</h3>
+                        <p>Asistente virtual con IA especializado en automatización de procesos.</p>
+
+                        <div class="privacy-notice">
+                            <p class="privacy-icon">⚠️</p>
+                            <div class="privacy-text">
+                                <p><strong>Aviso de privacidad:</strong></p>
+                                <ul>
+                                    <li>Esta conversación se procesa con tecnología de <strong>OpenAI</strong> (Estados Unidos)</li>
+                                    <li>Los mensajes se eliminan automáticamente al cerrar el chat</li>
+                                    <li>No compartas información personal sensible (DNI, tarjetas bancarias, etc.)</li>
+                                </ul>
+                                <p class="privacy-link">Al continuar, aceptas el tratamiento de tu consulta según nuestra <a href="/politica-privacidad.html" target="_blank">Política de Privacidad</a>.</p>
+                            </div>
+                        </div>
+
+                        <p class="help-text">¿En qué puedo ayudarte hoy?</p>
                     </div>
 
                     <!-- Sugerencias iniciales -->
-                    <div class="quick-suggestions">
-                        <button class="quick-suggestion" data-message="¿Qué es la automatización de procesos?">
+                    <div class="quick-suggestions" role="group" aria-label="Sugerencias rápidas">
+                        <button class="quick-suggestion" data-message="¿Qué es la automatización de procesos?" aria-label="Preguntar sobre automatización de procesos">
                             Automatización
                         </button>
-                        <button class="quick-suggestion" data-message="¿Qué servicios de automatización ofreces?">
+                        <button class="quick-suggestion" data-message="¿Qué servicios de automatización ofreces?" aria-label="Preguntar sobre servicios de automatización">
                             Servicios
                         </button>
-                        <button class="quick-suggestion" data-message="Cuéntame sobre chatbots y atención automatizada">
+                        <button class="quick-suggestion" data-message="Cuéntame sobre chatbots y atención automatizada" aria-label="Preguntar sobre chatbots">
                             Chatbots
                         </button>
-                        <button class="quick-suggestion" data-message="¿Cómo puedo contactarte?">
+                        <button class="quick-suggestion" data-message="¿Cómo puedo contactarte?" aria-label="Preguntar sobre información de contacto">
                             Contacto
                         </button>
                     </div>
@@ -93,6 +108,7 @@ class ChatbotWidget {
                             id="chat-input"
                             placeholder="Escribe tu mensaje..."
                             rows="1"
+                            aria-label="Escribe tu mensaje al chatbot"
                         ></textarea>
                         <button class="chat-send-button" id="chat-send" aria-label="Enviar mensaje">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

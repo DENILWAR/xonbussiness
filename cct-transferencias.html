@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cláusulas Contractuales Tipo - Transferencias Internacionales de Datos">
+    <meta name="robots" content="noindex, follow">
+    <title>Cláusulas Contractuales Tipo | SON</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+
+    <!-- Fonts - Alojadas localmente -->
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0f;
+            --color-bg-secondary: #12121a;
+            --color-surface: #16161f;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --color-text: #ffffff;
+            --color-text-secondary: #a0a0b0;
+            --color-text-muted: #6b6b80;
+            --color-primary: #e14700;
+            --color-primary-light: #ff6a1a;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --color-bg: #ffffff;
+                --color-bg-secondary: #f8f9fa;
+                --color-surface: #ffffff;
+                --color-border: rgba(0, 0, 0, 0.1);
+                --color-text: #1a1a1a;
+                --color-text-secondary: #4a4a5a;
+                --color-text-muted: #6a6a7a;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 3rem;
+        }
+
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .content {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            padding: 3rem 2.5rem;
+        }
+
+        .page-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #e14700 0%, #ff6a1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .update-date {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        ul {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-primary-light);
+        }
+
+        .info-box {
+            background: var(--color-bg-secondary);
+            border-left: 3px solid var(--color-primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--color-bg-secondary);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        th {
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-weight: 600;
+            font-family: var(--font-display);
+        }
+
+        td {
+            color: var(--color-text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .badge-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .badge-info {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .download-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-primary);
+            color: #ffffff;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+        }
+
+        .download-link:hover {
+            background: var(--color-primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(225, 71, 0, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--color-text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            table {
+                font-size: 0.875rem;
+            }
+
+            th, td {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo-link">
+                <img src="/assets/images/finalreal.svg" alt="SON Logo" class="logo-image" />
+                <span class="logo-text">Sistemas Organizados at Network</span>
+            </a>
+        </header>
+
+        <main class="content">
+            <h1 class="page-title">Cláusulas Contractuales Tipo</h1>
+            <span class="update-date">Última actualización: 16 de enero de 2026</span>
+
+            <p>En cumplimiento del <strong>Reglamento (UE) 2016/679 (RGPD)</strong>, en particular los artículos 46 y 49, esta página proporciona información sobre las garantías aplicadas a las transferencias internacionales de datos personales realizadas desde este sitio web hacia países fuera del Espacio Económico Europeo (EEE).</p>
+
+            <h2>1. ¿Qué son las Cláusulas Contractuales Tipo?</h2>
+
+            <p>Las <strong>Cláusulas Contractuales Tipo (CCT)</strong>, también conocidas como <strong>Standard Contractual Clauses (SCC)</strong>, son contratos modelo aprobados por la Comisión Europea que establecen garantías adecuadas para la protección de datos personales transferidos fuera del Espacio Económico Europeo.</p>
+
+            <div class="info-box">
+                <p><strong>Base legal:</strong> Art. 46.2.c) del RGPD</p>
+                <p><strong>Decisión de Ejecución:</strong> (UE) 2021/914 de la Comisión de 4 de junio de 2021</p>
+                <p><strong>Finalidad:</strong> Garantizar que los datos personales transferidos a terceros países reciban un nivel de protección equivalente al proporcionado por el RGPD</p>
+            </div>
+
+            <h2>2. Transferencias Internacionales Realizadas</h2>
+
+            <p>El sitio web <strong>denilsonarnau.netlify.app</strong> realiza las siguientes transferencias internacionales de datos personales:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Proveedor</th>
+                        <th>Servicio</th>
+                        <th>País</th>
+                        <th>Garantías</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>EmailJS</strong></td>
+                        <td>Servicio de envío de formularios</td>
+                        <td>Estados Unidos</td>
+                        <td>
+                            <span class="badge badge-success">CCT aprobadas</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>OpenAI (ChatGPT)</strong></td>
+                        <td>Chatbot con inteligencia artificial</td>
+                        <td>Estados Unidos</td>
+                        <td>
+                            <span class="badge badge-success">CCT aprobadas</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Railway.app</strong></td>
+                        <td>Hosting del servidor chatbot</td>
+                        <td>Estados Unidos / UE</td>
+                        <td>
+                            <span class="badge badge-success">CCT aprobadas</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Netlify</strong></td>
+                        <td>Hosting del sitio web</td>
+                        <td>Estados Unidos / UE</td>
+                        <td>
+                            <span class="badge badge-success">CCT aprobadas</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. Garantías Aplicadas</h2>
+
+            <h3>3.1. Cláusulas Contractuales Tipo (CCT)</h3>
+            <p>Todos los proveedores mencionados han suscrito las <strong>Cláusulas Contractuales Tipo aprobadas por la Comisión Europea mediante la Decisión de Ejecución (UE) 2021/914</strong>, que garantizan:</p>
+
+            <ul>
+                <li><strong>Obligaciones del exportador de datos:</strong> Denilson Capa garantiza la legalidad del tratamiento previo a la transferencia</li>
+                <li><strong>Obligaciones del importador de datos:</strong> Los proveedores se comprometen a:
+                    <ul>
+                        <li>Procesar los datos únicamente según instrucciones documentadas</li>
+                        <li>Garantizar confidencialidad del personal autorizado</li>
+                        <li>Implementar medidas técnicas y organizativas apropiadas (Art. 32 RGPD)</li>
+                        <li>Notificar brechas de seguridad en 72 horas</li>
+                        <li>Cooperar con auditorías de cumplimiento</li>
+                    </ul>
+                </li>
+                <li><strong>Derechos de los interesados:</strong> Los usuarios mantienen todos sus derechos ARSOPL ante Denilson Capa como responsable del tratamiento</li>
+                <li><strong>Responsabilidad y derecho a indemnización:</strong> Garantía de compensación en caso de daños</li>
+            </ul>
+
+            <h3>3.2. Medidas Complementarias</h3>
+            <p>Además de las CCT, se aplican las siguientes medidas adicionales de seguridad:</p>
+
+            <div class="info-box">
+                <ul style="margin-bottom: 0;">
+                    <li><strong>Cifrado en tránsito:</strong> Todas las transferencias utilizan TLS 1.3 o superior</li>
+                    <li><strong>Minimización de datos:</strong> Solo se transfieren datos estrictamente necesarios</li>
+                    <li><strong>Pseudonimización:</strong> Cuando es técnicamente posible</li>
+                    <li><strong>Limitación temporal:</strong> Plazos máximos de conservación documentados</li>
+                    <li><strong>Auditorías periódicas:</strong> Verificación del cumplimiento de los proveedores</li>
+                </ul>
+            </div>
+
+            <h2>4. Acceso a las Cláusulas Contractuales</h2>
+
+            <h3>4.1. Documentación de la Comisión Europea</h3>
+            <p>Las Cláusulas Contractuales Tipo oficiales están disponibles públicamente en:</p>
+
+            <div class="info-box">
+                <p><strong>Decisión de Ejecución (UE) 2021/914:</strong><br>
+                <a href="https://eur-lex.europa.eu/eli/dec_impl/2021/914/oj" target="_blank" rel="noopener noreferrer">
+                    https://eur-lex.europa.eu/eli/dec_impl/2021/914/oj
+                </a></p>
+                <p><strong>Comisión Europea - Cláusulas tipo:</strong><br>
+                <a href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_es" target="_blank" rel="noopener noreferrer">
+                    https://commission.europa.eu/law/law-topic/data-protection
+                </a></p>
+            </div>
+
+            <h3>4.2. Políticas de Privacidad de Proveedores</h3>
+            <p>Puede consultar las políticas de privacidad y las medidas de protección implementadas por cada proveedor:</p>
+
+            <ul>
+                <li><strong>EmailJS:</strong> <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                <li><strong>OpenAI:</strong> <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> | <a href="https://openai.com/policies/data-processing-addendum" target="_blank" rel="noopener noreferrer">Data Processing Addendum</a></li>
+                <li><strong>Railway.app:</strong> <a href="https://railway.app/legal/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                <li><strong>Netlify:</strong> <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a> | <a href="https://www.netlify.com/gdpr-ccpa/" target="_blank" rel="noopener noreferrer">GDPR & CCPA</a></li>
+            </ul>
+
+            <h3>4.3. Solicitud de Copias Específicas</h3>
+            <p>Si desea obtener información adicional sobre las garantías específicas aplicadas a las transferencias internacionales, o si necesita una copia de las cláusulas suscritas con proveedores específicos, puede solicitarlo mediante:</p>
+
+            <div class="info-box">
+                <p><strong>Email:</strong> <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+                <p><strong>Asunto:</strong> Solicitud de información sobre CCT - [nombre del proveedor]</p>
+                <p><strong>Plazo de respuesta:</strong> Máximo 1 mes desde la recepción de la solicitud</p>
+            </div>
+
+            <p><strong>Requisitos de la solicitud:</strong></p>
+            <ul>
+                <li>Nombre completo del solicitante</li>
+                <li>Copia del DNI/NIE/Pasaporte (para verificación de identidad)</li>
+                <li>Especificación del proveedor sobre el que solicita información</li>
+                <li>Justificación de la solicitud (opcional pero recomendado)</li>
+            </ul>
+
+            <h2>5. Evaluación de Impacto de Transferencias</h2>
+
+            <p>En cumplimiento de las <strong>Recomendaciones 01/2020 del CEPD</strong> (Comité Europeo de Protección de Datos), Denilson Capa ha realizado una evaluación del impacto de las transferencias internacionales, considerando:</p>
+
+            <ul>
+                <li><strong>Legislación del país de destino:</strong> Análisis de leyes de vigilancia (FISA 702, E.O. 12333) y garantías procesales en Estados Unidos</li>
+                <li><strong>Naturaleza de los datos:</strong> Los datos transferidos NO incluyen categorías especiales (Art. 9 RGPD) ni datos de menores</li>
+                <li><strong>Finalidad del tratamiento:</strong> Limitada a la prestación de servicios técnicos específicos</li>
+                <li><strong>Medidas complementarias:</strong> Cifrado, minimización, limitación temporal</li>
+                <li><strong>Riesgos residuales:</strong> Evaluados como bajos dada la naturaleza de los datos y medidas implementadas</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>Conclusión:</strong> Las transferencias realizadas cumplen con los requisitos del RGPD y proporcionan garantías adecuadas para la protección de los datos personales de los usuarios.</p>
+            </div>
+
+            <h2>6. Sus Derechos</h2>
+
+            <p>En relación con las transferencias internacionales de datos, usted tiene derecho a:</p>
+
+            <ul>
+                <li><strong>Información transparente:</strong> Conocer qué datos se transfieren, a qué países y con qué garantías (Art. 13-14 RGPD)</li>
+                <li><strong>Acceso:</strong> Obtener confirmación sobre si sus datos están siendo transferidos (Art. 15 RGPD)</li>
+                <li><strong>Oposición:</strong> Oponerse al tratamiento que implique transferencia internacional, excepto cuando sea necesario para la prestación del servicio solicitado (Art. 21 RGPD)</li>
+                <li><strong>Supresión:</strong> Solicitar la eliminación de sus datos, lo que conllevará la cesación de las transferencias (Art. 17 RGPD)</li>
+                <li><strong>Reclamación:</strong> Presentar una reclamación ante la AEPD si considera que sus datos no están adecuadamente protegidos (Art. 77 RGPD)</li>
+            </ul>
+
+            <p>Para ejercer cualquiera de estos derechos, consulte nuestra <a href="/politica-privacidad.html">Política de Privacidad</a> o contacte directamente con: <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+
+            <h2>7. Actualización de Garantías</h2>
+
+            <p>Denilson Capa se compromete a:</p>
+
+            <ul>
+                <li>Revisar periódicamente la adecuación de las garantías aplicadas</li>
+                <li>Actualizar las medidas complementarias según evolucione la legislación y jurisprudencia</li>
+                <li>Notificar cualquier cambio sustancial en las garantías de transferencia</li>
+                <li>Suspender transferencias si las garantías resultan insuficientes</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>Última revisión de garantías:</strong> 16 de enero de 2026</p>
+                <p><strong>Próxima revisión programada:</strong> 16 de julio de 2026</p>
+            </div>
+
+            <h2>8. Contacto</h2>
+
+            <p>Para cualquier consulta sobre las transferencias internacionales de datos o las Cláusulas Contractuales Tipo:</p>
+
+            <div class="info-box">
+                <p><strong>Responsable del Tratamiento:</strong> Denilson Capa</p>
+                <p><strong>Email de protección de datos:</strong> <a href="mailto:privacidad@denilsonarnau.com">privacidad@denilsonarnau.com</a></p>
+                <p><strong>Teléfono:</strong> <a href="tel:+34692257776">+34 692 257 776</a></p>
+                <p><strong>Dirección postal:</strong> Mare de Deu de Fatima 31, 08191 Rubí, Barcelona, España</p>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--color-border); margin: 2rem 0;">
+
+            <p style="font-size: 0.875rem; color: var(--color-text-muted);">
+                <strong>Referencias normativas:</strong><br>
+                • Reglamento (UE) 2016/679 (RGPD) - Arts. 44-50<br>
+                • Decisión de Ejecución (UE) 2021/914 de la Comisión<br>
+                • Recomendaciones 01/2020 del CEPD sobre medidas complementarias<br>
+                • Directrices 2/2018 del CEPD sobre derogaciones (Art. 49)
+            </p>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Sistemas Organizados at Network - Denilson Capa</p>
+            <p>
+                <a href="/">Inicio</a> ·
+                <a href="/aviso-legal.html">Aviso Legal</a> ·
+                <a href="/politica-privacidad.html">Privacidad</a> ·
+                <a href="/politica-cookies.html">Cookies</a> ·
+                <a href="/accesibilidad.html">Accesibilidad</a> ·
+                <a href="/cct-transferencias.html">CCT</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

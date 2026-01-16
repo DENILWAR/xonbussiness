@@ -2,6 +2,41 @@
    PORTAFOLIO PROFESIONAL - ESTILOS PRINCIPALES
    ================================================ */
 
+/* -------------------- Accessibility Utilities -------------------- */
+/* Screen Reader Only Text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Skip Links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 10000;
+    border-radius: 0 0 0.5rem 0;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
 /* -------------------- CSS Variables -------------------- */
 :root {
     /* Colors - Dark Mode (Default) */
@@ -62,7 +97,7 @@
     --z-dropdown: 100;
     --z-header: 500;
     --z-modal: 1000;
-    --z-cursor: 9999;
+    --z-cursor: 99999;
 }
 
 /* -------------------- Light Mode Variables -------------------- */
@@ -78,7 +113,7 @@
 
         --color-text: #1a1a1a;
         --color-text-secondary: #4a4a5a;
-        --color-text-muted: #7a7a8a;
+        --color-text-muted: #6a6a7a;
 
         /* Mantener los mismos colores principales para consistencia de marca */
         --color-primary: #e14700;
@@ -182,6 +217,21 @@ body.no-scroll {
 ::selection {
     background: var(--color-primary);
     color: var(--color-text);
+}
+
+/* Focus Visible Styles for Keyboard Navigation */
+*:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
 }
 
 img {

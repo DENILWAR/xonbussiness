@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="/assets/css/chatbot/chatbot-widget.css">
 </head>
 <body>
+    <!-- Skip Links -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <a href="#proyectos" class="skip-link">Saltar a proyectos</a>
+    <a href="#contacto" class="skip-link">Saltar a contacto</a>
+
     <!-- Cursor personalizado -->
     <div class="cursor" id="cursor"></div>
     <div class="cursor-follower" id="cursor-follower"></div>
@@ -76,7 +81,7 @@
         </ul>
     </div>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section class="hero" id="inicio">
             <div class="hero-bg">
@@ -250,9 +255,9 @@
                     <article class="project-card coming-soon reveal">
                         <div class="project-image">
                             <div class="project-placeholder glass rotating-images">
-                                <img src="/assets/images/Chatbot1.png" alt="2FA Autenticator - Vista 1" class="rotating-image active">
-                                <img src="/assets/images/ChatbotCP.png" alt="2FA Autenticator - Vista 2" class="rotating-image">
-                                <img src="/assets/images/Chatbot2.jpeg" alt="2FA Autenticator - Vista 3" class="rotating-image">
+                                <img src="/assets/images/Chatbot1.png" alt="Interfaz del chatbot con IA mostrando conversación automatizada con cliente" class="rotating-image active">
+                                <img src="/assets/images/ChatbotCP.png" alt="Panel de control del chatbot con estadísticas y métricas de rendimiento" class="rotating-image">
+                                <img src="/assets/images/Chatbot2.jpeg" alt="Chatbot integrado en sitio web respondiendo consultas frecuentes" class="rotating-image">
                             </div>
                         </div>
                         <div class="project-info">
@@ -277,9 +282,9 @@
                     <article class="project-card coming-soon reveal">
                         <div class="project-image">
                             <div class="project-placeholder glass rotating-images">
-                                <img src="/assets/images/2fa-1.jpg" alt="2FA Autenticator - Vista 1" class="rotating-image active">
-                                <img src="/assets/images/2fa-2.jpg" alt="2FA Autenticator - Vista 2" class="rotating-image">
-                                <img src="/assets/images/2fa-3.jpg" alt="2FA Autenticator - Vista 3" class="rotating-image">
+                                <img src="/assets/images/2fa-1.jpg" alt="Aplicación de autenticación en dos factores mostrando pantalla principal con códigos de seguridad" class="rotating-image active">
+                                <img src="/assets/images/2fa-2.jpg" alt="Interfaz de configuración de autenticación 2FA con opciones de seguridad avanzadas" class="rotating-image">
+                                <img src="/assets/images/2fa-3.jpg" alt="Generador de códigos temporales para autenticación de doble factor" class="rotating-image">
                             </div>
                         </div>
                         <div class="project-info">
@@ -295,9 +300,9 @@
                     <article class="project-card coming-soon reveal" id="proyecto-local-card">
                         <div class="project-image">
                             <div class="project-placeholder glass rotating-images">
-                                <img src="/assets/images/Proyecto2.jpg" alt="2FA Autenticator - Vista 1" class="rotating-image active">
-                                <img src="/assets/images/Proyecto22.jpg" alt="2FA Autenticator - Vista 2" class="rotating-image">
-                                <img src="/assets/images/Proyecto222.jpg" alt="2FA Autenticator - Vista 3" class="rotating-image">
+                                <img src="/assets/images/Proyecto2.jpg" alt="Sistema de facturación local mostrando interfaz de creación de facturas automáticas" class="rotating-image active">
+                                <img src="/assets/images/Proyecto22.jpg" alt="Panel de gestión de clientes con categorización automática para facturación" class="rotating-image">
+                                <img src="/assets/images/Proyecto222.jpg" alt="Cálculo fiscal automático de IVA e IRPF en sistema de facturación" class="rotating-image">
                             </div>
                         </div>
                         <div class="project-info">
@@ -430,7 +435,7 @@
                     <div class="about-image reveal">
                         <div class="image-frame">
                             <div class="image-placeholder">
-                                <img src="/assets/images/me.jpeg" alt="me">
+                                <img src="/assets/images/me.jpeg" alt="Denilson Capa, desarrollador full-stack y fundador de Sistemas Organizados at Network">
                             </div>
                             <div class="image-decoration"></div>
                         </div>
@@ -570,7 +575,7 @@
                     </div>
                     
                     <div class="contact-form-wrapper reveal">
-                        <form class="contact-form" id="contact-form">
+                        <form class="contact-form" id="contact-form" aria-describedby="form-legal-info">
                             <div class="form-group">
                                 <label for="name">Nombre</label>
                                 <input type="text" id="name" name="name" required placeholder="Tu nombre">
@@ -607,14 +612,14 @@
 
                             <button type="submit" class="btn btn-primary btn-full">
                                 <span>Enviar mensaje</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                     <line x1="22" y1="2" x2="11" y2="13"/>
                                     <polygon points="22 2 15 22 11 13 2 9 22 2"/>
                                 </svg>
                             </button>
                         </form>
 
-                        <div class="form-legal-info">
+                        <div class="form-legal-info" id="form-legal-info">
                             <p><strong>Información sobre Protección de Datos:</strong></p>
                             <p>
                                 <strong>Responsable:</strong> Denilson Capa |
@@ -652,6 +657,8 @@
                     <a href="/aviso-legal.html">Aviso Legal</a>
                     <a href="/politica-privacidad.html">Privacidad</a>
                     <a href="/politica-cookies.html">Cookies</a>
+                    <a href="/accesibilidad.html">Accesibilidad</a>
+                    <a href="/cct-transferencias.html">CCT</a>
                 </div>
 
                 <div class="footer-copyright">
@@ -663,7 +670,7 @@
     </footer>
 
     <!-- Modal Proyecto Local -->
-    <div class="modal-overlay" id="proyecto-local-modal">
+    <div class="modal-overlay" id="proyecto-local-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-container">
             <button class="modal-close" aria-label="Cerrar modal">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -680,14 +687,14 @@
                         </svg>
                     </button>
 
-                    <div class="carousel-slides">
+                    <div class="carousel-slides" role="region" aria-live="polite" aria-label="Galería de imágenes del proyecto">
                         <!-- Slide 1 -->
                         <div class="carousel-slide active">
                             <div class="slide-image">
-                                <img src="/assets/images/Proyecto2.jpg" alt="Sistema de Facturación">
+                                <img src="/assets/images/Proyecto2.jpg" alt="Sistema completo de facturación para PyMEs con interfaz de creación y gestión automática de facturas">
                             </div>
                             <div class="slide-content">
-                                <h2 class="slide-title">Sistema de Facturación Local</h2>
+                                <h2 class="slide-title" id="modal-title">Sistema de Facturación Local</h2>
                                 <p class="slide-description">
                                     Un sistema completo de facturación diseñado específicamente para pequeñas y medianas empresas,
                                     que automatiza completamente el proceso de creación de facturas y gestión fiscal.
@@ -698,7 +705,7 @@
                         <!-- Slide 2 -->
                         <div class="carousel-slide">
                             <div class="slide-image">
-                                <img src="/assets/images/Proyecto22.jpg" alt="Gestión de Clientes">
+                                <img src="/assets/images/Proyecto22.jpg" alt="Panel de gestión inteligente de clientes con categorización automática según tipo fiscal">
                             </div>
                             <div class="slide-content">
                                 <h2 class="slide-title">Gestión Inteligente de Clientes</h2>
@@ -712,7 +719,7 @@
                         <!-- Slide 3 -->
                         <div class="carousel-slide">
                             <div class="slide-image">
-                                <img src="/assets/images/Proyecto222.jpg" alt="Cálculo Automático">
+                                <img src="/assets/images/Proyecto222.jpg" alt="Motor de cálculo fiscal automático aplicando IVA, IRPF y normativa legal en facturas">
                             </div>
                             <div class="slide-content">
                                 <h2 class="slide-title">Cálculo Fiscal Automático</h2>
@@ -726,7 +733,7 @@
                         <!-- Slide 4 -->
                         <div class="carousel-slide">
                             <div class="slide-image">
-                                <img src="/assets/images/Proyecto2.jpg" alt="Generación PDF">
+                                <img src="/assets/images/Proyecto2.jpg" alt="Sistema de generación automática de facturas en formato PDF con diseño profesional estructurado">
                             </div>
                             <div class="slide-content">
                                 <h2 class="slide-title">Generación de PDF Estructurada</h2>
@@ -740,7 +747,7 @@
                         <!-- Slide 5 -->
                         <div class="carousel-slide">
                             <div class="slide-image">
-                                <img src="/assets/images/Proyecto22.jpg" alt="Tecnología Python">
+                                <img src="/assets/images/Proyecto22.jpg" alt="Aplicación desarrollada en Python con código limpio y eficiente para automatización administrativa">
                             </div>
                             <div class="slide-content">
                                 <h2 class="slide-title">Desarrollado en Python</h2>
@@ -759,16 +766,19 @@
                     </button>
                 </div>
 
-                <div class="carousel-indicators">
-                    <button class="indicator active" data-slide="0"></button>
-                    <button class="indicator" data-slide="1"></button>
-                    <button class="indicator" data-slide="2"></button>
-                    <button class="indicator" data-slide="3"></button>
-                    <button class="indicator" data-slide="4"></button>
+                <div class="carousel-indicators" role="tablist" aria-label="Indicadores de diapositivas">
+                    <button class="indicator active" data-slide="0" role="tab" aria-label="Diapositiva 1" aria-selected="true"></button>
+                    <button class="indicator" data-slide="1" role="tab" aria-label="Diapositiva 2" aria-selected="false"></button>
+                    <button class="indicator" data-slide="2" role="tab" aria-label="Diapositiva 3" aria-selected="false"></button>
+                    <button class="indicator" data-slide="3" role="tab" aria-label="Diapositiva 4" aria-selected="false"></button>
+                    <button class="indicator" data-slide="4" role="tab" aria-label="Diapositiva 5" aria-selected="false"></button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Status announcer para lectores de pantalla -->
+    <div id="carousel-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <!-- Cookie Widget Flotante -->
     <div class="cookie-widget" id="cookie-widget" style="display: none;">

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Declaración de Accesibilidad - Sistemas Organizados at Network">
+    <meta name="robots" content="noindex, follow">
+    <title>Declaración de Accesibilidad | SON</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+
+    <!-- Fonts - Alojadas localmente -->
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0f;
+            --color-bg-secondary: #12121a;
+            --color-surface: #16161f;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --color-text: #ffffff;
+            --color-text-secondary: #a0a0b0;
+            --color-text-muted: #6b6b80;
+            --color-primary: #e14700;
+            --color-primary-light: #ff6a1a;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --color-bg: #ffffff;
+                --color-bg-secondary: #f8f9fa;
+                --color-surface: #ffffff;
+                --color-border: rgba(0, 0, 0, 0.1);
+                --color-text: #1a1a1a;
+                --color-text-secondary: #4a4a5a;
+                --color-text-muted: #7a7a8a;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 3rem;
+        }
+
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .content {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            padding: 3rem 2.5rem;
+        }
+
+        .page-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #e14700 0%, #ff6a1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .update-date {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+            color: var(--color-text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-primary-light);
+        }
+
+        a:focus {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        .info-box {
+            background: var(--color-bg-secondary);
+            border-left: 3px solid var(--color-primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .success-box {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .warning-box {
+            background: rgba(234, 179, 8, 0.1);
+            border-left: 3px solid #eab308;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--color-border);
+            margin: 2rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--color-text-secondary);
+        }
+
+        .contact-methods {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .contact-method {
+            padding: 1rem;
+            background: var(--color-bg-secondary);
+            border-radius: 0.5rem;
+            border: 1px solid var(--color-border);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="/" class="logo-link">
+                <img src="/assets/images/finalreal.svg" alt="SON Logo" class="logo-image" />
+                <span class="logo-text">Sistemas Organizados at Network</span>
+            </a>
+        </header>
+
+        <main class="content">
+            <h1 class="page-title">Declaración de Accesibilidad</h1>
+            <span class="update-date">Última actualización: 15 de enero de 2026</span>
+
+            <p><strong>Sistemas Organizados at Network</strong> se compromete a garantizar que su sitio web <strong>denilsonarnau.netlify.app</strong> sea accesible para todas las personas, independientemente de sus capacidades físicas, sensoriales o cognitivas.</p>
+
+            <h2>1. Situación de Cumplimiento</h2>
+
+            <div class="success-box">
+                <p><strong>✓ Este sitio web es parcialmente conforme</strong> con el <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16699" target="_blank" rel="noopener">Real Decreto 1112/2018</a> sobre accesibilidad de los sitios web y aplicaciones para dispositivos móviles del sector público, adaptado al sector privado con actividad económica.</p>
+            </div>
+
+            <h3>1.1. Nivel de Conformidad</h3>
+            <p>Este sitio web se ha diseñado con el objetivo de cumplir con el <strong>nivel AA de las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1</strong>.</p>
+
+            <h3>1.2. Método de Evaluación</h3>
+            <p>La evaluación de accesibilidad se ha realizado mediante:</p>
+            <ul>
+                <li><strong>Autoevaluación técnica:</strong> Análisis del código y estructura del sitio web</li>
+                <li><strong>Herramientas automáticas:</strong> WAVE, Lighthouse, axe DevTools</li>
+                <li><strong>Revisión manual:</strong> Navegación con teclado, lectores de pantalla y pruebas de contraste</li>
+                <li><strong>Fecha de evaluación:</strong> 15 de enero de 2026</li>
+            </ul>
+
+            <h2>2. Contenido Accesible</h2>
+
+            <div class="success-box">
+                <p><strong>Elementos implementados correctamente:</strong></p>
+                <ul style="margin-bottom: 0;">
+                    <li>✓ Estructura HTML5 semántica con etiquetas apropiadas</li>
+                    <li>✓ Navegación mediante teclado funcional (Tab, Enter, Escape)</li>
+                    <li>✓ Indicadores visuales de foco (outline) en elementos interactivos</li>
+                    <li>✓ Formularios con etiquetas asociadas y validación accesible</li>
+                    <li>✓ Enlaces descriptivos que indican claramente su destino</li>
+                    <li>✓ Tipografías legibles y escalables (fuentes locales)</li>
+                    <li>✓ Diseño responsive adaptado a diferentes tamaños de pantalla</li>
+                    <li>✓ Modo claro/oscuro según preferencias del sistema</li>
+                </ul>
+            </div>
+
+            <h2>3. Limitaciones Conocidas</h2>
+
+            <div class="warning-box">
+                <p><strong>Áreas en proceso de mejora:</strong></p>
+                <ul style="margin-bottom: 0;">
+                    <li>⚠️ Algunas imágenes decorativas pueden carecer de atributo alt vacío</li>
+                    <li>⚠️ El carrusel de proyectos está optimizado para gestos táctiles pero podría mejorar navegación por teclado</li>
+                    <li>⚠️ El chatbot con IA requiere mejoras en anuncios ARIA para lectores de pantalla</li>
+                </ul>
+            </div>
+
+            <p>Estamos trabajando activamente en resolver estas limitaciones en futuras actualizaciones.</p>
+
+            <h2>4. Tecnologías Utilizadas</h2>
+
+            <p>La accesibilidad de este sitio web se basa en las siguientes tecnologías:</p>
+            <ul>
+                <li><strong>HTML5:</strong> Estructura semántica del contenido</li>
+                <li><strong>CSS3:</strong> Presentación visual adaptativa</li>
+                <li><strong>JavaScript:</strong> Funcionalidad interactiva progresiva</li>
+                <li><strong>ARIA:</strong> Atributos de accesibilidad cuando es necesario</li>
+            </ul>
+
+            <p>El sitio web está diseñado para funcionar correctamente en:</p>
+            <ul>
+                <li>Navegadores modernos (Chrome, Firefox, Safari, Edge) - últimas 2 versiones</li>
+                <li>Lectores de pantalla (NVDA, JAWS, VoiceOver)</li>
+                <li>Dispositivos móviles (iOS, Android)</li>
+            </ul>
+
+            <h2>5. Contacto para Problemas de Accesibilidad</h2>
+
+            <p>Si encuentra alguna barrera de accesibilidad o tiene dificultades para acceder a cualquier contenido de este sitio web, puede ponerse en contacto con nosotros a través de los siguientes canales:</p>
+
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <p><strong>📧 Email específico de accesibilidad:</strong><br>
+                    <a href="mailto:accesibilidad@denilsonarnau.com">accesibilidad@denilsonarnau.com</a><br>
+                    <small style="color: var(--color-text-muted);">Nota: Este email está configurado con redirección a nuestro equipo de atención. Todas las consultas de accesibilidad reciben prioridad y son gestionadas conforme a nuestros compromisos de tiempo de respuesta.</small></p>
+                </div>
+
+                <div class="contact-method">
+                    <p><strong>📞 Teléfono:</strong><br>
+                    <a href="tel:+34692257776">+34 692 257 776</a><br>
+                    <small style="color: var(--color-text-muted);">Horario: Lunes a Viernes, 9:00 - 18:00 (CET)</small></p>
+                </div>
+
+                <div class="contact-method">
+                    <p><strong>✉️ Correo postal:</strong><br>
+                    Sistemas Organizados at Network<br>
+                    Denilson Capa<br>
+                    Mare de Deu de Fatima 31<br>
+                    08191 Rubí, Barcelona, España</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <p><strong>Compromiso de respuesta:</strong> Responderemos a su consulta en un plazo máximo de <strong>20 días hábiles</strong> e intentaremos proporcionar la información en un formato accesible alternativo cuando sea necesario.</p>
+            </div>
+
+            <h2>6. Procedimiento de Aplicación</h2>
+
+            <p>Si no está satisfecho con la respuesta recibida o considera que no se están cumpliendo los requisitos de accesibilidad establecidos, puede:</p>
+
+            <ol>
+                <li><strong>Presentar una reclamación ante la empresa:</strong> A través de los canales de contacto indicados anteriormente, exponiendo detalladamente la naturaleza de la barrera de accesibilidad.</li>
+
+                <li><strong>Contactar con organismos de protección al consumidor:</strong> Puede dirigirse a las oficinas de consumo de su comunidad autónoma.</li>
+
+                <li><strong>Presentar una queja ante el Ministerio de Asuntos Económicos y Transformación Digital:</strong>
+                    <ul>
+                        <li>Sede electrónica: <a href="https://sede.mineco.gob.es" target="_blank" rel="noopener">sede.mineco.gob.es</a></li>
+                        <li>Correo postal: Paseo de la Castellana, 162, 28046 Madrid</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h2>7. Información Adicional</h2>
+
+            <h3>7.1. Compromiso con la Mejora Continua</h3>
+            <p>La accesibilidad es un proceso continuo. Nos comprometemos a:</p>
+            <ul>
+                <li>Revisar y actualizar periódicamente esta declaración</li>
+                <li>Realizar auditorías de accesibilidad de forma regular</li>
+                <li>Incorporar mejoras basadas en feedback de usuarios</li>
+                <li>Mantenernos actualizados con las últimas normas WCAG</li>
+            </ul>
+
+            <h3>7.2. Formación y Sensibilización</h3>
+            <p>El equipo de desarrollo de Sistemas Organizados at Network recibe formación continua en:</p>
+            <ul>
+                <li>Principios de diseño universal</li>
+                <li>Estándares de accesibilidad web (WCAG 2.1)</li>
+                <li>Uso de tecnologías asistivas</li>
+                <li>Mejores prácticas de desarrollo accesible</li>
+            </ul>
+
+            <h2>8. Normativa de Referencia</h2>
+
+            <p>Esta declaración de accesibilidad se ha elaborado conforme a:</p>
+            <ul>
+                <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-16699" target="_blank" rel="noopener">Real Decreto 1112/2018</a>, de 7 de septiembre, sobre accesibilidad de los sitios web y aplicaciones para dispositivos móviles del sector público</li>
+                <li><a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener">Web Content Accessibility Guidelines (WCAG) 2.1</a></li>
+                <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2022-5140" target="_blank" rel="noopener">Real Decreto Legislativo 1/2013</a>, de 29 de noviembre, por el que se aprueba el Texto Refundido de la Ley General de derechos de las personas con discapacidad</li>
+                <li>Directiva (UE) 2016/2102 del Parlamento Europeo sobre accesibilidad de sitios web</li>
+            </ul>
+
+            <hr>
+
+            <h2>9. Historial de Revisiones</h2>
+
+            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--color-border);">
+                        <th style="text-align: left; padding: 0.75rem; color: var(--color-text);">Fecha</th>
+                        <th style="text-align: left; padding: 0.75rem; color: var(--color-text);">Versión</th>
+                        <th style="text-align: left; padding: 0.75rem; color: var(--color-text);">Cambios</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--color-border);">
+                        <td style="padding: 0.75rem; color: var(--color-text-secondary);">15/01/2026</td>
+                        <td style="padding: 0.75rem; color: var(--color-text-secondary);">1.0</td>
+                        <td style="padding: 0.75rem; color: var(--color-text-secondary);">Publicación inicial de la declaración de accesibilidad</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box" style="margin-top: 2rem;">
+                <p><strong>Próxima revisión programada:</strong> 15 de julio de 2026</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Sistemas Organizados at Network - Denilson Capa</p>
+            <p>
+                <a href="/">Inicio</a> ·
+                <a href="/aviso-legal.html">Aviso Legal</a> ·
+                <a href="/politica-privacidad.html">Privacidad</a> ·
+                <a href="/politica-cookies.html">Cookies</a> ·
+                <a href="/accesibilidad.html" aria-current="page">Accesibilidad</a> ·
+                <a href="/cct-transferencias.html">CCT</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
