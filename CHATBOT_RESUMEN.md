@@ -2,7 +2,7 @@
 
 ## ✅ Implementación Completa
 
-Se ha creado un chatbot profesional para tu portafolio con las siguientes características:
+Se ha creado un chatbot profesional con las siguientes características:
 
 ---
 
