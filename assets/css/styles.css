@@ -1592,13 +1592,26 @@ ul, ol {
 
 .footer-links {
     display: flex;
-    gap: var(--space-xl);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm) var(--space-lg);
+}
+
+@media (min-width: 768px) {
+    .footer-links {
+        justify-content: flex-start;
+        gap: var(--space-sm) var(--space-xl);
+    }
 }
 
 .footer-links a {
     font-size: 0.9rem;
     color: var(--color-text-secondary);
     transition: color var(--transition-base);
+    padding: var(--space-xs) 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .footer-links a:hover {
