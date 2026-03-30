@@ -1,4 +1,4 @@
-# 📋 INFORME DE CUMPLIMIENTO LEGAL - denilsonarnau.netlify.app
+# 📋 INFORME DE CUMPLIMIENTO LEGAL - denilsonarnau.com
 ## Implementación Completa RGPD/LOPDGDD/LSSI/Accesibilidad
 
 **Fecha de implementación:** 15 de enero de 2026
@@ -9,7 +9,7 @@
 
 ## 📊 RESUMEN EJECUTIVO
 
-Este documento certifica que el sitio web **denilsonarnau.netlify.app** cumple con el **100% de la normativa española aplicable** en materia de:
+Este documento certifica que el sitio web **denilsonarnau.com** cumple con el **100% de la normativa española aplicable** en materia de:
 
 - ✅ **RGPD** (Reglamento General de Protección de Datos - UE 2016/679)
 - ✅ **LOPDGDD** (Ley Orgánica 3/2018 de Protección de Datos)
@@ -388,7 +388,7 @@ Posición: Footer junto a Aviso Legal, Privacidad y Cookies
 
 ## 🏆 CERTIFICACIÓN
 
-Este documento certifica que el sitio web **denilsonarnau.netlify.app** cumple con:
+Este documento certifica que el sitio web **denilsonarnau.com** cumple con:
 
 ✅ **RGPD (EU 2016/679)** - Reglamento General de Protección de Datos
 ✅ **LOPDGDD (LO 3/2018)** - Ley Orgánica de Protección de Datos

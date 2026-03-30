@@ -2,7 +2,7 @@
 
 **Portafolio Profesional de Denilson Capa**
 
-[![Deploy Status](https://img.shields.io/badge/deploy-netlify-00C7B7?style=flat-square&logo=netlify)](https://denilsonarnau.netlify.app)
+[![Deploy Status](https://img.shields.io/badge/deploy-netlify-00C7B7?style=flat-square&logo=netlify)](https://denilsonarnau.com)
 [![RGPD](https://img.shields.io/badge/RGPD-Compliant-success?style=flat-square)](./LEGAL/)
 [![License](https://img.shields.io/badge/license-Private-red?style=flat-square)]()
 
@@ -12,7 +12,7 @@
 
 Portafolio web profesional y moderno que presenta mis servicios de desarrollo web, diseño digital y automatización de procesos. Incluye un chatbot inteligente con IA (OpenAI GPT-4) para atención automatizada.
 
-**🔗 Web en vivo:** [https://denilsonarnau.netlify.app](https://denilsonarnau.netlify.app)
+**🔗 Web en vivo:** [https://denilsonarnau.com](https://denilsonarnau.com)
 
 ---
 
@@ -364,7 +364,7 @@ Incluye información sobre:
 ## 📞 Contacto
 
 **Denilson Capa**
-- 🌐 Web: [https://denilsonarnau.netlify.app](https://denilsonarnau.netlify.app)
+- 🌐 Web: [https://denilsonarnau.com](https://denilsonarnau.com)
 - 📧 Email: bussiness@denilsonarnau.com
 - 🔒 Privacidad: privacidad@denilsonarnau.com
 - 📱 Teléfono: +34 692 257 776

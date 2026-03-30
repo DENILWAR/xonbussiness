@@ -2,7 +2,7 @@
 
 **Última actualización:** 13 de enero de 2026
 
-En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa a los usuarios del sitio web **denilsonarnau.netlify.app** de los datos identificativos del titular:
+En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa a los usuarios del sitio web **denilsonarnau.com** de los datos identificativos del titular:
 
 ---
 
@@ -17,13 +17,13 @@ En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad d
 **País:** España
 **Correo electrónico:** bussiness@denilsonarnau.com
 **Teléfono:** +34 692 257 776
-**Sitio web:** https://denilsonarnau.netlify.app
+**Sitio web:** https://denilsonarnau.com
 
 ---
 
 ## 2. OBJETO
 
-El presente Aviso Legal regula el uso y utilización del sitio web **denilsonarnau.netlify.app** (en adelante, "el Sitio Web"), del que es titular Denilson Capa.
+El presente Aviso Legal regula el uso y utilización del sitio web **denilsonarnau.com** (en adelante, "el Sitio Web"), del que es titular Denilson Capa.
 
 La navegación por el Sitio Web atribuye la condición de **usuario** del mismo e implica la aceptación plena y sin reservas de todas y cada una de las disposiciones incluidas en este Aviso Legal, que pueden sufrir modificaciones.
 

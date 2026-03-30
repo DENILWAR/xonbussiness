@@ -125,4 +125,4 @@ Para consultas sobre cookies: **privacidad@denilsonarnau.com**
 ---
 
 **Responsable:** Denilson Capa | Sistemas Organizados at Network
-**Web:** https://denilsonarnau.netlify.app
+**Web:** https://denilsonarnau.com

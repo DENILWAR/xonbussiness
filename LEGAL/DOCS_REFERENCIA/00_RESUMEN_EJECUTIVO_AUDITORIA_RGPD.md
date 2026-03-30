@@ -3,7 +3,7 @@
 
 **Proyecto:** Portafolio Profesional - Sistemas Organizados at Network (SON)
 **Titular:** Denilson Capa
-**URL:** https://denilsonarnau.netlify.app
+**URL:** https://denilsonarnau.com
 **Fecha de auditoría:** 13 de enero de 2026
 **Auditor:** Experto Legal-Técnico en Protección de Datos
 
