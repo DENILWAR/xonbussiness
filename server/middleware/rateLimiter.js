@@ -41,11 +41,7 @@ export const strictRateLimiter = rateLimit({
     handler: (req, res) => {
         console.error(`🚨 Rate limit severo excedido para IP: ${req.ip}`);
         res.status(429).json({
-            error: 'Has excedido el límite de mensajes por hora. Por favor, contacta directamente si necesitas más ayuda.',
-            contact: {
-                email: 'denilsoncapa2004@gmail.com',
-                telefono: '+34 692257776'
-            }
+            error: 'Has excedido el límite de mensajes por hora. Por favor, inténtalo más tarde.'
         });
     }
 });

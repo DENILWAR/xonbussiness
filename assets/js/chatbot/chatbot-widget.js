@@ -333,14 +333,23 @@ class ChatbotWidget {
 
     // ==================== Utilities ====================
     formatMessage(text) {
-        // Convertir URLs a enlaces
-        const urlRegex = /(https?:\/\/[^\s]+)/g;
-        text = text.replace(urlRegex, '<a href="$1" target="_blank">$1</a>');
+        // Escapar HTML para prevenir XSS
+        const escaped = text
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#x27;');
+
+        // Convertir URLs a enlaces seguros (solo https)
+        const urlRegex = /(https?:\/\/[^\s<>"']+)/g;
+        const linked = escaped.replace(urlRegex, (url) => {
+            const safeUrl = url.replace(/&#x27;/g, '').replace(/&quot;/g, '');
+            return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${safeUrl}</a>`;
+        });
 
         // Convertir saltos de línea
-        text = text.replace(/\n/g, '<br>');
-
-        return text;
+        return linked.replace(/\n/g, '<br>');
     }
 
     formatTime(date) {
@@ -359,11 +368,17 @@ class ChatbotWidget {
     }
 
     generateUUID() {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            const r = Math.random() * 16 | 0;
-            const v = c === 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-        });
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+            return crypto.randomUUID();
+        }
+        // Fallback con crypto.getRandomValues (seguro)
+        const bytes = new Uint8Array(16);
+        crypto.getRandomValues(bytes);
+        bytes[6] = (bytes[6] & 0x0f) | 0x40;
+        bytes[8] = (bytes[8] & 0x3f) | 0x80;
+        return [...bytes].map((b, i) =>
+            ([4, 6, 8, 10].includes(i) ? '-' : '') + b.toString(16).padStart(2, '0')
+        ).join('');
     }
 
     // ==================== Persistencia ====================
@@ -374,7 +389,7 @@ class ChatbotWidget {
                 sessionId: this.sessionId,
                 lastUpdate: Date.now()
             };
-            localStorage.setItem('chatbot_history', JSON.stringify(history));
+            sessionStorage.setItem('chatbot_history', JSON.stringify(history));
         } catch (error) {
             console.warn('No se pudo guardar el historial:', error);
         }
@@ -382,7 +397,7 @@ class ChatbotWidget {
 
     loadHistory() {
         try {
-            const saved = localStorage.getItem('chatbot_history');
+            const saved = sessionStorage.getItem('chatbot_history');
             if (!saved) return;
 
             const history = JSON.parse(saved);

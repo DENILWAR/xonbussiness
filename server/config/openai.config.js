@@ -20,7 +20,7 @@ const openai = new OpenAI({
 
 // Configuración del modelo
 export const openAIConfig = {
-    model: process.env.OPENAI_MODEL || 'gpt-4-turbo-preview',
+    model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
     maxTokens: parseInt(process.env.OPENAI_MAX_TOKENS) || 500,
     temperature: parseFloat(process.env.OPENAI_TEMPERATURE) || 0.7,
     topP: 1,

@@ -30,8 +30,24 @@ const PORT = process.env.PORT || 3001;
 
 // Helmet para headers de seguridad
 app.use(helmet({
-    contentSecurityPolicy: false, // Deshabilitamos CSP para desarrollo
-    crossOriginEmbedderPolicy: false
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+            imgSrc: ["'self'", "data:", "https:"],
+            connectSrc: ["'self'", "https://api.openai.com", "https://xonbussiness-production.up.railway.app"],
+            fontSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            frameAncestors: ["'none'"]
+        }
+    },
+    crossOriginEmbedderPolicy: false,
+    hsts: {
+        maxAge: 31536000,
+        includeSubDomains: true,
+        preload: true
+    }
 }));
 
 // CORS configurado
@@ -44,7 +60,7 @@ app.use(cors({
         // Permitir requests sin origin (como Postman)
         if (!origin) return callback(null, true);
 
-        if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+        if (allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
             console.warn(`⚠️  Origen bloqueado: ${origin}`);

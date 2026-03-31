@@ -86,7 +86,7 @@ export async function handleChatMessage(req, res) {
         // Respuesta de error al cliente
         res.status(500).json({
             error: 'Lo siento, hubo un problema al procesar tu mensaje.',
-            message: 'Por favor, intenta de nuevo o contacta directamente con Denilson en denilsoncapa2004@gmail.com',
+            message: 'Por favor, intenta de nuevo en unos momentos.',
             fallback: true
         });
     }
