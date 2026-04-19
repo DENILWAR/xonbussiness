@@ -523,6 +523,11 @@
     .message-content {
         max-width: 85%;
     }
+
+    /* Prevent iOS Safari auto-zoom on input focus (triggered when font-size < 16px) */
+    .chat-input {
+        font-size: 16px;
+    }
 }
 
 /* -------------------- Enlaces en mensajes -------------------- */
