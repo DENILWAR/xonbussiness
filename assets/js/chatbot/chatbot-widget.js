@@ -13,6 +13,7 @@ class ChatbotWidget {
         };
 
         this.isOpen = false;
+        this._userScrolledUp = false;
         this.sessionId = this.getOrCreateSessionId();
         this.messageHistory = [];
 
@@ -166,6 +167,12 @@ class ChatbotWidget {
                 this.sendMessage();
             }
         });
+
+        // Smart scroll: detectar si el usuario se ha alejado del fondo
+        this.elements.body.addEventListener('scroll', () => {
+            const el = this.elements.body;
+            this._userScrolledUp = (el.scrollHeight - el.scrollTop - el.clientHeight) > 80;
+        });
     }
 
     // ==================== Toggle Chat ====================
@@ -175,8 +182,9 @@ class ChatbotWidget {
         this.elements.window.classList.toggle('active', this.isOpen);
 
         if (this.isOpen) {
+            this._userScrolledUp = false;
             this.elements.input.focus();
-            this.scrollToBottom();
+            this.scrollToBottom(true);
         }
     }
 
@@ -184,6 +192,7 @@ class ChatbotWidget {
     async sendMessage() {
         const message = this.elements.input.value.trim();
         if (!message) return;
+        this._userScrolledUp = false;
 
         // Limpiar input
         this.elements.input.value = '';
@@ -205,8 +214,8 @@ class ChatbotWidget {
             // Remover indicador de escritura
             this.hideTypingIndicator();
 
-            // Añadir respuesta del bot
-            this.addMessage(response.message, 'bot');
+            // Añadir respuesta del bot con efecto de escritura
+            this.addBotMessageWithTyping(response.message);
 
             // Guardar en historial
             this.saveHistory();
@@ -325,10 +334,110 @@ class ChatbotWidget {
         }
     }
 
-    scrollToBottom() {
+    scrollToBottom(force = false) {
         setTimeout(() => {
-            this.elements.body.scrollTop = this.elements.body.scrollHeight;
+            if (force || !this._userScrolledUp) {
+                this.elements.body.scrollTop = this.elements.body.scrollHeight;
+            }
         }, 100);
+    }
+
+    // ==================== Markdown Renderer ====================
+    renderMarkdown(rawText) {
+        const escape = s => s
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#x27;');
+
+        const applyInline = t => t
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/(?<!\*)\*(?!\*)([^*\n]+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>')
+            .replace(/(https?:\/\/[^\s<>"'&#]+)/g,
+                '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+
+        const lines = escape(rawText).split('\n');
+        const out = [];
+        let inList = false;
+
+        for (const line of lines) {
+            const h4 = line.match(/^### (.+)/);
+            const h3 = line.match(/^## (.+)/);
+            const h2 = line.match(/^# (.+)/);
+            const li = line.match(/^[-*] (.+)/);
+
+            if (h4 || h3 || h2) {
+                if (inList) { out.push('</ul>'); inList = false; }
+                const lvl = h4 ? 4 : h3 ? 3 : 2;
+                const txt = (h4 || h3 || h2)[1];
+                out.push(`<h${lvl} class="md-h${lvl}">${applyInline(txt)}</h${lvl}>`);
+            } else if (li) {
+                if (!inList) { out.push('<ul>'); inList = true; }
+                out.push(`<li>${applyInline(li[1])}</li>`);
+            } else {
+                if (inList && line.trim()) { out.push('</ul>'); inList = false; }
+                out.push(line.trim() ? applyInline(line) : '');
+            }
+        }
+
+        if (inList) out.push('</ul>');
+
+        return out.join('\n')
+            .split(/\n{2,}/)
+            .map(block => {
+                block = block.trim();
+                if (!block) return '';
+                if (/^<[huo]/.test(block)) return block;
+                return `<p class="md-p">${block.replace(/\n/g, '<br>')}</p>`;
+            })
+            .filter(Boolean)
+            .join('');
+    }
+
+    // ==================== Bot Typing Effect ====================
+    addBotMessageWithTyping(fullText) {
+        const messageEl = document.createElement('div');
+        messageEl.className = 'chat-message bot';
+        const time = this.formatTime(new Date());
+
+        messageEl.innerHTML = `
+            <div class="message-avatar bot">${this.config.botAvatar}</div>
+            <div class="message-content">
+                <div class="message-bubble"></div>
+                <div class="message-time">${time}</div>
+            </div>
+        `;
+
+        this.elements.body.appendChild(messageEl);
+        const bubble = messageEl.querySelector('.message-bubble');
+        const bodyEl = this.elements.body;
+
+        // Scroll to show the TOP of the new message, not the bottom
+        requestAnimationFrame(() => {
+            bodyEl.scrollTo({ top: messageEl.offsetTop - 8, behavior: 'smooth' });
+        });
+
+        const words = fullText.split(' ');
+        const total = words.length;
+        const chunkSize = total > 80 ? 3 : total > 30 ? 2 : 1;
+        const speed = total > 80 ? 18 : total > 30 ? 28 : 42;
+        let idx = 0;
+
+        const type = () => {
+            if (idx >= total) {
+                bubble.innerHTML = this.renderMarkdown(fullText);
+                return;
+            }
+            idx = Math.min(idx + chunkSize, total);
+            bubble.textContent = words.slice(0, idx).join(' ') + (idx < total ? ' ▍' : '');
+            if (!this._userScrolledUp) bodyEl.scrollTop = bodyEl.scrollHeight;
+            setTimeout(type, speed);
+        };
+
+        setTimeout(type, 50);
+
+        this.messageHistory.push({ text: fullText, sender: 'bot', timestamp: Date.now() });
     }
 
     // ==================== Utilities ====================
@@ -431,11 +540,12 @@ class ChatbotWidget {
         messageEl.className = `chat-message ${sender}`;
 
         const avatar = sender === 'bot' ? this.config.botAvatar : this.config.userAvatar;
+        const content = sender === 'bot' ? this.renderMarkdown(text) : this.formatMessage(text);
 
         messageEl.innerHTML = `
             <div class="message-avatar ${sender}">${avatar}</div>
             <div class="message-content">
-                <div class="message-bubble">${this.formatMessage(text)}</div>
+                <div class="message-bubble">${content}</div>
             </div>
         `;
 
