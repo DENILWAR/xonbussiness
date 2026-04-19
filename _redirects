@@ -1,1 +1,16 @@
 https://denilsonarnau.netlify.app/* https://denilsonarnau.com/:splat 301!
+
+# Block internal source files from public access
+/server/*               /404.html  404!
+/LEGAL/*                /404.html  404!
+/README.md              /404.html  404!
+/ARQUITECTURA.txt       /404.html  404!
+/CHANGELOG.md           /404.html  404!
+/.env                   /404.html  404!
+/.env.*                 /404.html  404!
+/.git/*                 /404.html  404!
+/package.json           /404.html  404!
+/package-lock.json      /404.html  404!
+/*.md                   /404.html  404!
+/*.txt                  /404.html  404!
+/*.log                  /404.html  404!

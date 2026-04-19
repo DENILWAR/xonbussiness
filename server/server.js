@@ -57,13 +57,11 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
 
 app.use(cors({
     origin: function (origin, callback) {
-        // Permitir requests sin origin (como Postman)
-        if (!origin) return callback(null, true);
+        if (!origin) return callback(null, false);
 
         if (allowedOrigins.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
-            console.warn(`⚠️  Origen bloqueado: ${origin}`);
             callback(new Error('No permitido por CORS'));
         }
     },
@@ -119,18 +117,7 @@ app.delete('/api/session/:sessionId', deleteSession);
  * Ruta raíz - Información de la API
  */
 app.get('/', (req, res) => {
-    res.json({
-        service: 'Chatbot Santos API',
-        version: '1.0.0',
-        description: 'API Backend para el chatbot del portafolio de Denilson Capa',
-        endpoints: {
-            chat: 'POST /api/chat',
-            health: 'GET /api/health',
-            session: 'GET /api/session/:sessionId',
-            deleteSession: 'DELETE /api/session/:sessionId'
-        },
-        documentation: 'https://github.com/DENILWAR'
-    });
+    res.status(200).json({ status: 'ok' });
 });
 
 // ==================== Error Handlers ====================

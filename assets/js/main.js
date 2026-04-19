@@ -325,7 +325,7 @@ function initFormHandling() {
                 templateParams
             );
             
-            console.log('✅ Email enviado:', response);
+            console.log('✅ Email enviado');
             
             // Estado: Éxito
             submitBtn.innerHTML = `

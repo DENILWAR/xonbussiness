@@ -40,9 +40,7 @@ export async function handleChatMessage(req, res) {
 
                 return res.json({
                     message: responseMessage,
-                    sessionId: session.id,
-                    intent: intent,
-                    source: 'predefined'
+                    sessionId: session.id
                 });
             }
         }
@@ -74,10 +72,7 @@ export async function handleChatMessage(req, res) {
         // Responder al cliente
         res.json({
             message: responseMessage,
-            sessionId: session.id,
-            intent: intent,
-            source: 'openai',
-            tokensUsed: aiResponse.tokensUsed
+            sessionId: session.id
         });
 
     } catch (error) {
@@ -160,15 +155,7 @@ export function deleteSession(req, res) {
  * Health check
  */
 export function healthCheck(req, res) {
-    const activeSessions = sessionManager.getActiveSessionsCount();
-
-    res.json({
-        status: 'ok',
-        service: 'Chatbot Santos API',
-        timestamp: new Date().toISOString(),
-        activeSessions: activeSessions,
-        uptime: process.uptime()
-    });
+    res.json({ status: 'ok' });
 }
 
 export default {
