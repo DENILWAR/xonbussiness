@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SON Identity — NFC-based identity and networking platform. Case study: problem, card-as-pointer architecture, decisions, and current status.">
+    <meta property="og:title" content="SON Identity — NFC-based identity and networking | Denilson Capa">
+    <meta property="og:description" content="The physical card carries no data — it's a pointer. The platform is the product.">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="canonical" href="https://denilsonarnau.com/en/son-identity.html">
+    <link rel="alternate" hreflang="es" href="https://denilsonarnau.com/son-identity.html">
+    <link rel="alternate" hreflang="en" href="https://denilsonarnau.com/en/son-identity.html">
+
+    <title>SON Identity — NFC-Based Identity Platform | Denilson Capa</title>
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/images/finalbosslogo.svg">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/chatbot/chatbot-widget.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/en/index.html" class="logo">
+                <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                <div class="logo-brand">
+                    <span class="logo-company">Denilson Capa</span>
+                    <h5 class="logo-company">Systems, not services.</h5>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/en/index.html" class="nav-link">Home</a></li>
+                <li><a href="/en/projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="/en/engineering.html" class="nav-link">Engineering</a></li>
+                <li><a href="/en/about.html" class="nav-link">About</a></li>
+                <li><a href="/en/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="lang-switch">
+                <a href="/son-identity.html">ES</a>
+                <a href="/en/son-identity.html" class="active">EN</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/en/index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="/en/projects.html" class="mobile-nav-link">Projects</a></li>
+            <li><a href="/en/engineering.html" class="mobile-nav-link">Engineering</a></li>
+            <li><a href="/en/about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="/en/contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <section class="case-hero">
+            <div class="container">
+                <div class="case-hero-meta">
+                    <span class="status-badge is-dev">In development</span>
+                    <span class="tag">NFC</span>
+                    <span class="tag">SaaS</span>
+                    <span class="tag">Subscriptions</span>
+                </div>
+                <h1 class="case-hero-title reveal">SON Identity</h1>
+                <p class="case-hero-subtitle reveal">
+                    NFC-based identity and networking, with the backend of a real SaaS platform.
+                </p>
+            </div>
+        </section>
+
+        <section class="case-section" style="border-top: none;">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Problem</span>
+                    <div class="case-section-body">
+                        <p>
+                            Professional networking still runs on paper cards and dead-end contact
+                            exchanges — the artifact (the card) survives, but the connection doesn't get
+                            captured anywhere useful. SON Identity replaces the physical card with an NFC
+                            tap that's backed by a real identity and analytics platform, not just a digital
+                            business card gimmick.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Context</span>
+                    <div class="case-section-body">
+                        <p>
+                            This is a hardware + software product: the NFC card is only as good as the
+                            platform behind it — account management, subscriptions, and analytics have to
+                            work the moment someone taps, with zero setup friction for the person receiving
+                            the contact.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Constraints</span>
+                    <div class="case-section-body">
+                        <p>
+                            NFC hardware provisioning has to stay decoupled from account logic (a card can
+                            be reissued, lost, or reassigned without breaking a user's identity or history).
+                            Needs to support both individual professionals and teams/companies issuing cards
+                            at scale, which changes the admin and billing model from day one.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Architecture</span>
+                    <div class="case-section-body">
+                        <p>
+                            The physical card carries no data itself — it's a pointer, so identity, profile,
+                            and history live entirely server-side and can be updated, revoked, or migrated
+                            without reprinting anything.
+                        </p>
+
+                        <div class="diagram-frame">
+                            <svg viewBox="0 0 1000 200" role="img" aria-labelledby="son-diagram-title-en">
+                                <title id="son-diagram-title-en">SON Identity architecture diagram</title>
+                                <defs>
+                                    <marker id="arrow-s-en" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                                        <path d="M0,0 L6,3 L0,6 Z" class="edge-arrow" />
+                                    </marker>
+                                </defs>
+                                <line x1="118" y1="100" x2="222" y2="100" class="edge-line" marker-end="url(#arrow-s-en)" />
+                                <line x1="298" y1="100" x2="402" y2="100" class="edge-line" marker-end="url(#arrow-s-en)" />
+                                <line x1="478" y1="100" x2="582" y2="100" class="edge-line" marker-end="url(#arrow-s-en)" />
+                                <line x1="658" y1="100" x2="762" y2="100" class="edge-line" marker-end="url(#arrow-s-en)" />
+
+                                <circle cx="80" cy="100" r="38" class="node-circle" />
+                                <text x="80" y="96" text-anchor="middle" class="node-label">Card</text>
+                                <text x="80" y="112" text-anchor="middle" class="node-sublabel">NFC</text>
+
+                                <circle cx="260" cy="100" r="38" class="node-circle" />
+                                <text x="260" y="96" text-anchor="middle" class="node-label">Auth</text>
+                                <text x="260" y="112" text-anchor="middle" class="node-sublabel">resolution</text>
+
+                                <circle cx="440" cy="100" r="42" class="node-circle" />
+                                <text x="440" y="96" text-anchor="middle" class="node-label">Identity</text>
+                                <text x="440" y="112" text-anchor="middle" class="node-sublabel">profile store</text>
+
+                                <circle cx="620" cy="100" r="42" class="node-circle" />
+                                <text x="620" y="96" text-anchor="middle" class="node-label">Analytics</text>
+                                <text x="620" y="112" text-anchor="middle" class="node-sublabel">tap events</text>
+
+                                <circle cx="820" cy="100" r="48" class="node-circle" />
+                                <text x="820" y="94" text-anchor="middle" class="node-label">Admin panel</text>
+                                <text x="820" y="110" text-anchor="middle" class="node-sublabel">accounts / billing</text>
+                            </svg>
+                        </div>
+                        <p class="diagram-caption">
+                            NFC card (static identifier) → auth/resolution service → identity and profile
+                            store → analytics pipeline → admin dashboard.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Technologies</span>
+                    <div class="case-section-body">
+                        <p>
+                            Web platform for the account/admin/analytics layers, NFC read/write integration
+                            for the hardware layer, subscription/billing logic designed for both individual
+                            and multi-seat (team) accounts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Process</span>
+                    <div class="case-section-body">
+                        <p>
+                            Started from the hardware constraint outward — decided what the card can't be
+                            allowed to know before designing what the platform should know, then built the
+                            admin/subscription layer once the identity model was stable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Key decisions</span>
+                    <div class="case-section-body">
+                        <div class="case-decisions">
+                            <div class="case-decision">
+                                <div class="case-decision-label">Card-as-pointer, not card-as-data</div>
+                                <p>Enables reissuing/lost-card recovery without identity loss.</p>
+                            </div>
+                            <div class="case-decision">
+                                <div class="case-decision-label">Team account model from the start</div>
+                                <p>Not bolted on later, since B2B card-issuing (companies ordering cards for their staff) is a materially different admin/billing shape than individual signup.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Mistakes / what I'd do differently</span>
+                    <div class="case-section-body">
+                        <div class="case-callout">
+                            <p>
+                                Initially under-scoped the analytics layer as an afterthought; realized
+                                engagement data (who scanned, when, from where) is actually core product
+                                value for professionals and teams, not a nice-to-have, and had to revisit
+                                the data model to capture it properly from day one instead of retrofitting.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Learnings</span>
+                    <div class="case-section-body">
+                        <p>
+                            In a hardware-linked product, the temptation is to treat the physical object as
+                            the product. It isn't — the platform is the product, and the card is the
+                            interface to it.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Result</span>
+                    <div class="case-section-body">
+                        <div class="case-result">
+                            <span class="status-badge is-dev case-result-status">In development</span>
+                            <p>
+                                First cards issued, first team/company account onboarded, and first
+                                analytics dashboard shipped to a real user will be added here as soon as
+                                they exist. There's nothing to show yet — and I'd rather say that than
+                                invent a number.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Roadmap</span>
+                    <div class="case-section-body">
+                        <p>
+                            Team/company self-serve issuing, deeper analytics (engagement scoring, CRM
+                            export), broader hardware form factors beyond the card.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: var(--space-3xl);">
+            <div class="container">
+                <div class="section-header">
+                    <a href="/en/projects.html" class="btn btn-secondary reveal">
+                        <span>← View all projects</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/en/index.html" class="logo">
+                        <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                        <div class="logo-brand"><span class="logo-company">Denilson Capa</span></div>
+                    </a>
+                    <p class="footer-tagline">Systems, not services.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:business@son.enterprises">Email</a>
+                    <a href="https://github.com/DENILWAR">GitHub</a>
+                    <a href="https://www.linkedin.com/in/denilson-arnau-capa-42339a270/">LinkedIn</a>
+                    <a href="/aviso-legal.html">Legal Notice</a>
+                    <a href="/politica-privacidad.html">Privacy</a>
+                    <a href="/politica-cookies.html">Cookies</a>
+                    <a href="/accesibilidad.html">Accessibility</a>
+                    <a href="/cct-transferencias.html">CCT</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© <span id="year"></span> Denilson Capa</p>
+                    <p>NIF: 47929828J | <a href="mailto:soporte@denilsonarnau.com">soporte@denilsonarnau.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-widget" id="cookie-widget" style="display: none;">
+        <div class="cookie-icon" id="cookie-icon">🍪</div>
+        <div class="cookie-chat-message" id="cookie-chat-message" style="display: none;">
+            <div class="cookie-chat-header">
+                <span class="cookie-chat-title">🍪 Cookie Policy</span>
+                <button class="cookie-chat-close" onclick="closeCookieChat()" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="cookie-chat-body">
+                <p>We use essential technical cookies and third-party cookies (EmailJS) to improve your experience.</p>
+                <a href="/politica-cookies.html" target="_blank" rel="noopener noreferrer" class="cookie-info-link">More information</a>
+            </div>
+            <div class="cookie-chat-actions">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()">✓ Accept all</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Essential only</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/chatbot/chatbot-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Automatización de Procesos — motor de reglas fiscales separado de la generación de documentos, en producción interna. Caso de estudio con arquitectura, decisiones y resultado real.">
+    <meta property="og:title" content="Automatización de Procesos — motor de reglas y generación documental | Denilson Capa">
+    <meta property="og:description" content="Clasificación y reglas fiscales separadas de la generación del documento, para que un cambio normativo no obligue a tocar el formato de salida.">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="canonical" href="https://denilsonarnau.com/automatizacion.html">
+    <link rel="alternate" hreflang="es" href="https://denilsonarnau.com/automatizacion.html">
+    <link rel="alternate" hreflang="en" href="https://denilsonarnau.com/en/automation-systems.html">
+
+    <title>Automatización de Procesos | Denilson Capa</title>
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/images/finalbosslogo.svg">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/chatbot/chatbot-widget.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/index.html" class="logo">
+                <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                <div class="logo-brand">
+                    <span class="logo-company">Denilson Capa</span>
+                    <h5 class="logo-company">Systems, not services.</h5>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html" class="nav-link">Inicio</a></li>
+                <li><a href="/proyectos.html" class="nav-link active">Proyectos</a></li>
+                <li><a href="/ingenieria.html" class="nav-link">Ingeniería</a></li>
+                <li><a href="/sobre-mi.html" class="nav-link">Sobre Mí</a></li>
+                <li><a href="/contacto.html" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="lang-switch">
+                <a href="/automatizacion.html" class="active">ES</a>
+                <a href="/en/automation-systems.html">EN</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/index.html" class="mobile-nav-link">Inicio</a></li>
+            <li><a href="/proyectos.html" class="mobile-nav-link">Proyectos</a></li>
+            <li><a href="/ingenieria.html" class="mobile-nav-link">Ingeniería</a></li>
+            <li><a href="/sobre-mi.html" class="mobile-nav-link">Sobre Mí</a></li>
+            <li><a href="/contacto.html" class="mobile-nav-link">Contacto</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <section class="case-hero">
+            <div class="container">
+                <div class="case-hero-meta">
+                    <span class="status-badge is-live">En producción</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Automatización</span>
+                    <span class="tag">APIs REST</span>
+                </div>
+                <h1 class="case-hero-title reveal">Automatización de Procesos</h1>
+                <p class="case-hero-subtitle reveal">
+                    Motor de reglas fiscales separado de la generación de documentos —
+                    para que un cambio normativo no obligue a tocar el código de salida.
+                </p>
+            </div>
+        </section>
+
+        <section class="case-section" style="border-top: none;">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Problema</span>
+                    <div class="case-section-body">
+                        <p>
+                            Las pequeñas empresas pierden horas semanales en trabajo administrativo manual
+                            y repetitivo — creación de facturas, aplicación de reglas fiscales, generación
+                            de documentos — con el error humano escalando linealmente con el volumen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Contexto</span>
+                    <div class="case-section-body">
+                        <p>
+                            Se construyó inicialmente como herramienta interna para una empresa real en
+                            operación, lo que obligó al sistema a manejar casos reales (distintas categorías
+                            fiscales de cliente, menciones legales requeridas) en vez de un caso de demo
+                            simplificado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Restricciones</span>
+                    <div class="case-section-body">
+                        <p>
+                            Las reglas fiscales (IVA, IRPF, menciones legales) debían aplicarse correcta y
+                            consistentemente sin intervención manual en el camino común — una automatización
+                            que acierta "casi siempre" en materia fiscal es peor que no automatizar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Arquitectura</span>
+                    <div class="case-section-body">
+                        <p>
+                            Clasificación y aplicación de reglas están separadas de la generación del
+                            documento, de modo que la lógica fiscal se puede actualizar sin tocar el formato
+                            de salida, y viceversa.
+                        </p>
+
+                        <div class="diagram-frame">
+                            <svg viewBox="0 0 1000 200" role="img" aria-labelledby="auto-diagram-title">
+                                <title id="auto-diagram-title">Diagrama de arquitectura de Automatización de Procesos</title>
+                                <defs>
+                                    <marker id="arrow-a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                                        <path d="M0,0 L6,3 L0,6 Z" class="edge-arrow" />
+                                    </marker>
+                                </defs>
+                                <line x1="118" y1="100" x2="222" y2="100" class="edge-line" marker-end="url(#arrow-a)" />
+                                <line x1="298" y1="100" x2="402" y2="100" class="edge-line" marker-end="url(#arrow-a)" />
+                                <line x1="478" y1="100" x2="582" y2="100" class="edge-line" marker-end="url(#arrow-a)" />
+                                <line x1="658" y1="100" x2="762" y2="100" class="edge-line" marker-end="url(#arrow-a)" />
+
+                                <circle cx="80" cy="100" r="38" class="node-circle" />
+                                <text x="80" y="96" text-anchor="middle" class="node-label">Entrada</text>
+                                <text x="80" y="112" text-anchor="middle" class="node-sublabel">cliente/doc.</text>
+
+                                <circle cx="260" cy="100" r="42" class="node-circle" />
+                                <text x="260" y="96" text-anchor="middle" class="node-label">Clasificación</text>
+                                <text x="260" y="112" text-anchor="middle" class="node-sublabel">tipo de cliente</text>
+
+                                <circle cx="440" cy="100" r="48" class="node-circle" />
+                                <text x="440" y="94" text-anchor="middle" class="node-label">Motor de reglas</text>
+                                <text x="440" y="110" text-anchor="middle" class="node-sublabel">IVA / IRPF / legal</text>
+
+                                <circle cx="620" cy="100" r="42" class="node-circle" />
+                                <text x="620" y="96" text-anchor="middle" class="node-label">Generación</text>
+                                <text x="620" y="112" text-anchor="middle" class="node-sublabel">PDF</text>
+
+                                <circle cx="800" cy="100" r="42" class="node-circle" />
+                                <text x="800" y="96" text-anchor="middle" class="node-label">Almacén</text>
+                                <text x="800" y="112" text-anchor="middle" class="node-sublabel">registros</text>
+                            </svg>
+                        </div>
+                        <p class="diagram-caption">
+                            Entrada de cliente/documento → motor de clasificación → motor de reglas fiscales
+                            (IVA/IRPF/menciones legales) → generación de PDF → almacén de registros estructurado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Tecnologías</span>
+                    <div class="case-section-body">
+                        <p>
+                            Python para el motor de reglas y la generación de documentos — elegido por
+                            iteración rápida sobre lógica de negocio y buenas herramientas de PDF/documentos,
+                            frente a un stack web más pesado innecesario para una herramienta interna.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Proceso</span>
+                    <div class="case-section-body">
+                        <p>
+                            Se modeló primero la taxonomía de cliente/fiscalidad (qué categorías existen,
+                            qué reglas aplican a cada una) antes de escribir la lógica de generación, ya que
+                            un error en la taxonomía se habría propagado a cada documento.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Decisiones clave</span>
+                    <div class="case-section-body">
+                        <div class="case-decisions">
+                            <div class="case-decision">
+                                <div class="case-decision-label">Motor de reglas vs. ramas de lógica por cliente</div>
+                                <p>Añadir una categoría de cliente o cambiar una regla fiscal no requiere tocar el código de generación.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Errores / qué haría diferente</span>
+                    <div class="case-section-body">
+                        <div class="case-callout">
+                            <p>
+                                La versión inicial acoplaba demasiado la clasificación a la generación; un
+                                cambio de regla fiscal obligaba a tocar ambas capas. Se refactorizó hacia la
+                                arquitectura separada actual tras comprobar lo doloroso que fue el primer
+                                cambio real de regla.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Aprendizajes</span>
+                    <div class="case-section-body">
+                        <p>
+                            La automatización de procesos regulados (fiscalidad, cumplimiento) necesita la
+                            misma disciplina de "corrección antes que velocidad" que el software de
+                            cumplimiento de cara al usuario — aquí los aprendizajes de Veridico y este
+                            proyecto se refuerzan mutuamente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Resultado</span>
+                    <div class="case-section-body">
+                        <div class="case-result">
+                            <span class="status-badge is-live case-result-status">En producción interna</span>
+                            <p>
+                                Generación automática de facturas, cálculo fiscal y salida en PDF para una
+                                empresa real, eliminando el manejo manual de documentos del flujo
+                                administrativo. Cifras de volumen y ahorro de tiempo se añadirán aquí en
+                                cuanto estén consolidadas — de momento el sistema funciona en producción,
+                                pero no voy a inventar un porcentaje de mejora.
+                            </p>
+                        </div>
+
+                        <button class="project-cta project-modal-btn" style="margin-top: var(--space-lg);">
+                            Ver detalles del sistema
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Roadmap</span>
+                    <div class="case-section-body">
+                        <p>
+                            Extender el mismo patrón de motor de automatización (clasificación → motor de
+                            reglas → generación) a flujos de Google Workspace/Gmail y procesamiento de
+                            documentos asistido por OpenAI para clientes B2B.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: var(--space-3xl);">
+            <div class="container">
+                <div class="section-header">
+                    <a href="/proyectos.html" class="btn btn-secondary reveal">
+                        <span>← Ver todos los proyectos</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/index.html" class="logo">
+                        <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                        <div class="logo-brand"><span class="logo-company">Denilson Capa</span></div>
+                    </a>
+                    <p class="footer-tagline">Systems, not services.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:business@son.enterprises">Email</a>
+                    <a href="https://github.com/DENILWAR">GitHub</a>
+                    <a href="https://www.linkedin.com/in/denilson-arnau-capa-42339a270/">LinkedIn</a>
+                    <a href="/aviso-legal.html">Aviso Legal</a>
+                    <a href="/politica-privacidad.html">Privacidad</a>
+                    <a href="/politica-cookies.html">Cookies</a>
+                    <a href="/accesibilidad.html">Accesibilidad</a>
+                    <a href="/cct-transferencias.html">CCT</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© <span id="year"></span> Denilson Capa</p>
+                    <p>NIF: 47929828J | <a href="mailto:soporte@denilsonarnau.com">soporte@denilsonarnau.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Detalle del Sistema de Automatización -->
+    <div class="modal-overlay" id="proyecto-local-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Cerrar modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="modal-content">
+                <div class="carousel-container">
+                    <button class="carousel-btn carousel-prev" aria-label="Slide anterior">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-slides" role="region" aria-live="polite" aria-label="Galería de imágenes del sistema">
+                        <div class="carousel-slide active">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto2.jpg" alt="Sistema completo de facturación para PyMEs con interfaz de creación y gestión automática de facturas">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title" id="modal-title">Motor de reglas fiscales</h2>
+                                <p class="slide-description">
+                                    Clasificación y aplicación de reglas separadas de la generación del
+                                    documento — un cambio normativo se actualiza en un solo lugar.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto22.jpg" alt="Panel de gestión inteligente de clientes con categorización automática según tipo fiscal">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Clasificación de clientes</h2>
+                                <p class="slide-description">
+                                    El sistema clasifica automáticamente a los clientes y aplica las reglas
+                                    fiscales correctas según su tipo (autónomo, empresa, particular).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto222.jpg" alt="Motor de cálculo fiscal automático aplicando IVA, IRPF y normativa legal en facturas">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Cálculo fiscal automático</h2>
+                                <p class="slide-description">
+                                    Aplica automáticamente IVA, IRPF y las menciones legales requeridas,
+                                    eliminando errores humanos en el camino común.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto2.jpg" alt="Sistema de generación automática de facturas en formato PDF con diseño profesional estructurado">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Generación de PDF estructurada</h2>
+                                <p class="slide-description">
+                                    Genera documentos PDF de forma autónoma con formato consistente, listos
+                                    para enviar a clientes o presentar ante organismos oficiales.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto22.jpg" alt="Aplicación desarrollada en Python con código limpio y eficiente para automatización administrativa">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Construido en Python</h2>
+                                <p class="slide-description">
+                                    Motor de reglas separado de la generación de documentos, pensado para
+                                    que un cambio fiscal no obligue a tocar el código de salida.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-btn carousel-next" aria-label="Siguiente slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="carousel-indicators" role="tablist" aria-label="Indicadores de diapositivas">
+                    <button class="indicator active" data-slide="0" role="tab" aria-label="Diapositiva 1" aria-selected="true"></button>
+                    <button class="indicator" data-slide="1" role="tab" aria-label="Diapositiva 2" aria-selected="false"></button>
+                    <button class="indicator" data-slide="2" role="tab" aria-label="Diapositiva 3" aria-selected="false"></button>
+                    <button class="indicator" data-slide="3" role="tab" aria-label="Diapositiva 4" aria-selected="false"></button>
+                    <button class="indicator" data-slide="4" role="tab" aria-label="Diapositiva 5" aria-selected="false"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="carousel-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="cookie-widget" id="cookie-widget" style="display: none;">
+        <div class="cookie-icon" id="cookie-icon">🍪</div>
+        <div class="cookie-chat-message" id="cookie-chat-message" style="display: none;">
+            <div class="cookie-chat-header">
+                <span class="cookie-chat-title">🍪 Política de Cookies</span>
+                <button class="cookie-chat-close" onclick="closeCookieChat()" aria-label="Cerrar">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="cookie-chat-body">
+                <p>Utilizamos cookies técnicas esenciales y de terceros (EmailJS) para mejorar tu experiencia.</p>
+                <a href="/politica-cookies.html" target="_blank" rel="noopener noreferrer" class="cookie-info-link">Más información</a>
+            </div>
+            <div class="cookie-chat-actions">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()">✓ Aceptar todas</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Solo esenciales</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/chatbot/chatbot-widget.js"></script>
+</body>
+</html>

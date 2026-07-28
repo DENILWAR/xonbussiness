@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Denilson Capa's projects: Veridico (VeriFactu invoicing), SON Identity (NFC identity platform), and automation systems. Full case studies with architecture and decisions.">
+    <meta property="og:title" content="Projects — Denilson Capa">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="canonical" href="https://denilsonarnau.com/en/projects.html">
+    <link rel="alternate" hreflang="es" href="https://denilsonarnau.com/proyectos.html">
+    <link rel="alternate" hreflang="en" href="https://denilsonarnau.com/en/projects.html">
+
+    <title>Projects — Denilson Capa</title>
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/images/finalbosslogo.svg">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/chatbot/chatbot-widget.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/en/index.html" class="logo">
+                <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                <div class="logo-brand">
+                    <span class="logo-company">Denilson Capa</span>
+                    <h5 class="logo-company">Systems, not services.</h5>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/en/index.html" class="nav-link">Home</a></li>
+                <li><a href="/en/projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="/en/engineering.html" class="nav-link">Engineering</a></li>
+                <li><a href="/en/about.html" class="nav-link">About</a></li>
+                <li><a href="/en/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="lang-switch">
+                <a href="/proyectos.html">ES</a>
+                <a href="/en/projects.html" class="active">EN</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/en/index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="/en/projects.html" class="mobile-nav-link">Projects</a></li>
+            <li><a href="/en/engineering.html" class="mobile-nav-link">Engineering</a></li>
+            <li><a href="/en/about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="/en/contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <section class="page-hero">
+            <div class="container">
+                <span class="section-tag reveal">Projects</span>
+                <h1 class="section-title reveal">Systems, not websites</h1>
+                <p class="section-description reveal">
+                    Three products, three different constraints — regulation, hardware, and operational process.
+                    Each one has its own case study: problem, architecture, decisions, mistakes, and result.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="work-list">
+                    <article class="work-row reveal">
+                        <div class="work-row-head">
+                            <span class="status-badge is-dev">In development</span>
+                            <h2 class="work-row-title">Veridico</h2>
+                        </div>
+                        <p class="work-row-problem">
+                            Invoicing infrastructure built for VeriFactu, not adapted to it. An append-only
+                            ledger, corrections through compensating entries rather than edits — that's what
+                            makes the audit trail real instead of cosmetic.
+                        </p>
+                        <div class="work-row-stack">
+                            <span class="tag">Electron</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">VeriFactu</span>
+                        </div>
+                        <a href="/en/veridico.html" class="work-row-cta">
+                            Read case study
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </article>
+
+                    <article class="work-row reveal">
+                        <div class="work-row-head">
+                            <span class="status-badge is-dev">In development</span>
+                            <h2 class="work-row-title">SON Identity</h2>
+                        </div>
+                        <p class="work-row-problem">
+                            NFC-based identity and networking. The physical card carries no data — it's a
+                            pointer. Identity, profile, and history live entirely server-side, with the account
+                            model designed for teams from day one.
+                        </p>
+                        <div class="work-row-stack">
+                            <span class="tag">NFC</span>
+                            <span class="tag">SaaS</span>
+                            <span class="tag">Subscriptions</span>
+                        </div>
+                        <a href="/en/son-identity.html" class="work-row-cta">
+                            Read case study
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </article>
+
+                    <article class="work-row reveal">
+                        <div class="work-row-head">
+                            <span class="status-badge is-live">In production</span>
+                            <h2 class="work-row-title">Automation Systems</h2>
+                        </div>
+                        <p class="work-row-problem">
+                            A tax rule engine separated from document generation, so a regulation change
+                            doesn't force touching the output code. In internal production since its first
+                            deployment.
+                        </p>
+                        <div class="work-row-stack">
+                            <span class="tag">Python</span>
+                            <span class="tag">Automation</span>
+                            <span class="tag">REST APIs</span>
+                        </div>
+                        <a href="/en/automation-systems.html" class="work-row-cta">
+                            Read case study
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                    </article>
+                </div>
+
+                <div class="earlier-work reveal">
+                    <p>
+                        Earlier in my path, I built and rebuilt digital presence for real operating
+                        businesses — a 30-year construction company and a family services business among
+                        them. That part of the story is on <a href="/en/about.html" style="color: var(--color-primary);">About</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/en/index.html" class="logo">
+                        <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                        <div class="logo-brand"><span class="logo-company">Denilson Capa</span></div>
+                    </a>
+                    <p class="footer-tagline">Systems, not services.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:business@son.enterprises">Email</a>
+                    <a href="https://github.com/DENILWAR">GitHub</a>
+                    <a href="https://www.linkedin.com/in/denilson-arnau-capa-42339a270/">LinkedIn</a>
+                    <a href="/aviso-legal.html">Legal Notice</a>
+                    <a href="/politica-privacidad.html">Privacy</a>
+                    <a href="/politica-cookies.html">Cookies</a>
+                    <a href="/accesibilidad.html">Accessibility</a>
+                    <a href="/cct-transferencias.html">CCT</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© <span id="year"></span> Denilson Capa</p>
+                    <p>NIF: 47929828J | <a href="mailto:soporte@denilsonarnau.com">soporte@denilsonarnau.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-widget" id="cookie-widget" style="display: none;">
+        <div class="cookie-icon" id="cookie-icon">🍪</div>
+        <div class="cookie-chat-message" id="cookie-chat-message" style="display: none;">
+            <div class="cookie-chat-header">
+                <span class="cookie-chat-title">🍪 Cookie Policy</span>
+                <button class="cookie-chat-close" onclick="closeCookieChat()" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="cookie-chat-body">
+                <p>We use essential technical cookies and third-party cookies (EmailJS) to improve your experience.</p>
+                <a href="/politica-cookies.html" target="_blank" rel="noopener noreferrer" class="cookie-info-link">More information</a>
+            </div>
+            <div class="cookie-chat-actions">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()">✓ Accept all</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Essential only</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/chatbot/chatbot-widget.js"></script>
+</body>
+</html>

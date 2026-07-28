@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How Denilson Capa thinks about software: architecture-first, business-driven development, automation, and ownership. The process, philosophy, and stack behind Veridico and SON Identity.">
+    <meta property="og:title" content="Engineering — Denilson Capa">
+    <meta property="og:description" content="Architecture before code. Business context before architecture. How I think about software.">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="canonical" href="https://denilsonarnau.com/en/engineering.html">
+    <link rel="alternate" hreflang="es" href="https://denilsonarnau.com/ingenieria.html">
+    <link rel="alternate" hreflang="en" href="https://denilsonarnau.com/en/engineering.html">
+
+    <title>Engineering — Denilson Capa</title>
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/images/finalbosslogo.svg">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/chatbot/chatbot-widget.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/en/index.html" class="logo">
+                <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                <div class="logo-brand">
+                    <span class="logo-company">Denilson Capa</span>
+                    <h5 class="logo-company">Systems, not services.</h5>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/en/index.html" class="nav-link">Home</a></li>
+                <li><a href="/en/projects.html" class="nav-link">Projects</a></li>
+                <li><a href="/en/engineering.html" class="nav-link active">Engineering</a></li>
+                <li><a href="/en/about.html" class="nav-link">About</a></li>
+                <li><a href="/en/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="lang-switch">
+                <a href="/ingenieria.html">ES</a>
+                <a href="/en/engineering.html" class="active">EN</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/en/index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="/en/projects.html" class="mobile-nav-link">Projects</a></li>
+            <li><a href="/en/engineering.html" class="mobile-nav-link">Engineering</a></li>
+            <li><a href="/en/about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="/en/contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <div class="universe-section">
+        <section class="page-hero">
+            <div class="container">
+                <span class="section-tag reveal">Engineering</span>
+                <h1 class="section-title reveal">How I think about <span class="gradient-text">software</span></h1>
+                <p class="section-description reveal">
+                    Ten stated positions, not marketing bullets — things someone could disagree with,
+                    which is what makes them real.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="philosophy-grid">
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">01</span>
+                        <h3 class="philosophy-title">Product thinking</h3>
+                        <p class="philosophy-text">Code is the last decision, not the first. I start from the business problem and the constraint that matters most, and let architecture follow from that.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">02</span>
+                        <h3 class="philosophy-title">Architecture first</h3>
+                        <p class="philosophy-text">A system's shape determines what's cheap to change later and what's permanent. I spend disproportionate time here.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">03</span>
+                        <h3 class="philosophy-title">Business-driven development</h3>
+                        <p class="philosophy-text">Every technical decision is evaluated against what the business actually needs to survive and grow — not against what's technically interesting.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">04</span>
+                        <h3 class="philosophy-title">Automation first</h3>
+                        <p class="philosophy-text">If a process is manual and repeated, it's a bug in the system design, not a fact of life.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">05</span>
+                        <h3 class="philosophy-title">Security by design</h3>
+                        <p class="philosophy-text">Data integrity and access control are architectural properties, not a checklist added before launch.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">06</span>
+                        <h3 class="philosophy-title">API-first</h3>
+                        <p class="philosophy-text">Systems are built to be integrated with, not just used — internal boundaries are designed like public contracts from day one.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">07</span>
+                        <h3 class="philosophy-title">Maintainability</h3>
+                        <p class="philosophy-text">Code is read far more than it's written. I optimize for the engineer reading this in a year, which is usually me.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">08</span>
+                        <h3 class="philosophy-title">Scalability</h3>
+                        <p class="philosophy-text">I design for the load the business will have if it succeeds, not the load it has on day one — without over-engineering for loads that will never come.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">09</span>
+                        <h3 class="philosophy-title">Developer experience</h3>
+                        <p class="philosophy-text">Tooling, documentation, and local setup speed are product decisions — they determine how fast a team can actually move.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">10</span>
+                        <h3 class="philosophy-title">Ownership</h3>
+                        <p class="philosophy-text">I don't hand off a spec and disappear. I carry decisions through to production and live with their consequences.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <section class="section" style="background: var(--color-bg-secondary);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Process</span>
+                    <h2 class="section-title reveal">From idea to production</h2>
+                </div>
+
+                <div class="process-flow">
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Discovery</h3>
+                            <p class="process-step-desc">Understand the real business problem and its hardest constraint.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Architecture</h3>
+                            <p class="process-step-desc">Design the system shape before writing implementation code.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Prototype</h3>
+                            <p class="process-step-desc">Validate the riskiest assumption — the data model, an integration, a hardware constraint.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Development</h3>
+                            <p class="process-step-desc">Build in the order that de-risks the project fastest.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Testing</h3>
+                            <p class="process-step-desc">Correctness against the constraint that matters — compliance, scale, or security.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Deployment</h3>
+                            <p class="process-step-desc">Ship in a state that can be operated, not just demoed.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Iteration</h3>
+                            <p class="process-step-desc">Real usage reveals what the spec didn't.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Scaling</h3>
+                            <p class="process-step-desc">Design decisions from step 2 get their return on investment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Stack</span>
+                    <h2 class="section-title reveal">Grouped by capability, not logos</h2>
+                </div>
+
+                <div class="stack-clusters">
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Frontend</h3>
+                        <div class="stack-cluster-items"><span>React</span><span>Next.js</span><span>TypeScript</span><span>JavaScript</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Backend</h3>
+                        <div class="stack-cluster-items"><span>Node.js</span><span>Python</span><span>Java</span><span>REST APIs</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Data</h3>
+                        <div class="stack-cluster-items"><span>PostgreSQL</span><span>SQL</span><span>Data modeling for integrity and auditability</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Infrastructure</h3>
+                        <div class="stack-cluster-items"><span>Docker</span><span>Cloud</span><span>Git</span><span>Modular architecture</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Automation</h3>
+                        <div class="stack-cluster-items"><span>Google Workspace</span><span>Gmail</span><span>Document automation</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">AI</h3>
+                        <div class="stack-cluster-items"><span>OpenAI integration applied to real workflows</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Developer Tools</h3>
+                        <div class="stack-cluster-items"><span>Electron</span><span>Git-based workflows</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/en/index.html" class="logo">
+                        <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                        <div class="logo-brand"><span class="logo-company">Denilson Capa</span></div>
+                    </a>
+                    <p class="footer-tagline">Systems, not services.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:business@son.enterprises">Email</a>
+                    <a href="https://github.com/DENILWAR">GitHub</a>
+                    <a href="https://www.linkedin.com/in/denilson-arnau-capa-42339a270/">LinkedIn</a>
+                    <a href="/aviso-legal.html">Legal Notice</a>
+                    <a href="/politica-privacidad.html">Privacy</a>
+                    <a href="/politica-cookies.html">Cookies</a>
+                    <a href="/accesibilidad.html">Accessibility</a>
+                    <a href="/cct-transferencias.html">CCT</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© <span id="year"></span> Denilson Capa</p>
+                    <p>NIF: 47929828J | <a href="mailto:soporte@denilsonarnau.com">soporte@denilsonarnau.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-widget" id="cookie-widget" style="display: none;">
+        <div class="cookie-icon" id="cookie-icon">🍪</div>
+        <div class="cookie-chat-message" id="cookie-chat-message" style="display: none;">
+            <div class="cookie-chat-header">
+                <span class="cookie-chat-title">🍪 Cookie Policy</span>
+                <button class="cookie-chat-close" onclick="closeCookieChat()" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="cookie-chat-body">
+                <p>We use essential technical cookies and third-party cookies (EmailJS) to improve your experience.</p>
+                <a href="/politica-cookies.html" target="_blank" rel="noopener noreferrer" class="cookie-info-link">More information</a>
+            </div>
+            <div class="cookie-chat-actions">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()">✓ Accept all</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Essential only</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/universe-bg.js"></script>
+    <script src="/assets/js/chatbot/chatbot-widget.js"></script>
+</body>
+</html>

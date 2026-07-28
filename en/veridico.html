@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Veridico — invoicing infrastructure built for VeriFactu compliance, not around it. Case study: problem, append-only ledger architecture, decisions, and current status.">
+    <meta property="og:title" content="Veridico — VeriFactu-compliant invoicing infrastructure | Denilson Capa">
+    <meta property="og:description" content="An append-only invoicing ledger, designed to survive a VeriFactu audit, not to pass a demo.">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="canonical" href="https://denilsonarnau.com/en/veridico.html">
+    <link rel="alternate" hreflang="es" href="https://denilsonarnau.com/veridico.html">
+    <link rel="alternate" hreflang="en" href="https://denilsonarnau.com/en/veridico.html">
+
+    <title>Veridico — VeriFactu Invoicing Infrastructure | Denilson Capa</title>
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/images/finalbosslogo.svg">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/chatbot/chatbot-widget.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/en/index.html" class="logo">
+                <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                <div class="logo-brand">
+                    <span class="logo-company">Denilson Capa</span>
+                    <h5 class="logo-company">Systems, not services.</h5>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/en/index.html" class="nav-link">Home</a></li>
+                <li><a href="/en/projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="/en/engineering.html" class="nav-link">Engineering</a></li>
+                <li><a href="/en/about.html" class="nav-link">About</a></li>
+                <li><a href="/en/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="lang-switch">
+                <a href="/veridico.html">ES</a>
+                <a href="/en/veridico.html" class="active">EN</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/en/index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="/en/projects.html" class="mobile-nav-link">Projects</a></li>
+            <li><a href="/en/engineering.html" class="mobile-nav-link">Engineering</a></li>
+            <li><a href="/en/about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="/en/contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <section class="case-hero">
+            <div class="container">
+                <div class="case-hero-meta">
+                    <span class="status-badge is-dev">In development</span>
+                    <span class="tag">Electron</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">VeriFactu</span>
+                </div>
+                <h1 class="case-hero-title reveal">Veridico</h1>
+                <p class="case-hero-subtitle reveal">
+                    Invoicing infrastructure built for VeriFactu compliance, not around it.
+                </p>
+            </div>
+        </section>
+
+        <section class="case-section" style="border-top: none;">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Problem</span>
+                    <div class="case-section-body">
+                        <p>
+                            Spanish freelancers and small businesses face a hard regulatory deadline:
+                            VeriFactu requires invoicing systems to guarantee data integrity, traceability,
+                            and auditability, with real penalties for non-compliance. Most existing invoicing
+                            tools were retrofitted to comply after the fact — Veridico was designed around
+                            the requirement from line one.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Context</span>
+                    <div class="case-section-body">
+                        <p>
+                            VeriFactu isn't a feature, it's a constraint that shapes the entire data layer:
+                            every invoice record needs a verifiable chain (no silent edits, no deletion,
+                            exportable audit trail), and the system has to work for non-technical solo
+                            business owners, not accountants.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Constraints</span>
+                    <div class="case-section-body">
+                        <p>
+                            Regulatory correctness cannot be "close enough" — an invoicing system either
+                            satisfies the traceability requirement or it's a liability. Built as a
+                            desktop-first application (Electron) to give offline reliability and local data
+                            ownership, which added its own sync/architecture tradeoffs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Architecture</span>
+                    <div class="case-section-body">
+                        <p>
+                            The invoice ledger is treated as an append-only log, not a mutable table —
+                            corrections happen via compensating entries, never edits, which is what makes
+                            the audit trail real instead of cosmetic.
+                        </p>
+
+                        <div class="diagram-frame">
+                            <svg viewBox="0 0 860 200" role="img" aria-labelledby="veridico-diagram-title-en">
+                                <title id="veridico-diagram-title-en">Veridico architecture diagram</title>
+                                <defs>
+                                    <marker id="arrow-v-en" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                                        <path d="M0,0 L6,3 L0,6 Z" class="edge-arrow" />
+                                    </marker>
+                                </defs>
+                                <line x1="130" y1="100" x2="266" y2="100" class="edge-line" marker-end="url(#arrow-v-en)" />
+                                <line x1="374" y1="100" x2="496" y2="100" class="edge-line" marker-end="url(#arrow-v-en)" />
+                                <line x1="604" y1="100" x2="726" y2="100" class="edge-line" marker-end="url(#arrow-v-en)" stroke-dasharray="4 4" />
+
+                                <circle cx="90" cy="100" r="44" class="node-circle" />
+                                <text x="90" y="96" text-anchor="middle" class="node-label">Client</text>
+                                <text x="90" y="112" text-anchor="middle" class="node-sublabel">Electron</text>
+
+                                <circle cx="320" cy="100" r="54" class="node-circle" />
+                                <text x="320" y="92" text-anchor="middle" class="node-label">Invoice ledger</text>
+                                <text x="320" y="108" text-anchor="middle" class="node-sublabel">append-only</text>
+
+                                <circle cx="550" cy="100" r="54" class="node-circle" />
+                                <text x="550" y="92" text-anchor="middle" class="node-label">Export</text>
+                                <text x="550" y="108" text-anchor="middle" class="node-sublabel">audit / reporting</text>
+
+                                <circle cx="770" cy="100" r="44" class="node-circle" />
+                                <text x="770" y="96" text-anchor="middle" class="node-label">Sync</text>
+                                <text x="770" y="112" text-anchor="middle" class="node-sublabel">planned</text>
+                            </svg>
+                        </div>
+                        <p class="diagram-caption">
+                            Client (Electron) → append-only invoice ledger → export/audit layer →
+                            multi-device sync service (planned).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Technologies</span>
+                    <div class="case-section-body">
+                        <p>
+                            Electron (desktop shell + offline-first reliability), JavaScript/HTML/CSS for
+                            the interface layer, with the data layer designed to be swappable toward a
+                            hosted backend as the product moves from local tool to SaaS.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Process</span>
+                    <div class="case-section-body">
+                        <p>
+                            Discovery started from the regulation text, not from a feature list — mapped
+                            every VeriFactu requirement to a concrete data-integrity guarantee before writing
+                            UI. Prototype validated the ledger model before any interface work began.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Key decisions</span>
+                    <div class="case-section-body">
+                        <div class="case-decisions">
+                            <div class="case-decision">
+                                <div class="case-decision-label">Append-only ledger vs. editable records</div>
+                                <p>Harder to build, but the only model that survives an audit.</p>
+                            </div>
+                            <div class="case-decision">
+                                <div class="case-decision-label">Desktop-first vs. web-first</div>
+                                <p>Prioritized data ownership and offline reliability for solo operators over the convenience of a hosted app, with cloud sync planned as an additive layer, not a replacement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Mistakes / what I'd do differently</span>
+                    <div class="case-section-body">
+                        <div class="case-callout">
+                            <p>
+                                Underestimated how much UX work "boring" compliance software needs — a
+                                system can be perfectly correct and still fail if a non-technical user can't
+                                trust what they're looking at. Re-scoped the interface layer mid-build to
+                                prioritize clarity over feature breadth.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Learnings</span>
+                    <div class="case-section-body">
+                        <p>
+                            Compliance-driven products reward getting the data model right before anything
+                            else — every later feature is downstream of whether the ledger design is
+                            trustworthy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Result</span>
+                    <div class="case-section-body">
+                        <div class="case-result">
+                            <span class="status-badge is-dev case-result-status">In development</span>
+                            <p>
+                                First pilot business, first real invoice issued through the system, and
+                                first completed VeriFactu audit trail export will be added here as soon as
+                                they exist. There's nothing to show yet — and I'd rather say that than
+                                invent a number.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Roadmap</span>
+                    <div class="case-section-body">
+                        <p>
+                            Hosted/SaaS version with multi-device sync, accountant-facing export tools,
+                            expansion beyond invoicing into broader fiscal record-keeping for small
+                            businesses.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: var(--space-3xl);">
+            <div class="container">
+                <div class="section-header">
+                    <a href="/en/projects.html" class="btn btn-secondary reveal">
+                        <span>← View all projects</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/en/index.html" class="logo">
+                        <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                        <div class="logo-brand"><span class="logo-company">Denilson Capa</span></div>
+                    </a>
+                    <p class="footer-tagline">Systems, not services.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:business@son.enterprises">Email</a>
+                    <a href="https://github.com/DENILWAR">GitHub</a>
+                    <a href="https://www.linkedin.com/in/denilson-arnau-capa-42339a270/">LinkedIn</a>
+                    <a href="/aviso-legal.html">Legal Notice</a>
+                    <a href="/politica-privacidad.html">Privacy</a>
+                    <a href="/politica-cookies.html">Cookies</a>
+                    <a href="/accesibilidad.html">Accessibility</a>
+                    <a href="/cct-transferencias.html">CCT</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© <span id="year"></span> Denilson Capa</p>
+                    <p>NIF: 47929828J | <a href="mailto:soporte@denilsonarnau.com">soporte@denilsonarnau.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-widget" id="cookie-widget" style="display: none;">
+        <div class="cookie-icon" id="cookie-icon">🍪</div>
+        <div class="cookie-chat-message" id="cookie-chat-message" style="display: none;">
+            <div class="cookie-chat-header">
+                <span class="cookie-chat-title">🍪 Cookie Policy</span>
+                <button class="cookie-chat-close" onclick="closeCookieChat()" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="cookie-chat-body">
+                <p>We use essential technical cookies and third-party cookies (EmailJS) to improve your experience.</p>
+                <a href="/politica-cookies.html" target="_blank" rel="noopener noreferrer" class="cookie-info-link">More information</a>
+            </div>
+            <div class="cookie-chat-actions">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()">✓ Accept all</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Essential only</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/chatbot/chatbot-widget.js"></script>
+</body>
+</html>

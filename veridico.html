@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Veridico — infraestructura de facturación construida para VeriFactu, no adaptada a él. Caso de estudio: problema, arquitectura de libro de solo-adición, decisiones y estado actual.">
+    <meta property="og:title" content="Veridico — infraestructura de facturación VeriFactu | Denilson Capa">
+    <meta property="og:description" content="Un libro de facturación de solo-adición, diseñado para sobrevivir una auditoría VeriFactu, no para aprobar una demo.">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="canonical" href="https://denilsonarnau.com/veridico.html">
+    <link rel="alternate" hreflang="es" href="https://denilsonarnau.com/veridico.html">
+    <link rel="alternate" hreflang="en" href="https://denilsonarnau.com/en/veridico.html">
+
+    <title>Veridico — Infraestructura de facturación VeriFactu | Denilson Capa</title>
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/images/finalbosslogo.svg">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/chatbot/chatbot-widget.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/index.html" class="logo">
+                <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                <div class="logo-brand">
+                    <span class="logo-company">Denilson Capa</span>
+                    <h5 class="logo-company">Systems, not services.</h5>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html" class="nav-link">Inicio</a></li>
+                <li><a href="/proyectos.html" class="nav-link active">Proyectos</a></li>
+                <li><a href="/ingenieria.html" class="nav-link">Ingeniería</a></li>
+                <li><a href="/sobre-mi.html" class="nav-link">Sobre Mí</a></li>
+                <li><a href="/contacto.html" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="lang-switch">
+                <a href="/veridico.html" class="active">ES</a>
+                <a href="/en/veridico.html">EN</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/index.html" class="mobile-nav-link">Inicio</a></li>
+            <li><a href="/proyectos.html" class="mobile-nav-link">Proyectos</a></li>
+            <li><a href="/ingenieria.html" class="mobile-nav-link">Ingeniería</a></li>
+            <li><a href="/sobre-mi.html" class="mobile-nav-link">Sobre Mí</a></li>
+            <li><a href="/contacto.html" class="mobile-nav-link">Contacto</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <section class="case-hero">
+            <div class="container">
+                <div class="case-hero-meta">
+                    <span class="status-badge is-dev">En desarrollo</span>
+                    <span class="tag">Electron</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">VeriFactu</span>
+                </div>
+                <h1 class="case-hero-title reveal">Veridico</h1>
+                <p class="case-hero-subtitle reveal">
+                    Infraestructura de facturación construida para VeriFactu, no adaptada a él.
+                </p>
+            </div>
+        </section>
+
+        <section class="case-section" style="border-top: none;">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Problema</span>
+                    <div class="case-section-body">
+                        <p>
+                            Autónomos y pequeñas empresas en España enfrentan un plazo regulatorio duro:
+                            VeriFactu exige que los sistemas de facturación garanticen integridad de datos,
+                            trazabilidad y auditabilidad, con sanciones reales en caso de incumplimiento.
+                            La mayoría de herramientas existentes se adaptaron a posteriori — Veridico se
+                            diseñó alrededor del requisito desde la primera línea.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Contexto</span>
+                    <div class="case-section-body">
+                        <p>
+                            VeriFactu no es una función, es una restricción que da forma a toda la capa de
+                            datos: cada registro de factura necesita una cadena verificable (sin ediciones
+                            silenciosas, sin borrados, con exportación auditable), y el sistema tiene que
+                            funcionar para autónomos sin perfil técnico, no solo para asesorías.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Restricciones</span>
+                    <div class="case-section-body">
+                        <p>
+                            La corrección regulatoria no admite término medio — un sistema de facturación
+                            cumple el requisito de trazabilidad o es un pasivo legal. Se construyó como
+                            aplicación desktop-first (Electron) para dar fiabilidad offline y propiedad
+                            local de los datos, lo que introdujo sus propias decisiones de arquitectura
+                            de sincronización.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Arquitectura</span>
+                    <div class="case-section-body">
+                        <p>
+                            El libro de facturas se trata como un log de solo-adición, no una tabla editable —
+                            las correcciones se hacen mediante asientos compensatorios, nunca ediciones, lo
+                            que hace que el rastro de auditoría sea real y no cosmético.
+                        </p>
+
+                        <div class="diagram-frame">
+                            <svg viewBox="0 0 860 200" role="img" aria-labelledby="veridico-diagram-title">
+                                <title id="veridico-diagram-title">Diagrama de arquitectura de Veridico</title>
+                                <defs>
+                                    <marker id="arrow-v" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                                        <path d="M0,0 L6,3 L0,6 Z" class="edge-arrow" />
+                                    </marker>
+                                </defs>
+                                <line x1="130" y1="100" x2="266" y2="100" class="edge-line" marker-end="url(#arrow-v)" />
+                                <line x1="374" y1="100" x2="496" y2="100" class="edge-line" marker-end="url(#arrow-v)" />
+                                <line x1="604" y1="100" x2="726" y2="100" class="edge-line" marker-end="url(#arrow-v)" stroke-dasharray="4 4" />
+
+                                <circle cx="90" cy="100" r="44" class="node-circle" />
+                                <text x="90" y="96" text-anchor="middle" class="node-label">Cliente</text>
+                                <text x="90" y="112" text-anchor="middle" class="node-sublabel">Electron</text>
+
+                                <circle cx="320" cy="100" r="54" class="node-circle" />
+                                <text x="320" y="92" text-anchor="middle" class="node-label">Libro de facturas</text>
+                                <text x="320" y="108" text-anchor="middle" class="node-sublabel">solo-adición</text>
+
+                                <circle cx="550" cy="100" r="54" class="node-circle" />
+                                <text x="550" y="92" text-anchor="middle" class="node-label">Exportación</text>
+                                <text x="550" y="108" text-anchor="middle" class="node-sublabel">auditoría / informes</text>
+
+                                <circle cx="770" cy="100" r="44" class="node-circle" />
+                                <text x="770" y="96" text-anchor="middle" class="node-label">Sync</text>
+                                <text x="770" y="112" text-anchor="middle" class="node-sublabel">previsto</text>
+                            </svg>
+                        </div>
+                        <p class="diagram-caption">
+                            Cliente (Electron) → libro de facturación de solo-adición → capa de exportación/auditoría
+                            → servicio de sincronización multi-dispositivo (previsto).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Tecnologías</span>
+                    <div class="case-section-body">
+                        <p>
+                            Electron (shell de escritorio + fiabilidad offline-first), JavaScript/HTML/CSS
+                            para la capa de interfaz, con la capa de datos diseñada para poder migrar hacia
+                            un backend alojado según el producto evolucione de herramienta local a SaaS.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Proceso</span>
+                    <div class="case-section-body">
+                        <p>
+                            El descubrimiento partió del texto normativo, no de una lista de funciones —
+                            cada requisito de VeriFactu se mapeó a una garantía concreta de integridad de
+                            datos antes de tocar la interfaz. El prototipo validó el modelo de libro de
+                            registro antes de cualquier trabajo visual.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Decisiones clave</span>
+                    <div class="case-section-body">
+                        <div class="case-decisions">
+                            <div class="case-decision">
+                                <div class="case-decision-label">Libro de solo-adición vs. registros editables</div>
+                                <p>Más difícil de construir, pero el único modelo que sobrevive a una auditoría.</p>
+                            </div>
+                            <div class="case-decision">
+                                <div class="case-decision-label">Desktop-first vs. web-first</div>
+                                <p>Priorizar la propiedad del dato y la fiabilidad offline para autónomos sobre la comodidad de una app alojada, con sincronización en la nube prevista como capa adicional, no como sustituto.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Errores / qué haría diferente</span>
+                    <div class="case-section-body">
+                        <div class="case-callout">
+                            <p>
+                                Subestimé cuánto trabajo de UX necesita el software de cumplimiento "aburrido" —
+                                un sistema puede ser perfectamente correcto y aun así fallar si un usuario sin
+                                perfil técnico no puede confiar en lo que ve. Se replanteó la capa de interfaz
+                                a mitad de construcción priorizando claridad sobre amplitud de funciones.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Aprendizajes</span>
+                    <div class="case-section-body">
+                        <p>
+                            Los productos guiados por cumplimiento normativo premian acertar primero el
+                            modelo de datos — toda función posterior depende de si el diseño del libro de
+                            registro es fiable.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Resultado</span>
+                    <div class="case-section-body">
+                        <div class="case-result">
+                            <span class="status-badge is-dev case-result-status">En desarrollo</span>
+                            <p>
+                                Primera empresa piloto, primera factura real emitida por el sistema y primera
+                                exportación completa de rastro de auditoría VeriFactu: se añadirán aquí en
+                                cuanto estén disponibles. No hay métricas que mostrar todavía — y prefiero
+                                decir eso antes que inventar una.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Roadmap</span>
+                    <div class="case-section-body">
+                        <p>
+                            Versión alojada/SaaS con sincronización multi-dispositivo, herramientas de
+                            exportación para asesorías, ampliación más allá de la facturación hacia el
+                            registro fiscal integral de pequeñas empresas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: var(--space-3xl);">
+            <div class="container">
+                <div class="section-header">
+                    <a href="/proyectos.html" class="btn btn-secondary reveal">
+                        <span>← Ver todos los proyectos</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/index.html" class="logo">
+                        <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                        <div class="logo-brand"><span class="logo-company">Denilson Capa</span></div>
+                    </a>
+                    <p class="footer-tagline">Systems, not services.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:business@son.enterprises">Email</a>
+                    <a href="https://github.com/DENILWAR">GitHub</a>
+                    <a href="https://www.linkedin.com/in/denilson-arnau-capa-42339a270/">LinkedIn</a>
+                    <a href="/aviso-legal.html">Aviso Legal</a>
+                    <a href="/politica-privacidad.html">Privacidad</a>
+                    <a href="/politica-cookies.html">Cookies</a>
+                    <a href="/accesibilidad.html">Accesibilidad</a>
+                    <a href="/cct-transferencias.html">CCT</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© <span id="year"></span> Denilson Capa</p>
+                    <p>NIF: 47929828J | <a href="mailto:soporte@denilsonarnau.com">soporte@denilsonarnau.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-widget" id="cookie-widget" style="display: none;">
+        <div class="cookie-icon" id="cookie-icon">🍪</div>
+        <div class="cookie-chat-message" id="cookie-chat-message" style="display: none;">
+            <div class="cookie-chat-header">
+                <span class="cookie-chat-title">🍪 Política de Cookies</span>
+                <button class="cookie-chat-close" onclick="closeCookieChat()" aria-label="Cerrar">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="cookie-chat-body">
+                <p>Utilizamos cookies técnicas esenciales y de terceros (EmailJS) para mejorar tu experiencia.</p>
+                <a href="/politica-cookies.html" target="_blank" rel="noopener noreferrer" class="cookie-info-link">Más información</a>
+            </div>
+            <div class="cookie-chat-actions">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()">✓ Aceptar todas</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Solo esenciales</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/chatbot/chatbot-widget.js"></script>
+</body>
+</html>

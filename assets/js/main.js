@@ -3,16 +3,11 @@
    ================================================ */
 
 // ==================== DOM Elements ====================
-const cursor = document.getElementById('cursor');
-const cursorFollower = document.getElementById('cursor-follower');
-const loader = document.getElementById('loader');
 const header = document.getElementById('header');
 const navToggle = document.getElementById('nav-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
-const navLinks = document.querySelectorAll('.nav-link');
 const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 const revealElements = document.querySelectorAll('.reveal');
-const statNumbers = document.querySelectorAll('.stat-number');
 const contactForm = document.getElementById('contact-form');
 const yearSpan = document.getElementById('year');
 
@@ -25,11 +20,8 @@ const EMAILJS_CONFIG = {
 
 // ==================== Initialization ====================
 document.addEventListener('DOMContentLoaded', () => {
-    initLoader();
-    initCustomCursor();
     initNavigation();
     initScrollReveal();
-    initStatCounters();
     initSmoothScroll();
     initFormHandling();
     setCurrentYear();
@@ -38,6 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initRotatingImages();
     initThemeDetection();
     initProyectoLocalModal();
+
+    // No loader screen — reveal hero content as soon as the DOM is ready
+    document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active'));
 });
 
 // ==================== EmailJS Initialization ====================
@@ -49,83 +44,6 @@ function initEmailJS() {
     } else {
         console.warn('⚠️ EmailJS no está cargado.');
     }
-}
-
-// ==================== Loader ====================
-function initLoader() {
-    const minLoadTime = 1500;
-    const startTime = Date.now();
-    
-    window.addEventListener('load', () => {
-        const elapsed = Date.now() - startTime;
-        const remaining = Math.max(0, minLoadTime - elapsed);
-        
-        setTimeout(() => {
-            loader.classList.add('hidden');
-            document.body.classList.remove('no-scroll');
-            
-            setTimeout(() => {
-                document.querySelectorAll('.hero .reveal').forEach(el => {
-                    el.classList.add('active');
-                });
-            }, 100);
-        }, remaining);
-    });
-}
-
-// ==================== Custom Cursor ====================
-function initCustomCursor() {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        return;
-    }
-    
-    let mouseX = 0;
-    let mouseY = 0;
-    let followerX = 0;
-    let followerY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-    
-    function animateCursor() {
-        const dx = mouseX - followerX;
-        const dy = mouseY - followerY;
-        followerX += dx * 0.15;
-        followerY += dy * 0.15;
-        
-        cursor.style.left = `${mouseX}px`;
-        cursor.style.top = `${mouseY}px`;
-        cursorFollower.style.left = `${followerX}px`;
-        cursorFollower.style.top = `${followerY}px`;
-        
-        requestAnimationFrame(animateCursor);
-    }
-    
-    animateCursor();
-    
-    const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, .project-card, .service-card');
-    
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursorFollower.classList.add('hover');
-        });
-        
-        el.addEventListener('mouseleave', () => {
-            cursorFollower.classList.remove('hover');
-        });
-    });
-    
-    document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
-        cursorFollower.style.opacity = '0';
-    });
-    
-    document.addEventListener('mouseenter', () => {
-        cursor.style.opacity = '1';
-        cursorFollower.style.opacity = '1';
-    });
 }
 
 // ==================== Navigation ====================
@@ -153,27 +71,6 @@ function initNavigation() {
             document.body.classList.remove('no-scroll');
         });
     });
-    
-    const sections = document.querySelectorAll('section[id]');
-    
-    window.addEventListener('scroll', () => {
-        const scrollY = window.pageYOffset;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('data-section') === sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    });
 }
 
 // ==================== Scroll Reveal ====================
@@ -195,52 +92,6 @@ function initScrollReveal() {
     revealElements.forEach(el => {
         observer.observe(el);
     });
-}
-
-// ==================== Stat Counters ====================
-function initStatCounters() {
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = entry.target;
-                const countTo = parseInt(target.getAttribute('data-count'));
-                animateCounter(target, countTo);
-                observer.unobserve(target);
-            }
-        });
-    }, observerOptions);
-    
-    statNumbers.forEach(stat => {
-        observer.observe(stat);
-    });
-}
-
-function animateCounter(element, target) {
-    const duration = 2000;
-    const startTime = performance.now();
-    
-    function updateCounter(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        const current = Math.floor(easeOutQuart * target);
-        
-        element.textContent = current;
-        
-        if (progress < 1) {
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = target;
-        }
-    }
-    
-    requestAnimationFrame(updateCounter);
 }
 
 // ==================== Smooth Scroll ====================
@@ -577,6 +428,7 @@ function initThemeDetection() {
 function initProyectoLocalModal() {
     const modal = document.getElementById('proyecto-local-modal');
     const openBtn = document.querySelector('.project-modal-btn');
+    if (!modal || !openBtn) return;
     const closeBtn = modal.querySelector('.modal-close');
     const prevBtn = modal.querySelector('.carousel-prev');
     const nextBtn = modal.querySelector('.carousel-next');

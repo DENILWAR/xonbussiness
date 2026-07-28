@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Automation Systems — a tax rule engine separated from document generation, in internal production. Case study with architecture, decisions, and real result.">
+    <meta property="og:title" content="Automation Systems — rule engine and document generation | Denilson Capa">
+    <meta property="og:description" content="Classification and tax rules separated from document generation, so a regulation change doesn't force touching the output format.">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="canonical" href="https://denilsonarnau.com/en/automation-systems.html">
+    <link rel="alternate" hreflang="es" href="https://denilsonarnau.com/automatizacion.html">
+    <link rel="alternate" hreflang="en" href="https://denilsonarnau.com/en/automation-systems.html">
+
+    <title>Automation Systems | Denilson Capa</title>
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/images/finalbosslogo.svg">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/chatbot/chatbot-widget.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/en/index.html" class="logo">
+                <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                <div class="logo-brand">
+                    <span class="logo-company">Denilson Capa</span>
+                    <h5 class="logo-company">Systems, not services.</h5>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/en/index.html" class="nav-link">Home</a></li>
+                <li><a href="/en/projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="/en/engineering.html" class="nav-link">Engineering</a></li>
+                <li><a href="/en/about.html" class="nav-link">About</a></li>
+                <li><a href="/en/contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="lang-switch">
+                <a href="/automatizacion.html">ES</a>
+                <a href="/en/automation-systems.html" class="active">EN</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/en/index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="/en/projects.html" class="mobile-nav-link">Projects</a></li>
+            <li><a href="/en/engineering.html" class="mobile-nav-link">Engineering</a></li>
+            <li><a href="/en/about.html" class="mobile-nav-link">About</a></li>
+            <li><a href="/en/contact.html" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <section class="case-hero">
+            <div class="container">
+                <div class="case-hero-meta">
+                    <span class="status-badge is-live">In production</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">REST APIs</span>
+                </div>
+                <h1 class="case-hero-title reveal">Automation Systems</h1>
+                <p class="case-hero-subtitle reveal">
+                    A tax rule engine separated from document generation — so a regulation change
+                    doesn't force touching the output code.
+                </p>
+            </div>
+        </section>
+
+        <section class="case-section" style="border-top: none;">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Problem</span>
+                    <div class="case-section-body">
+                        <p>
+                            Small businesses lose hours weekly to manual, repetitive administrative work —
+                            invoice creation, tax rule application, document generation — with human error
+                            scaling linearly with volume.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Context</span>
+                    <div class="case-section-body">
+                        <p>
+                            Built initially as an internal tool for a real operating business, which forced
+                            the system to handle actual edge cases (different client tax categories, legal
+                            mention requirements) instead of a simplified demo case.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Constraints</span>
+                    <div class="case-section-body">
+                        <p>
+                            Tax rules (VAT/IVA, IRPF, legal mentions) had to be applied correctly and
+                            consistently with zero manual override in the common path — any automation
+                            that "mostly" gets tax right is worse than no automation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Architecture</span>
+                    <div class="case-section-body">
+                        <p>
+                            Classification and rule application are separated from document rendering, so
+                            tax logic can be updated without touching output formatting, and vice versa.
+                        </p>
+
+                        <div class="diagram-frame">
+                            <svg viewBox="0 0 1000 200" role="img" aria-labelledby="auto-diagram-title-en">
+                                <title id="auto-diagram-title-en">Automation Systems architecture diagram</title>
+                                <defs>
+                                    <marker id="arrow-a-en" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+                                        <path d="M0,0 L6,3 L0,6 Z" class="edge-arrow" />
+                                    </marker>
+                                </defs>
+                                <line x1="118" y1="100" x2="222" y2="100" class="edge-line" marker-end="url(#arrow-a-en)" />
+                                <line x1="298" y1="100" x2="402" y2="100" class="edge-line" marker-end="url(#arrow-a-en)" />
+                                <line x1="478" y1="100" x2="582" y2="100" class="edge-line" marker-end="url(#arrow-a-en)" />
+                                <line x1="658" y1="100" x2="762" y2="100" class="edge-line" marker-end="url(#arrow-a-en)" />
+
+                                <circle cx="80" cy="100" r="38" class="node-circle" />
+                                <text x="80" y="96" text-anchor="middle" class="node-label">Intake</text>
+                                <text x="80" y="112" text-anchor="middle" class="node-sublabel">client/doc</text>
+
+                                <circle cx="260" cy="100" r="42" class="node-circle" />
+                                <text x="260" y="96" text-anchor="middle" class="node-label">Classification</text>
+                                <text x="260" y="112" text-anchor="middle" class="node-sublabel">client type</text>
+
+                                <circle cx="440" cy="100" r="48" class="node-circle" />
+                                <text x="440" y="94" text-anchor="middle" class="node-label">Rule engine</text>
+                                <text x="440" y="110" text-anchor="middle" class="node-sublabel">VAT / IRPF / legal</text>
+
+                                <circle cx="620" cy="100" r="42" class="node-circle" />
+                                <text x="620" y="96" text-anchor="middle" class="node-label">Generation</text>
+                                <text x="620" y="112" text-anchor="middle" class="node-sublabel">PDF</text>
+
+                                <circle cx="800" cy="100" r="42" class="node-circle" />
+                                <text x="800" y="96" text-anchor="middle" class="node-label">Store</text>
+                                <text x="800" y="112" text-anchor="middle" class="node-sublabel">records</text>
+                            </svg>
+                        </div>
+                        <p class="diagram-caption">
+                            Client/document intake → classification engine → tax rule engine
+                            (VAT/IRPF/legal mentions) → PDF generation → structured record store.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Technologies</span>
+                    <div class="case-section-body">
+                        <p>
+                            Python for the rule engine and document generation — chosen for fast iteration
+                            on business logic and strong PDF/document tooling, versus a heavier web stack
+                            that wasn't needed for an internal tool.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Process</span>
+                    <div class="case-section-body">
+                        <p>
+                            Modeled the client/tax taxonomy first (what categories exist, what rules apply
+                            to each) before writing generation logic, since getting the taxonomy wrong would
+                            have propagated errors into every document.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Key decisions</span>
+                    <div class="case-section-body">
+                        <div class="case-decisions">
+                            <div class="case-decision">
+                                <div class="case-decision-label">Rule-engine-first vs. hardcoded per-client-type branches</div>
+                                <p>Adding a new client category or tax rule change doesn't require touching the generation code.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Mistakes / what I'd do differently</span>
+                    <div class="case-section-body">
+                        <div class="case-callout">
+                            <p>
+                                Initial version coupled classification too tightly to generation; a
+                                tax-rule change forced touching both layers. Refactored into the current
+                                separated architecture after the first real rule change proved painful.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Learnings</span>
+                    <div class="case-section-body">
+                        <p>
+                            Automation for regulated processes (tax, compliance) needs the same
+                            "correctness over speed" discipline as user-facing compliance software — this
+                            is where the lessons from Veridico and this project reinforce each other.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Result</span>
+                    <div class="case-section-body">
+                        <div class="case-result">
+                            <span class="status-badge is-live case-result-status">In internal production</span>
+                            <p>
+                                Automated invoice generation, tax calculation, and PDF output for a real
+                                business, removing manual document handling from the admin workflow. Volume
+                                and time-saved figures will be added here once consolidated — the system
+                                runs in production today, but I won't invent an improvement percentage.
+                            </p>
+                        </div>
+
+                        <button class="project-cta project-modal-btn" style="margin-top: var(--space-lg);">
+                            View system details
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-section">
+            <div class="container">
+                <div class="case-section-grid reveal">
+                    <span class="case-section-label">Roadmap</span>
+                    <div class="case-section-body">
+                        <p>
+                            Extending the same automation engine pattern (classification → rule engine →
+                            generation) to Google Workspace/Gmail workflows and OpenAI-assisted document
+                            processing for B2B clients.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: var(--space-3xl);">
+            <div class="container">
+                <div class="section-header">
+                    <a href="/en/projects.html" class="btn btn-secondary reveal">
+                        <span>← View all projects</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/en/index.html" class="logo">
+                        <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                        <div class="logo-brand"><span class="logo-company">Denilson Capa</span></div>
+                    </a>
+                    <p class="footer-tagline">Systems, not services.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:business@son.enterprises">Email</a>
+                    <a href="https://github.com/DENILWAR">GitHub</a>
+                    <a href="https://www.linkedin.com/in/denilson-arnau-capa-42339a270/">LinkedIn</a>
+                    <a href="/aviso-legal.html">Legal Notice</a>
+                    <a href="/politica-privacidad.html">Privacy</a>
+                    <a href="/politica-cookies.html">Cookies</a>
+                    <a href="/accesibilidad.html">Accessibility</a>
+                    <a href="/cct-transferencias.html">CCT</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© <span id="year"></span> Denilson Capa</p>
+                    <p>NIF: 47929828J | <a href="mailto:soporte@denilsonarnau.com">soporte@denilsonarnau.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- System Detail Modal -->
+    <div class="modal-overlay" id="proyecto-local-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="modal-content">
+                <div class="carousel-container">
+                    <button class="carousel-btn carousel-prev" aria-label="Previous slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-slides" role="region" aria-live="polite" aria-label="System image gallery">
+                        <div class="carousel-slide active">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto2.jpg" alt="Complete invoicing system for SMBs with automatic invoice creation and management interface">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title" id="modal-title">Tax rule engine</h2>
+                                <p class="slide-description">
+                                    Classification and rule application separated from document generation —
+                                    a regulation change updates in a single place.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto22.jpg" alt="Smart client management panel with automatic categorization by tax type">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Client classification</h2>
+                                <p class="slide-description">
+                                    The system automatically classifies clients and applies the correct tax
+                                    rules based on their type (freelancer, company, individual).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto222.jpg" alt="Automatic tax calculation engine applying VAT, IRPF, and legal requirements to invoices">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Automatic tax calculation</h2>
+                                <p class="slide-description">
+                                    Automatically applies VAT, IRPF, and required legal mentions, removing
+                                    human error from the common path.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto2.jpg" alt="Automatic PDF invoice generation system with professional structured design">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Structured PDF generation</h2>
+                                <p class="slide-description">
+                                    Generates professional PDF documents autonomously with consistent
+                                    formatting, ready to send to clients or present to official bodies.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="/assets/images/Proyecto22.jpg" alt="Application built in Python with clean, efficient code for administrative automation">
+                            </div>
+                            <div class="slide-content">
+                                <h2 class="slide-title">Built in Python</h2>
+                                <p class="slide-description">
+                                    Rule engine separated from document generation, designed so a tax change
+                                    doesn't force touching the output code.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-btn carousel-next" aria-label="Next slide">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="carousel-indicators" role="tablist" aria-label="Slide indicators">
+                    <button class="indicator active" data-slide="0" role="tab" aria-label="Slide 1" aria-selected="true"></button>
+                    <button class="indicator" data-slide="1" role="tab" aria-label="Slide 2" aria-selected="false"></button>
+                    <button class="indicator" data-slide="2" role="tab" aria-label="Slide 3" aria-selected="false"></button>
+                    <button class="indicator" data-slide="3" role="tab" aria-label="Slide 4" aria-selected="false"></button>
+                    <button class="indicator" data-slide="4" role="tab" aria-label="Slide 5" aria-selected="false"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="carousel-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="cookie-widget" id="cookie-widget" style="display: none;">
+        <div class="cookie-icon" id="cookie-icon">🍪</div>
+        <div class="cookie-chat-message" id="cookie-chat-message" style="display: none;">
+            <div class="cookie-chat-header">
+                <span class="cookie-chat-title">🍪 Cookie Policy</span>
+                <button class="cookie-chat-close" onclick="closeCookieChat()" aria-label="Close">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="cookie-chat-body">
+                <p>We use essential technical cookies and third-party cookies (EmailJS) to improve your experience.</p>
+                <a href="/politica-cookies.html" target="_blank" rel="noopener noreferrer" class="cookie-info-link">More information</a>
+            </div>
+            <div class="cookie-chat-actions">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()">✓ Accept all</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Essential only</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/chatbot/chatbot-widget.js"></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cómo piensa Denilson Capa el software: arquitectura primero, desarrollo guiado por negocio, automatización y ownership. El proceso, la filosofía y el stack detrás de Veridico y SON Identity.">
+    <meta property="og:title" content="Ingeniería — Denilson Capa">
+    <meta property="og:description" content="Arquitectura primero. Contexto de negocio antes que arquitectura. Cómo pienso el software.">
+    <meta name="theme-color" content="#0a0a0f">
+    <link rel="canonical" href="https://denilsonarnau.com/ingenieria.html">
+    <link rel="alternate" hreflang="es" href="https://denilsonarnau.com/ingenieria.html">
+    <link rel="alternate" hreflang="en" href="https://denilsonarnau.com/en/engineering.html">
+
+    <title>Ingeniería — Denilson Capa</title>
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/finalbosslogo.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/images/finalbosslogo.svg">
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/chatbot/chatbot-widget.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="/index.html" class="logo">
+                <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                <div class="logo-brand">
+                    <span class="logo-company">Denilson Capa</span>
+                    <h5 class="logo-company">Systems, not services.</h5>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/index.html" class="nav-link">Inicio</a></li>
+                <li><a href="/proyectos.html" class="nav-link">Proyectos</a></li>
+                <li><a href="/ingenieria.html" class="nav-link active">Ingeniería</a></li>
+                <li><a href="/sobre-mi.html" class="nav-link">Sobre Mí</a></li>
+                <li><a href="/contacto.html" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="lang-switch">
+                <a href="/ingenieria.html" class="active">ES</a>
+                <a href="/en/engineering.html">EN</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="/index.html" class="mobile-nav-link">Inicio</a></li>
+            <li><a href="/proyectos.html" class="mobile-nav-link">Proyectos</a></li>
+            <li><a href="/ingenieria.html" class="mobile-nav-link">Ingeniería</a></li>
+            <li><a href="/sobre-mi.html" class="mobile-nav-link">Sobre Mí</a></li>
+            <li><a href="/contacto.html" class="mobile-nav-link">Contacto</a></li>
+        </ul>
+    </div>
+
+    <main id="main-content">
+        <div class="universe-section">
+        <section class="page-hero">
+            <div class="container">
+                <span class="section-tag reveal">Ingeniería</span>
+                <h1 class="section-title reveal">Cómo pienso el <span class="gradient-text">software</span></h1>
+                <p class="section-description reveal">
+                    Diez posiciones concretas, no frases de marketing — cosas con las que alguien podría
+                    estar en desacuerdo, que es lo que las hace reales.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="philosophy-grid">
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">01</span>
+                        <h3 class="philosophy-title">Pensamiento de producto</h3>
+                        <p class="philosophy-text">El código es la última decisión, no la primera. Parto del problema de negocio y la restricción que más importa, y dejo que la arquitectura se derive de ahí.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">02</span>
+                        <h3 class="philosophy-title">Arquitectura primero</h3>
+                        <p class="philosophy-text">La forma de un sistema determina qué es barato cambiar después y qué queda permanente. Dedico un tiempo desproporcionado aquí.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">03</span>
+                        <h3 class="philosophy-title">Desarrollo guiado por negocio</h3>
+                        <p class="philosophy-text">Cada decisión técnica se evalúa contra lo que el negocio realmente necesita para sobrevivir y crecer, no contra lo técnicamente interesante.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">04</span>
+                        <h3 class="philosophy-title">Automatización primero</h3>
+                        <p class="philosophy-text">Si un proceso es manual y repetido, es un fallo de diseño del sistema, no un hecho inevitable.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">05</span>
+                        <h3 class="philosophy-title">Seguridad por diseño</h3>
+                        <p class="philosophy-text">La integridad de los datos y el control de acceso son propiedades arquitectónicas, no una checklist añadida antes del lanzamiento.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">06</span>
+                        <h3 class="philosophy-title">API-first</h3>
+                        <p class="philosophy-text">Los sistemas se construyen para ser integrados, no solo usados — los límites internos se diseñan como contratos públicos desde el primer día.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">07</span>
+                        <h3 class="philosophy-title">Mantenibilidad</h3>
+                        <p class="philosophy-text">El código se lee muchas más veces de las que se escribe. Optimizo para el ingeniero que lo lea dentro de un año, que normalmente soy yo.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">08</span>
+                        <h3 class="philosophy-title">Escalabilidad</h3>
+                        <p class="philosophy-text">Diseño para la carga que el negocio tendrá si tiene éxito, no para la carga del primer día — sin sobre-ingeniería para cargas que nunca llegarán.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">09</span>
+                        <h3 class="philosophy-title">Developer experience</h3>
+                        <p class="philosophy-text">Herramientas, documentación y velocidad de configuración local son decisiones de producto — determinan cuán rápido puede moverse un equipo.</p>
+                    </div>
+                    <div class="philosophy-card reveal">
+                        <span class="philosophy-index">10</span>
+                        <h3 class="philosophy-title">Ownership</h3>
+                        <p class="philosophy-text">No entrego una especificación y desaparezco. Llevo las decisiones hasta producción y asumo sus consecuencias.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <section class="section" style="background: var(--color-bg-secondary);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Proceso</span>
+                    <h2 class="section-title reveal">De la idea a producción</h2>
+                </div>
+
+                <div class="process-flow">
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Descubrimiento</h3>
+                            <p class="process-step-desc">Entender el problema de negocio real y su restricción más difícil.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Arquitectura</h3>
+                            <p class="process-step-desc">Diseñar la forma del sistema antes de escribir código de implementación.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Prototipo</h3>
+                            <p class="process-step-desc">Validar la suposición más arriesgada — el modelo de datos, una integración, una limitación de hardware.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Desarrollo</h3>
+                            <p class="process-step-desc">Construir en el orden que reduce el riesgo del proyecto más rápido.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Pruebas</h3>
+                            <p class="process-step-desc">Corrección frente a la restricción que importa — cumplimiento, escala o seguridad.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Despliegue</h3>
+                            <p class="process-step-desc">Lanzar en un estado que se pueda operar, no solo demostrar.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span><div class="process-step-line"></div></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Iteración</h3>
+                            <p class="process-step-desc">El uso real revela lo que la especificación no contemplaba.</p>
+                        </div>
+                    </div>
+                    <div class="process-step reveal">
+                        <div class="process-step-marker"><span class="process-step-dot"></span></div>
+                        <div class="process-step-body">
+                            <h3 class="process-step-title">Escalado</h3>
+                            <p class="process-step-desc">Las decisiones de arquitectura del paso 2 obtienen su retorno.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag reveal">Stack</span>
+                    <h2 class="section-title reveal">Agrupado por capacidad, no por logos</h2>
+                </div>
+
+                <div class="stack-clusters">
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Frontend</h3>
+                        <div class="stack-cluster-items"><span>React</span><span>Next.js</span><span>TypeScript</span><span>JavaScript</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Backend</h3>
+                        <div class="stack-cluster-items"><span>Node.js</span><span>Python</span><span>Java</span><span>REST APIs</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Data</h3>
+                        <div class="stack-cluster-items"><span>PostgreSQL</span><span>SQL</span><span>Modelado para integridad y auditoría</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Infraestructura</h3>
+                        <div class="stack-cluster-items"><span>Docker</span><span>Cloud</span><span>Git</span><span>Arquitectura modular</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Automatización</h3>
+                        <div class="stack-cluster-items"><span>Google Workspace</span><span>Gmail</span><span>Automatización documental</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">IA</h3>
+                        <div class="stack-cluster-items"><span>Integración OpenAI aplicada a workflows reales</span></div>
+                    </div>
+                    <div class="stack-cluster reveal">
+                        <h3 class="stack-cluster-title">Developer Tools</h3>
+                        <div class="stack-cluster-items"><span>Electron</span><span>Git-based workflows</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/index.html" class="logo">
+                        <img src="/assets/images/finalreal.svg" alt="SON — Denilson Capa" class="logo-image" />
+                        <div class="logo-brand"><span class="logo-company">Denilson Capa</span></div>
+                    </a>
+                    <p class="footer-tagline">Systems, not services.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:business@son.enterprises">Email</a>
+                    <a href="https://github.com/DENILWAR">GitHub</a>
+                    <a href="https://www.linkedin.com/in/denilson-arnau-capa-42339a270/">LinkedIn</a>
+                    <a href="/aviso-legal.html">Aviso Legal</a>
+                    <a href="/politica-privacidad.html">Privacidad</a>
+                    <a href="/politica-cookies.html">Cookies</a>
+                    <a href="/accesibilidad.html">Accesibilidad</a>
+                    <a href="/cct-transferencias.html">CCT</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>© <span id="year"></span> Denilson Capa</p>
+                    <p>NIF: 47929828J | <a href="mailto:soporte@denilsonarnau.com">soporte@denilsonarnau.com</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-widget" id="cookie-widget" style="display: none;">
+        <div class="cookie-icon" id="cookie-icon">🍪</div>
+        <div class="cookie-chat-message" id="cookie-chat-message" style="display: none;">
+            <div class="cookie-chat-header">
+                <span class="cookie-chat-title">🍪 Política de Cookies</span>
+                <button class="cookie-chat-close" onclick="closeCookieChat()" aria-label="Cerrar">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="cookie-chat-body">
+                <p>Utilizamos cookies técnicas esenciales y de terceros (EmailJS) para mejorar tu experiencia.</p>
+                <a href="/politica-cookies.html" target="_blank" rel="noopener noreferrer" class="cookie-info-link">Más información</a>
+            </div>
+            <div class="cookie-chat-actions">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptAllCookies()">✓ Aceptar todas</button>
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectOptionalCookies()">Solo esenciales</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/universe-bg.js"></script>
+    <script src="/assets/js/chatbot/chatbot-widget.js"></script>
+</body>
+</html>
